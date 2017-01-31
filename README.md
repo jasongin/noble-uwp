@@ -54,10 +54,9 @@ The following functionality is working:
  * Device services discovery
  * Service included services discovery
  * Service characteristics discovery
- * Characteristics reading
+ * Characteristics reading and writing
 
 The following functionality is not yet implemented:
- * Characteristics writing
  * Descriptors (discovering, reading, writing)
  * Broadcast
  * Notify
