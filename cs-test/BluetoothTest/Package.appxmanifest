@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+  <Identity Name="0c5e26a9-0bbf-4353-a9c5-32ffd6f145dc" Publisher="CN=jasongin" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="0c5e26a9-0bbf-4353-a9c5-32ffd6f145dc" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>BluetoothTest</DisplayName>
+    <PublisherDisplayName>jasongin</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="BluetoothTest.App">
+      <uap:VisualElements DisplayName="BluetoothTest" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="BluetoothTest" BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="bluetooth" />
+    <DeviceCapability Name="bluetooth.genericAttributeProfile">
+      <Device Id="any">
+        <Function Type="serviceId:f000aa00-0451-4000-b000-000000000000"/>
+        <Function Type="serviceId:F000AA10-0451-4000-B000-000000000000"/>
+        <Function Type="serviceId:F000AA20-0451-4000-B000-000000000000"/>
+        <Function Type="serviceId:F000AA30-0451-4000-B000-000000000000"/>
+        <Function Type="serviceId:F000AA40-0451-4000-B000-000000000000"/>
+        <Function Type="serviceId:F000AA50-0451-4000-B000-000000000000"/>
+        <Function Type="serviceId:0000ffe0-0000-1000-8000-00805f9b34fb"/>
+        <Function Type="serviceId:00001800-0000-1000-8000-00805f9b34fb"/>
+        <Function Type="serviceId:00001801-0000-1000-8000-00805f9b34fb"/>
+        <Function Type="serviceId:0000180A-0000-1000-8000-00805f9b34fb"/>
+      </Device>
+    </DeviceCapability>
+
+  </Capabilities>
+</Package>
