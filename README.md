@@ -8,8 +8,13 @@ Creators Update has
 This project is an attempt to implement bindings for `noble` using that newly available
 functionality in Windows 10.
 
-## Windows System Requirements
-This package requires Windows 10 build 10.0.15014 or later (currently available on the Windows Insider Preview Fast ring).
+## System Requirements
+ * Windows 10 build 10.0.15014 or later, currently available on the Windows Insider Preview Fast ring
+ * Windows 10 SDK build 10.0.15003 or later, available from the
+   [Windows Insider Preview SDK page](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewSDK)
+   * Note the SDK build number changes frequently during the preview phase.
+   You may need to update the SDK references in `noble-uwp/uwp/*/binding.gyp` to refer
+   to the SDK build number that is installed.
 
 ## Usage
 Simply require `noble-uwp` instead of `noble`:
