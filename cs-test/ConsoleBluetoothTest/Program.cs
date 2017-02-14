@@ -15,7 +15,11 @@ namespace BluetoothTest
     {
         static void Main(string[] args)
         {
+            ComSecurity.Init();
             AsyncPump.Run(TestAsync);
+
+            // Wait for button press.
+            Thread.Sleep(1000000);
         }
 
         static void Log(string message)

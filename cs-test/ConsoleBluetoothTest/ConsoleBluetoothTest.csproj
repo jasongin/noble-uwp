@@ -50,19 +50,19 @@
     <Reference Include="System.Xml" />
     <Reference Include="Windows, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(ProgramFiles(x86))\Windows Kits\10\UnionMetadata\10.0.15003.0\Facade\Windows.WinMD</HintPath>
+      <HintPath>$(ProgramFiles(x86))\Windows Kits\10\UnionMetadata\10.0.15033.0\Facade\Windows.WinMD</HintPath>
     </Reference>
     <Reference Include="Windows.Devices.DevicesLowLevelContract, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(ProgramFiles(x86))\Windows Kits\10\References\10.0.15003.0\Windows.Devices.DevicesLowLevelContract\3.0.0.0\Windows.Devices.DevicesLowLevelContract.winmd</HintPath>
+      <HintPath>$(ProgramFiles(x86))\Windows Kits\10\References\10.0.15033.0\Windows.Devices.DevicesLowLevelContract\3.0.0.0\Windows.Devices.DevicesLowLevelContract.winmd</HintPath>
     </Reference>
     <Reference Include="Windows.Foundation.FoundationContract, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(ProgramFiles(x86))\Windows Kits\10\References\10.0.15003.0\Windows.Foundation.FoundationContract\3.0.0.0\Windows.Foundation.FoundationContract.winmd</HintPath>
+      <HintPath>$(ProgramFiles(x86))\Windows Kits\10\References\10.0.15033.0\Windows.Foundation.FoundationContract\3.0.0.0\Windows.Foundation.FoundationContract.winmd</HintPath>
     </Reference>
     <Reference Include="Windows.Foundation.UniversalApiContract, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(ProgramFiles(x86))\Windows Kits\10\References\10.0.15003.0\Windows.Foundation.UniversalApiContract\4.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+      <HintPath>$(ProgramFiles(x86))\Windows Kits\10\References\10.0.15033.0\Windows.Foundation.UniversalApiContract\4.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +70,7 @@
       <Link>BluetoothTest.cs</Link>
     </Compile>
     <Compile Include="AsyncPump.cs" />
+    <Compile Include="ComSecurity.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

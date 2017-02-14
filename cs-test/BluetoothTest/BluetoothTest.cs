@@ -101,6 +101,7 @@ namespace BluetoothTest
                             // Set the characteristic configuration descriptor to Notify to enable notifications.
                             // Reading and/or writing configuration descriptors gives inconsistent results!!
 
+                            /*
                             var configValue = await characteristic.ReadClientCharacteristicConfigurationDescriptorAsync();
                             Log("config value: " + configValue.ClientCharacteristicConfigurationDescriptor);
 
@@ -109,11 +110,12 @@ namespace BluetoothTest
 
                             configValue = await characteristic.ReadClientCharacteristicConfigurationDescriptorAsync();
                             Log("config value: " + configValue.ClientCharacteristicConfigurationDescriptor);
+                            */
 
                             await characteristic.WriteClientCharacteristicConfigurationDescriptorAsync(
                                 GattClientCharacteristicConfigurationDescriptorValue.Notify);
 
-                            configValue = await characteristic.ReadClientCharacteristicConfigurationDescriptorAsync();
+                            var configValue = await characteristic.ReadClientCharacteristicConfigurationDescriptorAsync();
                             Log("config value: " + configValue.ClientCharacteristicConfigurationDescriptor);
 
                             // Register for change notifications for the "key" characteristic.
