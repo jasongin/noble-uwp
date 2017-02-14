@@ -55,7 +55,7 @@
           'msvs_settings': {
             'VCCLCompilerTool': {
               'AdditionalUsingDirectories' : [
-                'uwp'
+                '%ProgramFiles%/Windows Kits/10/UnionMetadata/10.0.15033.0'
                 ]
                }
              }

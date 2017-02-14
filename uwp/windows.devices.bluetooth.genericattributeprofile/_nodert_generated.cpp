@@ -67,9 +67,6 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
   v8::Local<v8::Value> WrapGattDeviceServicesResult(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattDeviceServicesResult^ wintRtInstance);
   ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattDeviceServicesResult^ UnwrapGattDeviceServicesResult(Local<Value> value);
   
-  v8::Local<v8::Value> WrapGattUuid(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ wintRtInstance);
-  ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ UnwrapGattUuid(Local<Value> value);
-  
   v8::Local<v8::Value> WrapGattProtocolError(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattProtocolError^ wintRtInstance);
   ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattProtocolError^ UnwrapGattProtocolError(Local<Value> value);
   
@@ -166,17 +163,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
   v8::Local<v8::Value> WrapGattClientNotificationResult(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^ wintRtInstance);
   ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^ UnwrapGattClientNotificationResult(Local<Value> value);
   
-  v8::Local<v8::Value> WrapGattReadResponse(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ wintRtInstance);
-  ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ UnwrapGattReadResponse(Local<Value> value);
-  
   v8::Local<v8::Value> WrapGattReadRequest(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequest^ wintRtInstance);
   ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequest^ UnwrapGattReadRequest(Local<Value> value);
   
   v8::Local<v8::Value> WrapGattRequestStateChangedEventArgs(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs^ wintRtInstance);
   ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs^ UnwrapGattRequestStateChangedEventArgs(Local<Value> value);
-  
-  v8::Local<v8::Value> WrapGattWriteResponse(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ wintRtInstance);
-  ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ UnwrapGattWriteResponse(Local<Value> value);
   
   v8::Local<v8::Value> WrapGattWriteRequest(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequest^ wintRtInstance);
   ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequest^ UnwrapGattWriteRequest(Local<Value> value);
@@ -259,6 +250,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 	Nan::Set(enumObject, Nan::New<String>("success").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCommunicationStatus::Success)));
 	Nan::Set(enumObject, Nan::New<String>("unreachable").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCommunicationStatus::Unreachable)));
 	Nan::Set(enumObject, Nan::New<String>("protocolError").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCommunicationStatus::ProtocolError)));
+	Nan::Set(enumObject, Nan::New<String>("accessDenied").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCommunicationStatus::AccessDenied)));
   }
 
 
@@ -268,6 +260,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("GattSharingMode").ToLocalChecked(), enumObject);
+	Nan::Set(enumObject, Nan::New<String>("unspecified").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSharingMode::Unspecified)));
 	Nan::Set(enumObject, Nan::New<String>("exclusive").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSharingMode::Exclusive)));
 	Nan::Set(enumObject, Nan::New<String>("sharedReadOnly").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSharingMode::SharedReadOnly)));
 	Nan::Set(enumObject, Nan::New<String>("sharedReadAndWrite").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSharingMode::SharedReadAndWrite)));
@@ -282,6 +275,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     Nan::Set(exports, Nan::New<String>("GattOpenStatus").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("unspecified").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattOpenStatus::Unspecified)));
 	Nan::Set(enumObject, Nan::New<String>("success").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattOpenStatus::Success)));
+	Nan::Set(enumObject, Nan::New<String>("alreadyOpened").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattOpenStatus::AlreadyOpened)));
 	Nan::Set(enumObject, Nan::New<String>("notFound").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattOpenStatus::NotFound)));
 	Nan::Set(enumObject, Nan::New<String>("sharingViolation").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattOpenStatus::SharingViolation)));
 	Nan::Set(enumObject, Nan::New<String>("accessDenied").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattOpenStatus::AccessDenied)));
@@ -357,9 +351,8 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
-      Nan::SetMethod(constructor, "getDeviceSelector", GetDeviceSelector);
       Nan::SetMethod(constructor, "getDeviceSelectorForBluetoothDeviceId", GetDeviceSelectorForBluetoothDeviceId);
-      Nan::SetMethod(constructor, "getDeviceSelectorForBluetoothDeviceIdAndGattUuid", GetDeviceSelectorForBluetoothDeviceIdAndGattUuid);
+      Nan::SetMethod(constructor, "getDeviceSelectorForBluetoothDeviceIdAndUuid", GetDeviceSelectorForBluetoothDeviceIdAndUuid);
       Nan::SetMethod(constructor, "getDeviceSelectorFromUuid", GetDeviceSelectorFromUuid);
       Nan::SetMethod(constructor, "getDeviceSelectorFromShortId", GetDeviceSelectorFromShortId);
       Nan::SetMethod(constructor, "convertShortIdToUuid", ConvertShortIdToUuid);
@@ -766,11 +759,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     
 
       if (info.Length() == 2
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0]))
+        && NodeRT::Utils::IsGuid(info[0]))
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           
           op = wrapper->_instance->GetCharacteristicsForUuidAsync(arg0);
         }
@@ -781,12 +774,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         }
       }
       else if (info.Length() == 3
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0])
+        && NodeRT::Utils::IsGuid(info[0])
         && info[1]->IsInt32())
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           ::Windows::Devices::Bluetooth::BluetoothCacheMode arg1 = static_cast<::Windows::Devices::Bluetooth::BluetoothCacheMode>(Nan::To<int32_t>(info[1]).FromMaybe(0));
           
           op = wrapper->_instance->GetCharacteristicsForUuidAsync(arg0,arg1);
@@ -967,11 +960,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     
 
       if (info.Length() == 2
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0]))
+        && NodeRT::Utils::IsGuid(info[0]))
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           
           op = wrapper->_instance->GetIncludedServicesForUuidAsync(arg0);
         }
@@ -982,12 +975,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         }
       }
       else if (info.Length() == 3
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0])
+        && NodeRT::Utils::IsGuid(info[0])
         && info[1]->IsInt32())
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           ::Windows::Devices::Bluetooth::BluetoothCacheMode arg1 = static_cast<::Windows::Devices::Bluetooth::BluetoothCacheMode>(Nan::To<int32_t>(info[1]).FromMaybe(0));
           
           op = wrapper->_instance->GetIncludedServicesForUuidAsync(arg0,arg1);
@@ -1354,34 +1347,6 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       });
     }
 
-    static void GetDeviceSelector(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-      if (info.Length() == 1
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0]))
-      {
-        try
-        {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
-          
-          Platform::String^ result;
-          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattDeviceService::GetDeviceSelector(arg0);
-          info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
-          return;
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else 
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
-        return;
-      }
-    }
     static void GetDeviceSelectorForBluetoothDeviceId(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -1430,21 +1395,21 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    static void GetDeviceSelectorForBluetoothDeviceIdAndGattUuid(Nan::NAN_METHOD_ARGS_TYPE info)
+    static void GetDeviceSelectorForBluetoothDeviceIdAndUuid(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
 
       if (info.Length() == 2
         && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::BluetoothDeviceId^>(info[0])
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[1]))
+        && NodeRT::Utils::IsGuid(info[1]))
       {
         try
         {
           ::Windows::Devices::Bluetooth::BluetoothDeviceId^ arg0 = dynamic_cast<::Windows::Devices::Bluetooth::BluetoothDeviceId^>(NodeRT::Utils::GetObjectInstance(info[0]));
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg1 = UnwrapGattUuid(info[1]);
+          ::Platform::Guid arg1 = NodeRT::Utils::GuidFromJs(info[1]);
           
           Platform::String^ result;
-          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattDeviceService::GetDeviceSelectorForBluetoothDeviceIdAndGattUuid(arg0, arg1);
+          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattDeviceService::GetDeviceSelectorForBluetoothDeviceIdAndUuid(arg0, arg1);
           info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
           return;
         }
@@ -1456,17 +1421,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
       else if (info.Length() == 3
         && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::BluetoothDeviceId^>(info[0])
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[1])
+        && NodeRT::Utils::IsGuid(info[1])
         && info[2]->IsInt32())
       {
         try
         {
           ::Windows::Devices::Bluetooth::BluetoothDeviceId^ arg0 = dynamic_cast<::Windows::Devices::Bluetooth::BluetoothDeviceId^>(NodeRT::Utils::GetObjectInstance(info[0]));
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg1 = UnwrapGattUuid(info[1]);
+          ::Platform::Guid arg1 = NodeRT::Utils::GuidFromJs(info[1]);
           ::Windows::Devices::Bluetooth::BluetoothCacheMode arg2 = static_cast<::Windows::Devices::Bluetooth::BluetoothCacheMode>(Nan::To<int32_t>(info[2]).FromMaybe(0));
           
           Platform::String^ result;
-          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattDeviceService::GetDeviceSelectorForBluetoothDeviceIdAndGattUuid(arg0, arg1, arg2);
+          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattDeviceService::GetDeviceSelectorForBluetoothDeviceIdAndUuid(arg0, arg1, arg2);
           info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
           return;
         }
@@ -2058,294 +2023,6 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
   void InitGattDeviceServicesResult(Local<Object> exports)
   {
     GattDeviceServicesResult::Init(exports);
-  }
-
-  class GattUuid : public WrapperBase
-  {
-  public:    
-    static void Init(const Local<Object> exports)
-    {
-      HandleScope scope;
-      
-      Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
-      s_constructorTemplate.Reset(localRef);
-      localRef->SetClassName(Nan::New<String>("GattUuid").ToLocalChecked());
-      localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
-      Nan::SetPrototypeMethod(localRef, "asShortId", AsShortId);
-      
-                        
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("uuid").ToLocalChecked(), UuidGetter);
-      
-      Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
-	  Nan::SetMethod(constructor, "castFrom", CastFrom);
-
-      Nan::SetMethod(constructor, "fromUuid", FromUuid);
-      Nan::SetMethod(constructor, "fromShortId", FromShortId);
-
-      Nan::Set(exports, Nan::New<String>("GattUuid").ToLocalChecked(), constructor);
-    }
-
-
-    virtual ::Platform::Object^ GetObjectInstance() const override
-    {
-      return _instance;
-    }
-
-  private:
-    
-    GattUuid(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ instance)
-    {
-      _instance = instance;
-    }
-    
-    
-    static void New(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-	    Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(s_constructorTemplate);
-
-      // in case the constructor was called without the new operator
-      if (!localRef->HasInstance(info.This()))
-      {
-        if (info.Length() > 0)
-        {
-          std::unique_ptr<Local<Value> []> constructorArgs(new Local<Value>[info.Length()]);
-
-          Local<Value> *argsPtr = constructorArgs.get();
-          for (int i = 0; i < info.Length(); i++)
-          {
-            argsPtr[i] = info[i];
-          }
-
-		  MaybeLocal<Object> res = Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(), info.Length(), constructorArgs.get());
-		  if (res.IsEmpty())
-		  {
-			  return;
-		  }
-		  info.GetReturnValue().Set(res.ToLocalChecked());
-		  return;
-		}
-		else
-		{
-          MaybeLocal<Object> res = Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(), info.Length(), nullptr);
-          if (res.IsEmpty())
-          {
-            return;
-          }
-          info.GetReturnValue().Set(res.ToLocalChecked());
-          return;
-        }
-      }
-      
-      ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ winRtInstance;
-
-
-      if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
-        NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0]))
-      {
-        try 
-        {
-          winRtInstance = (::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^) NodeRT::Utils::GetObjectInstance(info[0]);
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Invalid arguments, no suitable constructor found")));
-	    	return;
-      }
-
-      NodeRT::Utils::SetHiddenValue(info.This(), Nan::New<String>("__winRtInstance__").ToLocalChecked(), True());
-
-      GattUuid *wrapperInstance = new GattUuid(winRtInstance);
-      wrapperInstance->Wrap(info.This());
-
-      info.GetReturnValue().Set(info.This());
-    }
-
-
-	
-    static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-		HandleScope scope;
-		if (info.Length() < 1 || !NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0]))
-		{
-			Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Invalid arguments, no object provided, or given object could not be casted to requested type")));
-			return;
-		}
-
-		::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ winRtInstance;
-		try
-		{
-			winRtInstance = (::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^) NodeRT::Utils::GetObjectInstance(info[0]);
-		}
-		catch (Platform::Exception ^exception)
-		{
-			NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-			return;
-		}
-
-		info.GetReturnValue().Set(WrapGattUuid(winRtInstance));
-    }
-
-
-  
-    static void AsShortId(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info.This()))
-      {
-        return;
-      }
-
-      GattUuid *wrapper = GattUuid::Unwrap<GattUuid>(info.This());
-
-      if (info.Length() == 0)
-      {
-        try
-        {
-          unsigned int result;
-          result = wrapper->_instance->AsShortId();
-          info.GetReturnValue().Set(Nan::New<Integer>(result));
-          return;
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else 
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
-        return;
-      }
-    }
-
-
-    static void FromUuid(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-      if (info.Length() == 1
-        && NodeRT::Utils::IsGuid(info[0]))
-      {
-        try
-        {
-          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
-          
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ result;
-          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid::FromUuid(arg0);
-          info.GetReturnValue().Set(WrapGattUuid(result));
-          return;
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else 
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
-        return;
-      }
-    }
-    static void FromShortId(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-      if (info.Length() == 1
-        && info[0]->IsUint32())
-      {
-        try
-        {
-          unsigned int arg0 = static_cast<unsigned int>(Nan::To<uint32_t>(info[0]).FromMaybe(0));
-          
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ result;
-          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid::FromShortId(arg0);
-          info.GetReturnValue().Set(WrapGattUuid(result));
-          return;
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else 
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
-        return;
-      }
-    }
-
-    static void UuidGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
-    {
-      HandleScope scope;
-      
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info.This()))
-      {
-        return;
-      }
-
-      GattUuid *wrapper = GattUuid::Unwrap<GattUuid>(info.This());
-
-      try 
-      {
-        ::Platform::Guid result = wrapper->_instance->Uuid;
-        info.GetReturnValue().Set(NodeRT::Utils::GuidToJs(result));
-        return;
-      }
-      catch (Platform::Exception ^exception)
-      {
-        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-        return;
-      }
-    }
-    
-
-
-  private:
-    ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ _instance;
-    static Persistent<FunctionTemplate> s_constructorTemplate;
-
-    friend v8::Local<v8::Value> WrapGattUuid(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ wintRtInstance);
-    friend ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ UnwrapGattUuid(Local<Value> value);
-  };
-  Persistent<FunctionTemplate> GattUuid::s_constructorTemplate;
-
-  v8::Local<v8::Value> WrapGattUuid(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ winRtInstance)
-  {
-    EscapableHandleScope scope;
-
-    if (winRtInstance == nullptr)
-    {
-      return scope.Escape(Undefined());
-    }
-
-    Local<Value> opaqueWrapper = CreateOpaqueWrapper(winRtInstance);
-    Local<Value> args[] = {opaqueWrapper};
-    Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(GattUuid::s_constructorTemplate);
-    return scope.Escape(Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(),_countof(args), args).ToLocalChecked());
-  }
-
-  ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ UnwrapGattUuid(Local<Value> value)
-  {
-     return GattUuid::Unwrap<GattUuid>(Nan::To<Object>(value).ToLocalChecked())->_instance;
-  }
-
-  void InitGattUuid(Local<Object> exports)
-  {
-    GattUuid::Init(exports);
   }
 
   class GattProtocolError : public WrapperBase
@@ -4377,11 +4054,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     
 
       if (info.Length() == 2
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0]))
+        && NodeRT::Utils::IsGuid(info[0]))
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           
           op = wrapper->_instance->GetDescriptorsForUuidAsync(arg0);
         }
@@ -4392,12 +4069,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         }
       }
       else if (info.Length() == 3
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0])
+        && NodeRT::Utils::IsGuid(info[0])
         && info[1]->IsInt32())
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           ::Windows::Devices::Bluetooth::BluetoothCacheMode arg1 = static_cast<::Windows::Devices::Bluetooth::BluetoothCacheMode>(Nan::To<int32_t>(info[1]).FromMaybe(0));
           
           op = wrapper->_instance->GetDescriptorsForUuidAsync(arg0,arg1);
@@ -11073,8 +10750,8 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
       
                               
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("makeDiscoverable").ToLocalChecked(), MakeDiscoverableGetter, MakeDiscoverableSetter);
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("makeConnectable").ToLocalChecked(), MakeConnectableGetter, MakeConnectableSetter);
+      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("isDiscoverable").ToLocalChecked(), IsDiscoverableGetter, IsDiscoverableSetter);
+      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("isConnectable").ToLocalChecked(), IsConnectableGetter, IsConnectableSetter);
       
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
@@ -11208,7 +10885,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
 
 
-    static void MakeDiscoverableGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
+    static void IsDiscoverableGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
       
@@ -11221,7 +10898,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       try 
       {
-        bool result = wrapper->_instance->MakeDiscoverable;
+        bool result = wrapper->_instance->IsDiscoverable;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
         return;
       }
@@ -11232,7 +10909,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
     }
     
-    static void MakeDiscoverableSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
+    static void IsDiscoverableSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
       
@@ -11254,7 +10931,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         
         bool winRtValue = Nan::To<bool>(value).FromMaybe(false);
 
-        wrapper->_instance->MakeDiscoverable = winRtValue;
+        wrapper->_instance->IsDiscoverable = winRtValue;
       }
       catch (Platform::Exception ^exception)
       {
@@ -11262,7 +10939,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
     }
     
-    static void MakeConnectableGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
+    static void IsConnectableGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
       
@@ -11275,7 +10952,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       try 
       {
-        bool result = wrapper->_instance->MakeConnectable;
+        bool result = wrapper->_instance->IsConnectable;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
         return;
       }
@@ -11286,7 +10963,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
     }
     
-    static void MakeConnectableSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
+    static void IsConnectableSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
       
@@ -11308,7 +10985,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         
         bool winRtValue = Nan::To<bool>(value).FromMaybe(false);
 
-        wrapper->_instance->MakeConnectable = winRtValue;
+        wrapper->_instance->IsConnectable = winRtValue;
       }
       catch (Platform::Exception ^exception)
       {
@@ -11366,8 +11043,8 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       
                               
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("writeProtectionLevel").ToLocalChecked(), WriteProtectionLevelGetter, WriteProtectionLevelSetter);
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("value").ToLocalChecked(), ValueGetter, ValueSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("userDescription").ToLocalChecked(), UserDescriptionGetter, UserDescriptionSetter);
+      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("staticValue").ToLocalChecked(), StaticValueGetter, StaticValueSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("readProtectionLevel").ToLocalChecked(), ReadProtectionLevelGetter, ReadProtectionLevelSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("characteristicProperties").ToLocalChecked(), CharacteristicPropertiesGetter, CharacteristicPropertiesSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("presentationFormats").ToLocalChecked(), PresentationFormatsGetter);
@@ -11558,60 +11235,6 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
     }
     
-    static void ValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
-    {
-      HandleScope scope;
-      
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristicParameters^>(info.This()))
-      {
-        return;
-      }
-
-      GattLocalCharacteristicParameters *wrapper = GattLocalCharacteristicParameters::Unwrap<GattLocalCharacteristicParameters>(info.This());
-
-      try 
-      {
-        ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->Value;
-        info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
-        return;
-      }
-      catch (Platform::Exception ^exception)
-      {
-        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-        return;
-      }
-    }
-    
-    static void ValueSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
-    {
-      HandleScope scope;
-      
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(value))
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
-        return;
-      }
-
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristicParameters^>(info.This()))
-      {
-        return;
-      }
-
-      GattLocalCharacteristicParameters *wrapper = GattLocalCharacteristicParameters::Unwrap<GattLocalCharacteristicParameters>(info.This());
-
-      try 
-      {
-        
-        ::Windows::Storage::Streams::IBuffer^ winRtValue = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(value));
-
-        wrapper->_instance->Value = winRtValue;
-      }
-      catch (Platform::Exception ^exception)
-      {
-        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-      }
-    }
-    
     static void UserDescriptionGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
@@ -11659,6 +11282,60 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         Platform::String^ winRtValue = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
 
         wrapper->_instance->UserDescription = winRtValue;
+      }
+      catch (Platform::Exception ^exception)
+      {
+        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
+      }
+    }
+    
+    static void StaticValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
+    {
+      HandleScope scope;
+      
+      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristicParameters^>(info.This()))
+      {
+        return;
+      }
+
+      GattLocalCharacteristicParameters *wrapper = GattLocalCharacteristicParameters::Unwrap<GattLocalCharacteristicParameters>(info.This());
+
+      try 
+      {
+        ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->StaticValue;
+        info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
+        return;
+      }
+      catch (Platform::Exception ^exception)
+      {
+        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
+        return;
+      }
+    }
+    
+    static void StaticValueSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
+    {
+      HandleScope scope;
+      
+      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(value))
+      {
+        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
+        return;
+      }
+
+      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristicParameters^>(info.This()))
+      {
+        return;
+      }
+
+      GattLocalCharacteristicParameters *wrapper = GattLocalCharacteristicParameters::Unwrap<GattLocalCharacteristicParameters>(info.This());
+
+      try 
+      {
+        
+        ::Windows::Storage::Streams::IBuffer^ winRtValue = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(value));
+
+        wrapper->_instance->StaticValue = winRtValue;
       }
       catch (Platform::Exception ^exception)
       {
@@ -11858,7 +11535,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       
                               
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("writeProtectionLevel").ToLocalChecked(), WriteProtectionLevelGetter, WriteProtectionLevelSetter);
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("value").ToLocalChecked(), ValueGetter, ValueSetter);
+      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("staticValue").ToLocalChecked(), StaticValueGetter, StaticValueSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("readProtectionLevel").ToLocalChecked(), ReadProtectionLevelGetter, ReadProtectionLevelSetter);
       
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
@@ -12047,7 +11724,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
     }
     
-    static void ValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
+    static void StaticValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
       
@@ -12060,7 +11737,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       try 
       {
-        ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->Value;
+        ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->StaticValue;
         info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
         return;
       }
@@ -12071,7 +11748,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
     }
     
-    static void ValueSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
+    static void StaticValueSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
       
@@ -12093,7 +11770,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         
         ::Windows::Storage::Streams::IBuffer^ winRtValue = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(value));
 
-        wrapper->_instance->Value = winRtValue;
+        wrapper->_instance->StaticValue = winRtValue;
       }
       catch (Platform::Exception ^exception)
       {
@@ -12569,12 +12246,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     
 
       if (info.Length() == 3
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0])
+        && NodeRT::Utils::IsGuid(info[0])
         && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristicParameters^>(info[1]))
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristicParameters^ arg1 = UnwrapGattLocalCharacteristicParameters(info[1]);
           
           op = wrapper->_instance->CreateCharacteristicAsync(arg0,arg1);
@@ -12971,11 +12648,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       
 
       if (info.Length() == 2
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0]))
+        && NodeRT::Utils::IsGuid(info[0]))
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           
           op = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProvider::CreateAsync(arg0);
         }
@@ -13753,10 +13430,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("descriptors").ToLocalChecked(), DescriptorsGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("presentationFormats").ToLocalChecked(), PresentationFormatsGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("readProtectionLevel").ToLocalChecked(), ReadProtectionLevelGetter);
+      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("staticValue").ToLocalChecked(), StaticValueGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("subscribedClients").ToLocalChecked(), SubscribedClientsGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("userDescription").ToLocalChecked(), UserDescriptionGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("uuid").ToLocalChecked(), UuidGetter);
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("value").ToLocalChecked(), ValueGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("writeProtectionLevel").ToLocalChecked(), WriteProtectionLevelGetter);
       
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
@@ -13896,12 +13573,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     
 
       if (info.Length() == 3
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0])
+        && NodeRT::Utils::IsGuid(info[0])
         && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptorParameters^>(info[1]))
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = UnwrapGattUuid(info[0]);
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptorParameters^ arg1 = UnwrapGattLocalDescriptorParameters(info[1]);
           
           op = wrapper->_instance->CreateDescriptorAsync(arg0,arg1);
@@ -13980,7 +13657,8 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       GattLocalCharacteristic *wrapper = GattLocalCharacteristic::Unwrap<GattLocalCharacteristic>(info.This());
 
-      ::Windows::Foundation::IAsyncOperation<::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^>^>^ op;
+      ::Windows::Foundation::IAsyncOperation<::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^>^>^ op1 = nullptr;
+      ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^>^ op2 = nullptr;
     
 
       if (info.Length() == 2
@@ -13990,7 +13668,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         {
           ::Windows::Storage::Streams::IBuffer^ arg0 = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(info[0]));
           
-          op = wrapper->_instance->NotifyValueAsync(arg0);
+          op1 = wrapper->_instance->NotifyValueAsync(arg0);
         }
         catch (Platform::Exception ^exception)
         {
@@ -14007,7 +13685,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           ::Windows::Storage::Streams::IBuffer^ arg0 = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(info[0]));
           ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSubscribedClient^ arg1 = UnwrapGattSubscribedClient(info[1]);
           
-          /*op =*/ wrapper->_instance->NotifyValueAsync(arg0,arg1);
+          op2 = wrapper->_instance->NotifyValueAsync(arg0,arg1);
         }
         catch (Platform::Exception ^exception)
         {
@@ -14021,9 +13699,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     
-      auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
+      if (op1 != nullptr)
+      {
+      auto opTask = create_task(op1);
       opTask.then( [asyncToken] (task<::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^>^> t) 
       {	
         try
@@ -14075,6 +13755,52 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           });
         }  		
       });
+      }
+      else
+      {
+      auto opTask = create_task(op2);
+      opTask.then( [asyncToken] (task<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^> t) 
+      {	
+        try
+        {
+          auto result = t.get();
+          NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
+
+
+            TryCatch tryCatch;
+            Local<Value> error; 
+            Local<Value> arg1 = WrapGattClientNotificationResult(result);
+            if (tryCatch.HasCaught())
+            {
+              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+            }
+            else 
+            {
+              error = Undefined();
+            }
+            if (arg1.IsEmpty()) arg1 = Undefined();
+            Local<Value> args[] = {error, arg1};
+			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
+			// can be fixed by wrapping the conversion code in a function and calling it on the fly
+			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
+			tryCatch.~TryCatch();
+
+		    
+            invokeCallback(_countof(args), args);
+          });
+        }
+        catch (Platform::Exception^ exception)
+        {
+          NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
+             
+            Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
+        
+            Local<Value> args[] = {error};
+            invokeCallback(_countof(args), args);
+          });
+        }  		
+      });
+      }
     }
   
 
@@ -14196,6 +13922,30 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
     }
     
+    static void StaticValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
+    {
+      HandleScope scope;
+      
+      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic^>(info.This()))
+      {
+        return;
+      }
+
+      GattLocalCharacteristic *wrapper = GattLocalCharacteristic::Unwrap<GattLocalCharacteristic>(info.This());
+
+      try 
+      {
+        ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->StaticValue;
+        info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
+        return;
+      }
+      catch (Platform::Exception ^exception)
+      {
+        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
+        return;
+      }
+    }
+    
     static void SubscribedClientsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
@@ -14269,30 +14019,6 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       {
         ::Platform::Guid result = wrapper->_instance->Uuid;
         info.GetReturnValue().Set(NodeRT::Utils::GuidToJs(result));
-        return;
-      }
-      catch (Platform::Exception ^exception)
-      {
-        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-        return;
-      }
-    }
-    
-    static void ValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
-    {
-      HandleScope scope;
-      
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic^>(info.This()))
-      {
-        return;
-      }
-
-      GattLocalCharacteristic *wrapper = GattLocalCharacteristic::Unwrap<GattLocalCharacteristic>(info.This());
-
-      try 
-      {
-        ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->Value;
-        info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
         return;
       }
       catch (Platform::Exception ^exception)
@@ -14914,8 +14640,8 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       Nan::SetPrototypeMethod(localRef, "off", RemoveListener);
             
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("readProtectionLevel").ToLocalChecked(), ReadProtectionLevelGetter);
+      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("staticValue").ToLocalChecked(), StaticValueGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("uuid").ToLocalChecked(), UuidGetter);
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("value").ToLocalChecked(), ValueGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("writeProtectionLevel").ToLocalChecked(), WriteProtectionLevelGetter);
       
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
@@ -15062,6 +14788,30 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
     }
     
+    static void StaticValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
+    {
+      HandleScope scope;
+      
+      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor^>(info.This()))
+      {
+        return;
+      }
+
+      GattLocalDescriptor *wrapper = GattLocalDescriptor::Unwrap<GattLocalDescriptor>(info.This());
+
+      try 
+      {
+        ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->StaticValue;
+        info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
+        return;
+      }
+      catch (Platform::Exception ^exception)
+      {
+        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
+        return;
+      }
+    }
+    
     static void UuidGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
@@ -15077,30 +14827,6 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       {
         ::Platform::Guid result = wrapper->_instance->Uuid;
         info.GetReturnValue().Set(NodeRT::Utils::GuidToJs(result));
-        return;
-      }
-      catch (Platform::Exception ^exception)
-      {
-        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-        return;
-      }
-    }
-    
-    static void ValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
-    {
-      HandleScope scope;
-      
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor^>(info.This()))
-      {
-        return;
-      }
-
-      GattLocalDescriptor *wrapper = GattLocalDescriptor::Unwrap<GattLocalDescriptor>(info.This());
-
-      try 
-      {
-        ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->Value;
-        info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
         return;
       }
       catch (Platform::Exception ^exception)
@@ -16677,284 +16403,6 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     GattClientNotificationResult::Init(exports);
   }
 
-  class GattReadResponse : public WrapperBase
-  {
-  public:    
-    static void Init(const Local<Object> exports)
-    {
-      HandleScope scope;
-      
-      Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
-      s_constructorTemplate.Reset(localRef);
-      localRef->SetClassName(Nan::New<String>("GattReadResponse").ToLocalChecked());
-      localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("protocolError").ToLocalChecked(), ProtocolErrorGetter);
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("value").ToLocalChecked(), ValueGetter);
-      
-      Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
-	  Nan::SetMethod(constructor, "castFrom", CastFrom);
-
-      Nan::SetMethod(constructor, "createWithValue", CreateWithValue);
-      Nan::SetMethod(constructor, "createWithProtocolError", CreateWithProtocolError);
-
-      Nan::Set(exports, Nan::New<String>("GattReadResponse").ToLocalChecked(), constructor);
-    }
-
-
-    virtual ::Platform::Object^ GetObjectInstance() const override
-    {
-      return _instance;
-    }
-
-  private:
-    
-    GattReadResponse(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ instance)
-    {
-      _instance = instance;
-    }
-    
-    
-    static void New(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-	    Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(s_constructorTemplate);
-
-      // in case the constructor was called without the new operator
-      if (!localRef->HasInstance(info.This()))
-      {
-        if (info.Length() > 0)
-        {
-          std::unique_ptr<Local<Value> []> constructorArgs(new Local<Value>[info.Length()]);
-
-          Local<Value> *argsPtr = constructorArgs.get();
-          for (int i = 0; i < info.Length(); i++)
-          {
-            argsPtr[i] = info[i];
-          }
-
-		  MaybeLocal<Object> res = Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(), info.Length(), constructorArgs.get());
-		  if (res.IsEmpty())
-		  {
-			  return;
-		  }
-		  info.GetReturnValue().Set(res.ToLocalChecked());
-		  return;
-		}
-		else
-		{
-          MaybeLocal<Object> res = Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(), info.Length(), nullptr);
-          if (res.IsEmpty())
-          {
-            return;
-          }
-          info.GetReturnValue().Set(res.ToLocalChecked());
-          return;
-        }
-      }
-      
-      ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ winRtInstance;
-
-
-      if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
-        NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^>(info[0]))
-      {
-        try 
-        {
-          winRtInstance = (::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^) NodeRT::Utils::GetObjectInstance(info[0]);
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Invalid arguments, no suitable constructor found")));
-	    	return;
-      }
-
-      NodeRT::Utils::SetHiddenValue(info.This(), Nan::New<String>("__winRtInstance__").ToLocalChecked(), True());
-
-      GattReadResponse *wrapperInstance = new GattReadResponse(winRtInstance);
-      wrapperInstance->Wrap(info.This());
-
-      info.GetReturnValue().Set(info.This());
-    }
-
-
-	
-    static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-		HandleScope scope;
-		if (info.Length() < 1 || !NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^>(info[0]))
-		{
-			Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Invalid arguments, no object provided, or given object could not be casted to requested type")));
-			return;
-		}
-
-		::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ winRtInstance;
-		try
-		{
-			winRtInstance = (::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^) NodeRT::Utils::GetObjectInstance(info[0]);
-		}
-		catch (Platform::Exception ^exception)
-		{
-			NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-			return;
-		}
-
-		info.GetReturnValue().Set(WrapGattReadResponse(winRtInstance));
-    }
-
-
-  
-
-
-    static void CreateWithValue(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-      if (info.Length() == 1
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(info[0]))
-      {
-        try
-        {
-          ::Windows::Storage::Streams::IBuffer^ arg0 = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(info[0]));
-          
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ result;
-          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse::CreateWithValue(arg0);
-          info.GetReturnValue().Set(WrapGattReadResponse(result));
-          return;
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else 
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
-        return;
-      }
-    }
-    static void CreateWithProtocolError(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-      if (info.Length() == 1
-        && info[0]->IsInt32())
-      {
-        try
-        {
-          unsigned char arg0 = static_cast<unsigned char>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ result;
-          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse::CreateWithProtocolError(arg0);
-          info.GetReturnValue().Set(WrapGattReadResponse(result));
-          return;
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else 
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
-        return;
-      }
-    }
-
-    static void ProtocolErrorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
-    {
-      HandleScope scope;
-      
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^>(info.This()))
-      {
-        return;
-      }
-
-      GattReadResponse *wrapper = GattReadResponse::Unwrap<GattReadResponse>(info.This());
-
-      try 
-      {
-        ::Platform::IBox<unsigned char>^ result = wrapper->_instance->ProtocolError;
-        info.GetReturnValue().Set(result ? static_cast<Local<Value>>(Nan::New<Integer>(result->Value)) : Undefined());
-        return;
-      }
-      catch (Platform::Exception ^exception)
-      {
-        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-        return;
-      }
-    }
-    
-    static void ValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
-    {
-      HandleScope scope;
-      
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^>(info.This()))
-      {
-        return;
-      }
-
-      GattReadResponse *wrapper = GattReadResponse::Unwrap<GattReadResponse>(info.This());
-
-      try 
-      {
-        ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->Value;
-        info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
-        return;
-      }
-      catch (Platform::Exception ^exception)
-      {
-        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-        return;
-      }
-    }
-    
-
-
-  private:
-    ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ _instance;
-    static Persistent<FunctionTemplate> s_constructorTemplate;
-
-    friend v8::Local<v8::Value> WrapGattReadResponse(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ wintRtInstance);
-    friend ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ UnwrapGattReadResponse(Local<Value> value);
-  };
-  Persistent<FunctionTemplate> GattReadResponse::s_constructorTemplate;
-
-  v8::Local<v8::Value> WrapGattReadResponse(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ winRtInstance)
-  {
-    EscapableHandleScope scope;
-
-    if (winRtInstance == nullptr)
-    {
-      return scope.Escape(Undefined());
-    }
-
-    Local<Value> opaqueWrapper = CreateOpaqueWrapper(winRtInstance);
-    Local<Value> args[] = {opaqueWrapper};
-    Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(GattReadResponse::s_constructorTemplate);
-    return scope.Escape(Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(),_countof(args), args).ToLocalChecked());
-  }
-
-  ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ UnwrapGattReadResponse(Local<Value> value)
-  {
-     return GattReadResponse::Unwrap<GattReadResponse>(Nan::To<Object>(value).ToLocalChecked())->_instance;
-  }
-
-  void InitGattReadResponse(Local<Object> exports)
-  {
-    GattReadResponse::Init(exports);
-  }
-
   class GattReadRequest : public WrapperBase
   {
   public:    
@@ -16968,7 +16416,8 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
       
             
-      Nan::SetPrototypeMethod(localRef, "complete", Complete);
+      Nan::SetPrototypeMethod(localRef, "respondWithValue", RespondWithValue);
+      Nan::SetPrototypeMethod(localRef, "respondWithProtocolError", RespondWithProtocolError);
       
                   
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
@@ -17097,7 +16546,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
 
   
-    static void Complete(Nan::NAN_METHOD_ARGS_TYPE info)
+    static void RespondWithValue(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
 
@@ -17109,13 +16558,46 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       GattReadRequest *wrapper = GattReadRequest::Unwrap<GattReadRequest>(info.This());
 
       if (info.Length() == 1
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^>(info[0]))
+        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(info[0]))
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadResponse^ arg0 = UnwrapGattReadResponse(info[0]);
+          ::Windows::Storage::Streams::IBuffer^ arg0 = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(info[0]));
           
-          wrapper->_instance->Complete(arg0);
+          wrapper->_instance->RespondWithValue(arg0);
+          return;   
+        }
+        catch (Platform::Exception ^exception)
+        {
+          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
+          return;
+        }
+      }
+      else 
+      {
+        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
+        return;
+      }
+    }
+    static void RespondWithProtocolError(Nan::NAN_METHOD_ARGS_TYPE info)
+    {
+      HandleScope scope;
+
+      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequest^>(info.This()))
+      {
+        return;
+      }
+
+      GattReadRequest *wrapper = GattReadRequest::Unwrap<GattReadRequest>(info.This());
+
+      if (info.Length() == 1
+        && info[0]->IsInt32())
+      {
+        try
+        {
+          unsigned char arg0 = static_cast<unsigned char>(Nan::To<int32_t>(info[0]).FromMaybe(0));
+          
+          wrapper->_instance->RespondWithProtocolError(arg0);
           return;   
         }
         catch (Platform::Exception ^exception)
@@ -17624,256 +17106,6 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     GattRequestStateChangedEventArgs::Init(exports);
   }
 
-  class GattWriteResponse : public WrapperBase
-  {
-  public:    
-    static void Init(const Local<Object> exports)
-    {
-      HandleScope scope;
-      
-      Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
-      s_constructorTemplate.Reset(localRef);
-      localRef->SetClassName(Nan::New<String>("GattWriteResponse").ToLocalChecked());
-      localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
-      Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("protocolError").ToLocalChecked(), ProtocolErrorGetter);
-      
-      Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
-	  Nan::SetMethod(constructor, "castFrom", CastFrom);
-
-      Nan::SetMethod(constructor, "create", Create);
-      Nan::SetMethod(constructor, "createWithProtocolError", CreateWithProtocolError);
-
-      Nan::Set(exports, Nan::New<String>("GattWriteResponse").ToLocalChecked(), constructor);
-    }
-
-
-    virtual ::Platform::Object^ GetObjectInstance() const override
-    {
-      return _instance;
-    }
-
-  private:
-    
-    GattWriteResponse(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ instance)
-    {
-      _instance = instance;
-    }
-    
-    
-    static void New(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-	    Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(s_constructorTemplate);
-
-      // in case the constructor was called without the new operator
-      if (!localRef->HasInstance(info.This()))
-      {
-        if (info.Length() > 0)
-        {
-          std::unique_ptr<Local<Value> []> constructorArgs(new Local<Value>[info.Length()]);
-
-          Local<Value> *argsPtr = constructorArgs.get();
-          for (int i = 0; i < info.Length(); i++)
-          {
-            argsPtr[i] = info[i];
-          }
-
-		  MaybeLocal<Object> res = Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(), info.Length(), constructorArgs.get());
-		  if (res.IsEmpty())
-		  {
-			  return;
-		  }
-		  info.GetReturnValue().Set(res.ToLocalChecked());
-		  return;
-		}
-		else
-		{
-          MaybeLocal<Object> res = Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(), info.Length(), nullptr);
-          if (res.IsEmpty())
-          {
-            return;
-          }
-          info.GetReturnValue().Set(res.ToLocalChecked());
-          return;
-        }
-      }
-      
-      ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ winRtInstance;
-
-
-      if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
-        NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^>(info[0]))
-      {
-        try 
-        {
-          winRtInstance = (::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^) NodeRT::Utils::GetObjectInstance(info[0]);
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Invalid arguments, no suitable constructor found")));
-	    	return;
-      }
-
-      NodeRT::Utils::SetHiddenValue(info.This(), Nan::New<String>("__winRtInstance__").ToLocalChecked(), True());
-
-      GattWriteResponse *wrapperInstance = new GattWriteResponse(winRtInstance);
-      wrapperInstance->Wrap(info.This());
-
-      info.GetReturnValue().Set(info.This());
-    }
-
-
-	
-    static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-		HandleScope scope;
-		if (info.Length() < 1 || !NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^>(info[0]))
-		{
-			Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Invalid arguments, no object provided, or given object could not be casted to requested type")));
-			return;
-		}
-
-		::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ winRtInstance;
-		try
-		{
-			winRtInstance = (::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^) NodeRT::Utils::GetObjectInstance(info[0]);
-		}
-		catch (Platform::Exception ^exception)
-		{
-			NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-			return;
-		}
-
-		info.GetReturnValue().Set(WrapGattWriteResponse(winRtInstance));
-    }
-
-
-  
-
-
-    static void Create(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-      if (info.Length() == 0)
-      {
-        try
-        {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ result;
-          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse::Create();
-          info.GetReturnValue().Set(WrapGattWriteResponse(result));
-          return;
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else 
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
-        return;
-      }
-    }
-    static void CreateWithProtocolError(Nan::NAN_METHOD_ARGS_TYPE info)
-    {
-      HandleScope scope;
-
-      if (info.Length() == 1
-        && info[0]->IsInt32())
-      {
-        try
-        {
-          unsigned char arg0 = static_cast<unsigned char>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ result;
-          result = ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse::CreateWithProtocolError(arg0);
-          info.GetReturnValue().Set(WrapGattWriteResponse(result));
-          return;
-        }
-        catch (Platform::Exception ^exception)
-        {
-          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-          return;
-        }
-      }
-      else 
-      {
-        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
-        return;
-      }
-    }
-
-    static void ProtocolErrorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
-    {
-      HandleScope scope;
-      
-      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^>(info.This()))
-      {
-        return;
-      }
-
-      GattWriteResponse *wrapper = GattWriteResponse::Unwrap<GattWriteResponse>(info.This());
-
-      try 
-      {
-        ::Platform::IBox<unsigned char>^ result = wrapper->_instance->ProtocolError;
-        info.GetReturnValue().Set(result ? static_cast<Local<Value>>(Nan::New<Integer>(result->Value)) : Undefined());
-        return;
-      }
-      catch (Platform::Exception ^exception)
-      {
-        NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
-        return;
-      }
-    }
-    
-
-
-  private:
-    ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ _instance;
-    static Persistent<FunctionTemplate> s_constructorTemplate;
-
-    friend v8::Local<v8::Value> WrapGattWriteResponse(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ wintRtInstance);
-    friend ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ UnwrapGattWriteResponse(Local<Value> value);
-  };
-  Persistent<FunctionTemplate> GattWriteResponse::s_constructorTemplate;
-
-  v8::Local<v8::Value> WrapGattWriteResponse(::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ winRtInstance)
-  {
-    EscapableHandleScope scope;
-
-    if (winRtInstance == nullptr)
-    {
-      return scope.Escape(Undefined());
-    }
-
-    Local<Value> opaqueWrapper = CreateOpaqueWrapper(winRtInstance);
-    Local<Value> args[] = {opaqueWrapper};
-    Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(GattWriteResponse::s_constructorTemplate);
-    return scope.Escape(Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(),_countof(args), args).ToLocalChecked());
-  }
-
-  ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ UnwrapGattWriteResponse(Local<Value> value)
-  {
-     return GattWriteResponse::Unwrap<GattWriteResponse>(Nan::To<Object>(value).ToLocalChecked())->_instance;
-  }
-
-  void InitGattWriteResponse(Local<Object> exports)
-  {
-    GattWriteResponse::Init(exports);
-  }
-
   class GattWriteRequest : public WrapperBase
   {
   public:    
@@ -17887,7 +17119,8 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
       
             
-      Nan::SetPrototypeMethod(localRef, "complete", Complete);
+      Nan::SetPrototypeMethod(localRef, "respond", Respond);
+      Nan::SetPrototypeMethod(localRef, "respondWithProtocolError", RespondWithProtocolError);
       
                   
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
@@ -18017,7 +17250,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
 
   
-    static void Complete(Nan::NAN_METHOD_ARGS_TYPE info)
+    static void Respond(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
 
@@ -18032,7 +17265,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       {
         try
         {
-          wrapper->_instance->Complete();
+          wrapper->_instance->Respond();
           return;   
         }
         catch (Platform::Exception ^exception)
@@ -18041,14 +17274,31 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      else if (info.Length() == 1
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^>(info[0]))
+      else 
+      {
+        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
+        return;
+      }
+    }
+    static void RespondWithProtocolError(Nan::NAN_METHOD_ARGS_TYPE info)
+    {
+      HandleScope scope;
+
+      if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequest^>(info.This()))
+      {
+        return;
+      }
+
+      GattWriteRequest *wrapper = GattWriteRequest::Unwrap<GattWriteRequest>(info.This());
+
+      if (info.Length() == 1
+        && info[0]->IsInt32())
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteResponse^ arg0 = UnwrapGattWriteResponse(info[0]);
+          unsigned char arg0 = static_cast<unsigned char>(Nan::To<int32_t>(info[0]).FromMaybe(0));
           
-          wrapper->_instance->Complete(arg0);
+          wrapper->_instance->RespondWithProtocolError(arg0);
           return;   
         }
         catch (Platform::Exception ^exception)
@@ -18385,7 +17635,6 @@ NAN_MODULE_INIT(init)
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattServiceProviderAdvertisementStatusEnum(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattDeviceService(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattDeviceServicesResult(target);
-  NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattUuid(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattProtocolError(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattSession(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattSessionStatusChangedEventArgs(target);
@@ -18418,10 +17667,8 @@ NAN_MODULE_INIT(init)
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattReadRequestedEventArgs(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattWriteRequestedEventArgs(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattClientNotificationResult(target);
-  NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattReadResponse(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattReadRequest(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattRequestStateChangedEventArgs(target);
-  NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattWriteResponse(target);
   NodeRT::Windows::Devices::Bluetooth::GenericAttributeProfile::InitGattWriteRequest(target);
 
   NodeRT::Utils::RegisterNameSpace("Windows.Devices.Bluetooth.GenericAttributeProfile", target);

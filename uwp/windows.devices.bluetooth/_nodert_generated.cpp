@@ -67,6 +67,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
   v8::Local<v8::Value> WrapBluetoothDeviceId(::Windows::Devices::Bluetooth::BluetoothDeviceId^ wintRtInstance);
   ::Windows::Devices::Bluetooth::BluetoothDeviceId^ UnwrapBluetoothDeviceId(Local<Value> value);
   
+  v8::Local<v8::Value> WrapBluetoothUuidHelper(::Windows::Devices::Bluetooth::BluetoothUuidHelper^ wintRtInstance);
+  ::Windows::Devices::Bluetooth::BluetoothUuidHelper^ UnwrapBluetoothUuidHelper(Local<Value> value);
+  
   v8::Local<v8::Value> WrapBluetoothDevice(::Windows::Devices::Bluetooth::BluetoothDevice^ wintRtInstance);
   ::Windows::Devices::Bluetooth::BluetoothDevice^ UnwrapBluetoothDevice(Local<Value> value);
   
@@ -1124,6 +1127,233 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
   void InitBluetoothDeviceId(Local<Object> exports)
   {
     BluetoothDeviceId::Init(exports);
+  }
+
+  class BluetoothUuidHelper : public WrapperBase
+  {
+  public:    
+    static void Init(const Local<Object> exports)
+    {
+      HandleScope scope;
+      
+      Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
+      s_constructorTemplate.Reset(localRef);
+      localRef->SetClassName(Nan::New<String>("BluetoothUuidHelper").ToLocalChecked());
+      localRef->InstanceTemplate()->SetInternalFieldCount(1);
+      
+                              
+      Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
+	  Nan::SetMethod(constructor, "castFrom", CastFrom);
+
+      Nan::SetMethod(constructor, "fromShortId", FromShortId);
+      Nan::SetMethod(constructor, "tryGetShortId", TryGetShortId);
+
+      Nan::Set(exports, Nan::New<String>("BluetoothUuidHelper").ToLocalChecked(), constructor);
+    }
+
+
+    virtual ::Platform::Object^ GetObjectInstance() const override
+    {
+      return _instance;
+    }
+
+  private:
+    
+    BluetoothUuidHelper(::Windows::Devices::Bluetooth::BluetoothUuidHelper^ instance)
+    {
+      _instance = instance;
+    }
+    
+    
+    static void New(Nan::NAN_METHOD_ARGS_TYPE info)
+    {
+      HandleScope scope;
+
+	    Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(s_constructorTemplate);
+
+      // in case the constructor was called without the new operator
+      if (!localRef->HasInstance(info.This()))
+      {
+        if (info.Length() > 0)
+        {
+          std::unique_ptr<Local<Value> []> constructorArgs(new Local<Value>[info.Length()]);
+
+          Local<Value> *argsPtr = constructorArgs.get();
+          for (int i = 0; i < info.Length(); i++)
+          {
+            argsPtr[i] = info[i];
+          }
+
+		  MaybeLocal<Object> res = Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(), info.Length(), constructorArgs.get());
+		  if (res.IsEmpty())
+		  {
+			  return;
+		  }
+		  info.GetReturnValue().Set(res.ToLocalChecked());
+		  return;
+		}
+		else
+		{
+          MaybeLocal<Object> res = Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(), info.Length(), nullptr);
+          if (res.IsEmpty())
+          {
+            return;
+          }
+          info.GetReturnValue().Set(res.ToLocalChecked());
+          return;
+        }
+      }
+      
+      ::Windows::Devices::Bluetooth::BluetoothUuidHelper^ winRtInstance;
+
+
+      if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
+        NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::BluetoothUuidHelper^>(info[0]))
+      {
+        try 
+        {
+          winRtInstance = (::Windows::Devices::Bluetooth::BluetoothUuidHelper^) NodeRT::Utils::GetObjectInstance(info[0]);
+        }
+        catch (Platform::Exception ^exception)
+        {
+          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
+          return;
+        }
+      }
+      else
+      {
+        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Invalid arguments, no suitable constructor found")));
+	    	return;
+      }
+
+      NodeRT::Utils::SetHiddenValue(info.This(), Nan::New<String>("__winRtInstance__").ToLocalChecked(), True());
+
+      BluetoothUuidHelper *wrapperInstance = new BluetoothUuidHelper(winRtInstance);
+      wrapperInstance->Wrap(info.This());
+
+      info.GetReturnValue().Set(info.This());
+    }
+
+
+	
+    static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
+    {
+		HandleScope scope;
+		if (info.Length() < 1 || !NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::BluetoothUuidHelper^>(info[0]))
+		{
+			Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Invalid arguments, no object provided, or given object could not be casted to requested type")));
+			return;
+		}
+
+		::Windows::Devices::Bluetooth::BluetoothUuidHelper^ winRtInstance;
+		try
+		{
+			winRtInstance = (::Windows::Devices::Bluetooth::BluetoothUuidHelper^) NodeRT::Utils::GetObjectInstance(info[0]);
+		}
+		catch (Platform::Exception ^exception)
+		{
+			NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
+			return;
+		}
+
+		info.GetReturnValue().Set(WrapBluetoothUuidHelper(winRtInstance));
+    }
+
+
+  
+
+
+    static void FromShortId(Nan::NAN_METHOD_ARGS_TYPE info)
+    {
+      HandleScope scope;
+
+      if (info.Length() == 1
+        && info[0]->IsUint32())
+      {
+        try
+        {
+          unsigned int arg0 = static_cast<unsigned int>(Nan::To<uint32_t>(info[0]).FromMaybe(0));
+          
+          ::Platform::Guid result;
+          result = ::Windows::Devices::Bluetooth::BluetoothUuidHelper::FromShortId(arg0);
+          info.GetReturnValue().Set(NodeRT::Utils::GuidToJs(result));
+          return;
+        }
+        catch (Platform::Exception ^exception)
+        {
+          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
+          return;
+        }
+      }
+      else 
+      {
+        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
+        return;
+      }
+    }
+    static void TryGetShortId(Nan::NAN_METHOD_ARGS_TYPE info)
+    {
+      HandleScope scope;
+
+      if (info.Length() == 1
+        && NodeRT::Utils::IsGuid(info[0]))
+      {
+        try
+        {
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
+          
+          ::Platform::IBox<unsigned int>^ result;
+          result = ::Windows::Devices::Bluetooth::BluetoothUuidHelper::TryGetShortId(arg0);
+          info.GetReturnValue().Set(result ? static_cast<Local<Value>>(Nan::New<Integer>(result->Value)) : Undefined());
+          return;
+        }
+        catch (Platform::Exception ^exception)
+        {
+          NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
+          return;
+        }
+      }
+      else 
+      {
+        Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
+        return;
+      }
+    }
+
+
+
+  private:
+    ::Windows::Devices::Bluetooth::BluetoothUuidHelper^ _instance;
+    static Persistent<FunctionTemplate> s_constructorTemplate;
+
+    friend v8::Local<v8::Value> WrapBluetoothUuidHelper(::Windows::Devices::Bluetooth::BluetoothUuidHelper^ wintRtInstance);
+    friend ::Windows::Devices::Bluetooth::BluetoothUuidHelper^ UnwrapBluetoothUuidHelper(Local<Value> value);
+  };
+  Persistent<FunctionTemplate> BluetoothUuidHelper::s_constructorTemplate;
+
+  v8::Local<v8::Value> WrapBluetoothUuidHelper(::Windows::Devices::Bluetooth::BluetoothUuidHelper^ winRtInstance)
+  {
+    EscapableHandleScope scope;
+
+    if (winRtInstance == nullptr)
+    {
+      return scope.Escape(Undefined());
+    }
+
+    Local<Value> opaqueWrapper = CreateOpaqueWrapper(winRtInstance);
+    Local<Value> args[] = {opaqueWrapper};
+    Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(BluetoothUuidHelper::s_constructorTemplate);
+    return scope.Escape(Nan::NewInstance(Nan::GetFunction(localRef).ToLocalChecked(),_countof(args), args).ToLocalChecked());
+  }
+
+  ::Windows::Devices::Bluetooth::BluetoothUuidHelper^ UnwrapBluetoothUuidHelper(Local<Value> value)
+  {
+     return BluetoothUuidHelper::Unwrap<BluetoothUuidHelper>(Nan::To<Object>(value).ToLocalChecked())->_instance;
+  }
+
+  void InitBluetoothUuidHelper(Local<Object> exports)
+  {
+    BluetoothUuidHelper::Init(exports);
   }
 
   class BluetoothDevice : public WrapperBase
@@ -4866,11 +5096,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     
 
       if (info.Length() == 2
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0]))
+        && NodeRT::Utils::IsGuid(info[0]))
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = dynamic_cast<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(NodeRT::Utils::GetObjectInstance(info[0]));
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           
           op = wrapper->_instance->GetGattServicesForUuidAsync(arg0);
         }
@@ -4881,12 +5111,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         }
       }
       else if (info.Length() == 3
-        && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(info[0])
+        && NodeRT::Utils::IsGuid(info[0])
         && info[1]->IsInt32())
       {
         try
         {
-          ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^ arg0 = dynamic_cast<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattUuid^>(NodeRT::Utils::GetObjectInstance(info[0]));
+          ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
           ::Windows::Devices::Bluetooth::BluetoothCacheMode arg1 = static_cast<::Windows::Devices::Bluetooth::BluetoothCacheMode>(Nan::To<int32_t>(info[1]).FromMaybe(0));
           
           op = wrapper->_instance->GetGattServicesForUuidAsync(arg0,arg1);
@@ -6377,6 +6607,7 @@ NAN_MODULE_INIT(init)
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothAddressTypeEnum(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothAdapter(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothDeviceId(target);
+  NodeRT::Windows::Devices::Bluetooth::InitBluetoothUuidHelper(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothDevice(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothClassOfDevice(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothLEAppearanceCategories(target);

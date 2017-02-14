@@ -195,6 +195,35 @@ BluetoothDeviceId = (function () {
 }) ();
 exports.BluetoothDeviceId = BluetoothDeviceId;
 
+BluetoothUuidHelper = (function () {
+  var cls = function BluetoothUuidHelper() {
+  };
+  
+
+  cls.fromShortId = function fromShortId(shortId) {
+    /// <signature>
+    /// <summary>Function summary.</summary>
+    /// <param name="shortId" type="Number">A param.</param>
+    /// <returns type="String" />
+    /// </signature>
+    return new String();
+  }
+
+
+  cls.tryGetShortId = function tryGetShortId(uuid) {
+    /// <signature>
+    /// <summary>Function summary.</summary>
+    /// <param name="uuid" type="String">A param.</param>
+    /// <returns type="Number" />
+    /// </signature>
+    return new Number();
+  }
+
+
+  return cls;
+}) ();
+exports.BluetoothUuidHelper = BluetoothUuidHelper;
+
 BluetoothDevice = (function () {
   var cls = function BluetoothDevice() {
     this.bluetoothAddress = new Number();
@@ -519,14 +548,14 @@ cls.prototype.getGattServicesAsync = function getGattServicesAsync(cacheMode, ca
   cls.prototype.getGattServicesForUuidAsync = function getGattServicesForUuidAsync(serviceUuid, callback) {
     /// <signature>
     /// <summary>Function summary.</summary>
-    /// <param name="serviceUuid" type="Object">A param.</param>
+    /// <param name="serviceUuid" type="String">A param.</param>
     /// </signature>
   }
 
 cls.prototype.getGattServicesForUuidAsync = function getGattServicesForUuidAsync(serviceUuid, cacheMode, callback) {
     /// <signature>
     /// <summary>Function summary.</summary>
-    /// <param name="serviceUuid" type="Object">A param.</param>
+    /// <param name="serviceUuid" type="String">A param.</param>
     /// <param name="cacheMode" type="BluetoothCacheMode">A param.</param>
     /// </signature>
   }
