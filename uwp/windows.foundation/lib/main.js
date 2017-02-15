@@ -16,8 +16,7 @@ try {
   if (fs.existsSync(path.join(__dirname, 'NodeRT_Windows_Foundation.d.js)'))) {
     module.exports = require('./NodeRT_Windows_Foundation.d.js');
   }
-  const configuration = process.config.target_defaults.default_configuration;
-  module.exports = require('../build/' + configuration + '/binding.node');
+  module.exports = require('../build/Release/binding.node');
 }
 catch(e) {
   throw e;
