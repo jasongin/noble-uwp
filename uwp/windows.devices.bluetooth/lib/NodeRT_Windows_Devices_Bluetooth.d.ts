@@ -159,6 +159,17 @@ declare module "windows.devices.bluetooth" {
 
   }
 
+  export class BluetoothUuidHelper {
+    constructor();
+
+    static fromShortId(shortId: Number): String;
+
+
+    static tryGetShortId(uuid: String): Number;
+
+
+  }
+
   export class BluetoothDevice {
     bluetoothAddress: Number;
     classOfDevice: BluetoothClassOfDevice;
@@ -363,8 +374,8 @@ declare module "windows.devices.bluetooth" {
     getGattServicesAsync(callback: (error: Error, result: Object) => void): void ;
     getGattServicesAsync(cacheMode: BluetoothCacheMode, callback: (error: Error, result: Object) => void): void ;
 
-    getGattServicesForUuidAsync(serviceUuid: Object, callback: (error: Error, result: Object) => void): void ;
-    getGattServicesForUuidAsync(serviceUuid: Object, cacheMode: BluetoothCacheMode, callback: (error: Error, result: Object) => void): void ;
+    getGattServicesForUuidAsync(serviceUuid: String, callback: (error: Error, result: Object) => void): void ;
+    getGattServicesForUuidAsync(serviceUuid: String, cacheMode: BluetoothCacheMode, callback: (error: Error, result: Object) => void): void ;
 
     getGattService(serviceUuid: String): Object;
 

@@ -16,6 +16,7 @@
     "Bluetooth",
     "BluetoothAdapter",
     "BluetoothDeviceId",
+    "BluetoothUuidHelper",
     "BluetoothDevice",
     "BluetoothClassOfDevice",
     "BluetoothLEAppearanceCategories",

@@ -55,7 +55,7 @@
           'msvs_settings': {
             'VCCLCompilerTool': {
               'AdditionalUsingDirectories' : [
-                'uwp'
+                '%ProgramFiles(x86)%/Windows Kits/10/UnionMetadata/10.0.15021.0'
                 ]
                }
              }
@@ -63,7 +63,7 @@
        ],
       'msvs_settings': {
         'VCCLCompilerTool': {
-            'AdditionalOptions': [ '/ZW', '/bigobj' ] 
+            'AdditionalOptions': [ '/ZW'] 
         }
       }
      }

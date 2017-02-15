@@ -40,9 +40,11 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
     success,
     unreachable,
     protocolError,
+    accessDenied,
   }
 
   export enum GattSharingMode {
+    unspecified,
     exclusive,
     sharedReadOnly,
     sharedReadAndWrite,
@@ -51,6 +53,7 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
   export enum GattOpenStatus {
     unspecified,
     success,
+    alreadyOpened,
     notFound,
     sharingViolation,
     accessDenied,
@@ -84,15 +87,12 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
     static fromIdAsync(deviceId: String, callback: (error: Error, result: GattDeviceService) => void): void ;
 
 
-    static getDeviceSelector(gattUuid: GattUuid): String;
-
-
     static getDeviceSelectorForBluetoothDeviceId(bluetoothDeviceId: Object): String;
     static getDeviceSelectorForBluetoothDeviceId(bluetoothDeviceId: Object, cacheMode: Number): String;
 
 
-    static getDeviceSelectorForBluetoothDeviceIdAndGattUuid(bluetoothDeviceId: Object, gattUuid: GattUuid): String;
-    static getDeviceSelectorForBluetoothDeviceIdAndGattUuid(bluetoothDeviceId: Object, gattUuid: GattUuid, cacheMode: Number): String;
+    static getDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId: Object, serviceUuid: String): String;
+    static getDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId: Object, serviceUuid: String, cacheMode: Number): String;
 
 
     static getDeviceSelectorFromUuid(serviceUuid: String): String;
@@ -111,14 +111,14 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
     getCharacteristicsAsync(callback: (error: Error, result: GattCharacteristicsResult) => void): void ;
     getCharacteristicsAsync(cacheMode: Number, callback: (error: Error, result: GattCharacteristicsResult) => void): void ;
 
-    getCharacteristicsForUuidAsync(characteristicUuid: GattUuid, callback: (error: Error, result: GattCharacteristicsResult) => void): void ;
-    getCharacteristicsForUuidAsync(characteristicUuid: GattUuid, cacheMode: Number, callback: (error: Error, result: GattCharacteristicsResult) => void): void ;
+    getCharacteristicsForUuidAsync(characteristicUuid: String, callback: (error: Error, result: GattCharacteristicsResult) => void): void ;
+    getCharacteristicsForUuidAsync(characteristicUuid: String, cacheMode: Number, callback: (error: Error, result: GattCharacteristicsResult) => void): void ;
 
     getIncludedServicesAsync(callback: (error: Error, result: GattDeviceServicesResult) => void): void ;
     getIncludedServicesAsync(cacheMode: Number, callback: (error: Error, result: GattDeviceServicesResult) => void): void ;
 
-    getIncludedServicesForUuidAsync(serviceUuid: GattUuid, callback: (error: Error, result: GattDeviceServicesResult) => void): void ;
-    getIncludedServicesForUuidAsync(serviceUuid: GattUuid, cacheMode: Number, callback: (error: Error, result: GattDeviceServicesResult) => void): void ;
+    getIncludedServicesForUuidAsync(serviceUuid: String, callback: (error: Error, result: GattDeviceServicesResult) => void): void ;
+    getIncludedServicesForUuidAsync(serviceUuid: String, cacheMode: Number, callback: (error: Error, result: GattDeviceServicesResult) => void): void ;
 
     getCharacteristics(characteristicUuid: String): Object;
 
@@ -136,20 +136,6 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
     services: Object;
     status: GattCommunicationStatus;
     constructor();
-
-  }
-
-  export class GattUuid {
-    uuid: String;
-    constructor();
-
-    static fromUuid(uuid: String): GattUuid;
-
-
-    static fromShortId(shortId: Number): GattUuid;
-
-
-    asShortId(): Number;
 
   }
 
@@ -238,8 +224,8 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
     getDescriptorsAsync(callback: (error: Error, result: GattDescriptorsResult) => void): void ;
     getDescriptorsAsync(cacheMode: Number, callback: (error: Error, result: GattDescriptorsResult) => void): void ;
 
-    getDescriptorsForUuidAsync(descriptorUuid: GattUuid, callback: (error: Error, result: GattDescriptorsResult) => void): void ;
-    getDescriptorsForUuidAsync(descriptorUuid: GattUuid, cacheMode: Number, callback: (error: Error, result: GattDescriptorsResult) => void): void ;
+    getDescriptorsForUuidAsync(descriptorUuid: String, callback: (error: Error, result: GattDescriptorsResult) => void): void ;
+    getDescriptorsForUuidAsync(descriptorUuid: String, cacheMode: Number, callback: (error: Error, result: GattDescriptorsResult) => void): void ;
 
     writeValueWithResultAsync(value: Object, callback: (error: Error, result: GattWriteResult) => void): void ;
     writeValueWithResultAsync(value: Object, writeOption: GattWriteOption, callback: (error: Error, result: GattWriteResult) => void): void ;
@@ -509,16 +495,16 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
   }
 
   export class GattServiceProviderAdvertisingParameters {
-    makeDiscoverable: Boolean;
-    makeConnectable: Boolean;
+    isDiscoverable: Boolean;
+    isConnectable: Boolean;
     constructor();
 
   }
 
   export class GattLocalCharacteristicParameters {
     writeProtectionLevel: GattProtectionLevel;
-    value: Object;
     userDescription: String;
+    staticValue: Object;
     readProtectionLevel: GattProtectionLevel;
     characteristicProperties: GattCharacteristicProperties;
     presentationFormats: Object;
@@ -528,7 +514,7 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
 
   export class GattLocalDescriptorParameters {
     writeProtectionLevel: GattProtectionLevel;
-    value: Object;
+    staticValue: Object;
     readProtectionLevel: GattProtectionLevel;
     constructor();
 
@@ -546,7 +532,7 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
     uuid: String;
     constructor();
 
-    createCharacteristicAsync(characteristicUuid: GattUuid, characteristicParameters: GattLocalCharacteristicParameters, callback: (error: Error, result: GattLocalCharacteristicResult) => void): void ;
+    createCharacteristicAsync(characteristicUuid: String, parameters: GattLocalCharacteristicParameters, callback: (error: Error, result: GattLocalCharacteristicResult) => void): void ;
 
   }
 
@@ -555,7 +541,7 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
     service: GattLocalService;
     constructor();
 
-    static createAsync(serviceUuid: GattUuid, callback: (error: Error, result: GattServiceProviderResult) => void): void ;
+    static createAsync(serviceUuid: String, callback: (error: Error, result: GattServiceProviderResult) => void): void ;
 
 
     startAdvertising(): void;
@@ -595,14 +581,14 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
     descriptors: Object;
     presentationFormats: Object;
     readProtectionLevel: GattProtectionLevel;
+    staticValue: Object;
     subscribedClients: Object;
     userDescription: String;
     uuid: String;
-    value: Object;
     writeProtectionLevel: GattProtectionLevel;
     constructor();
 
-    createDescriptorAsync(descriptorUuid: GattUuid, descriptorParameters: GattLocalDescriptorParameters, callback: (error: Error, result: GattLocalDescriptorResult) => void): void ;
+    createDescriptorAsync(descriptorUuid: String, parameters: GattLocalDescriptorParameters, callback: (error: Error, result: GattLocalDescriptorResult) => void): void ;
 
     notifyValueAsync(value: Object, callback: (error: Error, result: Object) => void): void ;
     notifyValueAsync(value: Object, subscribedClient: GattSubscribedClient, callback: (error: Error, result: GattClientNotificationResult) => void): void ;
@@ -639,8 +625,8 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
 
   export class GattLocalDescriptor {
     readProtectionLevel: GattProtectionLevel;
+    staticValue: Object;
     uuid: String;
-    value: Object;
     writeProtectionLevel: GattProtectionLevel;
     constructor();
 
@@ -708,26 +694,15 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
 
   }
 
-  export class GattReadResponse {
-    protocolError: Number;
-    value: Object;
-    constructor();
-
-    static createWithValue(value: Object): GattReadResponse;
-
-
-    static createWithProtocolError(protocolError: Number): GattReadResponse;
-
-
-  }
-
   export class GattReadRequest {
     length: Number;
     offset: Number;
     state: GattRequestState;
     constructor();
 
-    complete(response: GattReadResponse): void;
+    respondWithValue(value: Object): void;
+
+    respondWithProtocolError(protocolError: Number): void;
 
     addListener(type: "StateChanged", listener: (ev: Event) => void): void ;
     removeListener(type: "StateChanged", listener: (ev: Event) => void): void ;
@@ -749,18 +724,6 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
 
   }
 
-  export class GattWriteResponse {
-    protocolError: Number;
-    constructor();
-
-    static create(): GattWriteResponse;
-
-
-    static createWithProtocolError(protocolError: Number): GattWriteResponse;
-
-
-  }
-
   export class GattWriteRequest {
     offset: Number;
     option: GattWriteOption;
@@ -768,8 +731,9 @@ declare module "windows.devices.bluetooth.genericattributeprofile" {
     value: Object;
     constructor();
 
-    complete(): void;
-    complete(response: GattWriteResponse): void;
+    respond(): void;
+
+    respondWithProtocolError(protocolError: Number): void;
 
     addListener(type: "StateChanged", listener: (ev: Event) => void): void ;
     removeListener(type: "StateChanged", listener: (ev: Event) => void): void ;

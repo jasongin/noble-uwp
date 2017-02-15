@@ -9,12 +9,16 @@ This project is an attempt to implement bindings for `noble` using that newly av
 functionality in Windows 10.
 
 ## System Requirements
- * Windows 10 build 10.0.15014 or later, currently available on the Windows Insider Preview Fast ring
- * Windows 10 SDK build 10.0.15003 or later, available from the
+ * Node.js v6.9 (LTS).
+   * NodeRT currently has problems with Node v7.
+   * Node v4 might work, but is untested.
+ * Windows 10 build 10.0.15021 or later, currently available on the Windows Insider Preview Fast ring
+ * Windows 10 SDK build 10.0.15021 or later, available from the
    [Windows Insider Preview SDK page](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewSDK)
    * Note the SDK build number changes frequently during the preview phase.
-   You may need to update the SDK references in `noble-uwp/uwp/*/binding.gyp` to refer
-   to the SDK build number that is installed.
+     You may need to update the SDK references in `noble-uwp/uwp/*/binding.gyp` to refer
+     to the SDK build number that is installed. Try to use an SDK build that matches your
+     Windows 10 preview build.
 
 ## Usage
 Simply require `noble-uwp` instead of `noble`:
@@ -59,9 +63,9 @@ The following functionality is working:
  * Device services discovery
  * Service included services discovery
  * Service characteristics discovery
- * Characteristics reading and writing
+ * Characteristic reading and writing
+ * Characteristic change notifications
 
 The following functionality is not yet implemented:
  * Descriptors (discovering, reading, writing)
  * Broadcast
- * Notify

@@ -1,6 +1,6 @@
 {
 	"name": "noble-uwp",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Noble (Node.js Bluetooth LE) with Windows 10 UWP bindings",
 	"main": "index.js",
 	"scripts": {
@@ -10,7 +10,7 @@
 		"win32"
 	],
 	"engines": {
-		"node": ">=5.11"
+		"node": ">=6.4"
 	},
 	"repository": {
 		"type": "git",
