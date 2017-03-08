@@ -1,10 +1,5 @@
 {
-  'variables': {
-    'WIN_VER' : 'v10',
-    'WIN_SDK_VER' : '10.0.15042.0',
-    'USE_ADDITIONAL_WINMD' : 'true'
-  },
-  'includes': [ 'common.gypi' ],
+  'includes': [ '../../common.gypi' ],
   "targets": [
     {
       "target_name": "binding",
