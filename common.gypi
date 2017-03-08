@@ -1,6 +1,9 @@
 {
 	'variables' : {
-		'node_shared': 'true'
+		'node_shared': 'true',
+         'WIN_VER' : 'v10',
+	    'WIN_SDK_VER' : '10.0.15042.0',
+	    'USE_ADDITIONAL_WINMD' : 'true'
 	},
     'target_defaults': {
         'default_configuration': 'Release',
