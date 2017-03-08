@@ -1,6 +1,7 @@
 {
   'variables': {
     'WIN_VER' : 'v10',
+    'WIN_SDK_VER' : '10.0.15042.0',
     'USE_ADDITIONAL_WINMD' : 'true'
   },
   'includes': [ 'common.gypi' ],
@@ -55,7 +56,7 @@
           'msvs_settings': {
             'VCCLCompilerTool': {
               'AdditionalUsingDirectories' : [
-                '%ProgramFiles(x86)%/Windows Kits/10/UnionMetadata/10.0.15021.0'
+                '%ProgramFiles(x86)%/Windows Kits/10/UnionMetadata/<(WIN_SDK_VER)'
                 ]
                }
              }
