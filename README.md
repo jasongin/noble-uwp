@@ -65,7 +65,7 @@ The following functionality is working:
  * Service characteristics discovery
  * Characteristic reading and writing
  * Characteristic change notifications
+ * Descriptors (discovering, reading, writing)
 
 The following functionality is not yet implemented:
- * Descriptors (discovering, reading, writing)
  * Broadcast
