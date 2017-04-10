@@ -2,7 +2,7 @@
 	'variables' : {
 		'node_shared': 'true',
 		'WIN_VER' : 'v10',
-		'WIN_SDK_VER' : '10.0.15052.0',
+		'WIN_SDK_VER' : '10.0.15063.0',
 		'VS_VER': '14.0',
 	},
 	'target_defaults': {
