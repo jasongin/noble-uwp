@@ -20,6 +20,7 @@
 #include "NodeRtUtils.h"
 #include "OpaqueWrapper.h"
 #include "WrapperBase.h"
+#include "../InitializeSecurity.h"
 
 #using <Windows.WinMD>
 
@@ -6598,6 +6599,9 @@ NAN_MODULE_INIT(init)
     return;
   }*/
   
+  // (jasongin) Hand-patched generated code due to Bluetooth bug in 15063
+  InitializeSecurity();
+
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothCacheModeEnum(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothMajorClassEnum(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothMinorClassEnum(target);
