@@ -9,9 +9,7 @@ This project is an attempt to implement bindings for `noble` using that newly av
 functionality in Windows 10.
 
 ## System Requirements
- * Node.js v6.9 (LTS).
-   * NodeRT currently has problems with Node v7.
-   * Node v4 might work, but is untested.
+ * Node.js v6 or later. (Node v4 might work, but is untested.)
  * Windows 10 build 10.0.15021 or later, currently available on the Windows Insider Preview Fast ring
  * Windows 10 SDK build 10.0.15021 or later, available from the
    [Windows Insider Preview SDK page](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewSDK)
