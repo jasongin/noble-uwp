@@ -76,7 +76,7 @@ function toBuffer(b) {
 	for (let i = 0; i < len; i++) {
 		a[i] = r.readByte();
 	}
-	return Buffer.from(a.buffer);
+	return new Buffer(a.buffer);
 }
 
 // Convert a JS Buffer to a WinRT IBuffer.

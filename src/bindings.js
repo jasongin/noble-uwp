@@ -507,7 +507,7 @@ NobleBindings.prototype._onAdvertisementWatcherReceived = function(sender, e) {
 		var manufacturerData = manufacturerSections[0];
 		deviceRecord.manufacturerData = rt.toBuffer(manufacturerData.data);
 		let companyIdHex = manufacturerData.companyId.toString(16);
-		let toAppend = Buffer.allocUnsafe(2);
+		let toAppend = new Buffer(2);
 		toAppend.writeUInt16LE(manufacturerData.companyId);
 		deviceRecord.manufacturerData = Buffer.concat([toAppend,  deviceRecord.manufacturerData]);
 		debug('    manufacturer data: %s', deviceRecord.manufacturerData.toString('hex'));
