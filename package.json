@@ -5,8 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"install": "build.cmd",
-    "compile": "babel --presets es2015 -d lib/ src/",
-    "prepublish": "npm run compile"
+		"compile": "babel --presets es2015 -d lib/ src/",
+		"prepublish": "npm run compile"
 	},
 	"os": [
 		"win32"
