@@ -16,7 +16,7 @@ try {
   if (fs.existsSync(path.join(__dirname, 'NodeRT_Windows_Devices_Bluetooth_GenericAttributeProfile.d.js)'))) {
     module.exports = require('./NodeRT_Windows_Devices_Bluetooth_GenericAttributeProfile.d.js');
   }
-  module.exports = require('../build/Release/binding.node');
+  module.exports = require('./binding/binding.node');
 }
 catch(e) {
   throw e;
