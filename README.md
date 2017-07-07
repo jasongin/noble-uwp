@@ -5,18 +5,13 @@ So far, [`noble`](https://github.com/sandeepmistry/noble) has required an
 on Windows, due to lack of good BLE support in the Windows Bluetooth stack. But the Windows 10
 Creators Update has
 [finally improved the BLE support](https://blogs.windows.com/buildingapps/2017/01/13/new-bluetooth-features-in-creators-update-gatt-server-bluetooth-le).
-This project is an attempt to implement bindings for `noble` using that newly available
+This project is an implementation of bindings for `noble` using that newly available
 functionality in Windows 10.
 
 ## System Requirements
- * Node.js v6 or later. (Node v4 might work, but is untested.)
- * Windows 10 build 10.0.15021 or later, currently available on the Windows Insider Preview Fast ring
- * Windows 10 SDK build 10.0.15021 or later, available from the
-   [Windows Insider Preview SDK page](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewSDK)
-   * Note the SDK build number changes frequently during the preview phase.
-     You may need to update the `WIN_SDK_VER` variable in `common.gypi` to refer
-     to the SDK build number that is installed. Try to use an SDK build that matches your
-     Windows 10 preview build.
+ * Node.js v6 or later.
+ * Windows 10 build 10.0.15063 or later
+ * Windows 10 SDK build 10.0.15063
 
 ## Usage
 Simply require `noble-uwp` instead of `noble`:

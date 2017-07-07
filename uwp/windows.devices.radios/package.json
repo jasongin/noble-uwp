@@ -1,6 +1,6 @@
 {
   "name": "windows.devices.radios",
-  "version": "0.1.0",
+  "version": "0.15063.0",
   "description": "Use the Windows.Devices.Radios UWP API directly from Node.js",
   "main": "lib/main.js",
   "scripts" : {

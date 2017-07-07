@@ -804,7 +804,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"stateChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"stateChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
