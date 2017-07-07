@@ -1,11 +1,6 @@
 # vs 2017 image because Windows SDK 10.0.15063.0 is not available on vs 2015 image
 image: Visual Studio 2017
 
-branches:
-  only:
-    # only run on tags eg. v1, v0.1, 0.1, 2
-    - /^v?[0-9]/
-
 environment:
   GYP_MSVS_VERSION: 2015
 
