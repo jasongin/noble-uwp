@@ -31,6 +31,13 @@ install:
   - ps: $publish_binary = 0
   - ps: if ($env:appveyor_repo_tag -match "true" -and $env:appveyor_repo_tag_name -match '^v?[0-9]') { $publish_binary=1; }
   - ps: echo "tag $env:appveyor_repo_tag_name branch $env:APPVEYOR_REPO_BRANCH"
+  - ps: |
+      # https://github.com/mapbox/node-pre-gyp/issues/209#issuecomment-217690537
+      if (($env:platform -ieq "x86") -and ($env:node_version -match "^4")) {
+        echo "Configuring NPM cafile to make Node 4 x86 builds work."
+        npm config set -g cafile=package.json
+        npm config set -g strict-ssl=false
+      }
 
 build_script:
   - ps: echo "publish $publish_binary"
