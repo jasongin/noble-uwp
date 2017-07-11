@@ -1,5 +1,6 @@
 node_modules/
 build/
+lib/
 binding/
 *.winmd
 /.vscode
