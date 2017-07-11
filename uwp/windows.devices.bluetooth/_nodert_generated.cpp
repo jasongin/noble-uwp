@@ -2754,7 +2754,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"connectionStatusChanged", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"nameChanged", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"sdpRecordsChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"connectionStatusChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"nameChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"sdpRecordsChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -6084,7 +6084,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"connectionStatusChanged", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"gattServicesChanged", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"nameChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"connectionStatusChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"gattServicesChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"nameChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -6599,9 +6599,6 @@ NAN_MODULE_INIT(init)
     return;
   }*/
   
-  // (jasongin) Hand-patched generated code due to Bluetooth bug in 15063
-  InitializeSecurity();
-
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothCacheModeEnum(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothMajorClassEnum(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothMinorClassEnum(target);

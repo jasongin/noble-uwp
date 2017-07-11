@@ -2812,7 +2812,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"received", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"stopped", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"received", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"stopped", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -4381,7 +4381,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"statusChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"statusChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;

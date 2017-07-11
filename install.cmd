@@ -10,9 +10,9 @@ call :builduwp Windows.Devices.Radios %1
 goto :eof
 
 :builduwp
-echo Building NodeRT UWP adapter for %1
-pushd uwp\%1
-call node-gyp rebuild --msvs_version=2015 %2
+echo Installing NodeRT UWP adapter for %1
+pushd %~dp0uwp\%1
+call node-pre-gyp install --fallback-to-build --msvs_version=2015 %2
 if errorlevel 1 exit
 echo.
 popd

@@ -110,6 +110,55 @@ function keepAlive(k) {
 	debug(`keepAlive(${k}) => ${keepAliveIntervalCount}`);
 }
 
+const disposableMap = {};
+
+function trackDisposable(key, obj) {
+	if (!obj) {
+		return obj;
+	}
+
+	if (typeof obj.close !== "function") {
+		throw new Error('Object does not have a close function.');
+	}
+
+	let disposableList = disposableMap[key];
+
+	if (!disposableList) {
+		disposableList = [];
+		disposableMap[key] = disposableList;
+	}
+
+	for (let i = 0; i < disposableList.length; i++) {
+		const disposable = disposableList[i];
+		if (Object.is(obj, disposable)) {
+			return obj;
+		}
+	}
+
+	disposableList.push(obj);
+	return obj;
+}
+
+function trackDisposables(key, array) {
+	array.forEach(obj => trackDisposable(key, obj));
+	return array;
+}
+
+function disposeAll(key) {
+	const disposableList = disposableMap[key];
+	
+	if (!disposableList) {
+		return;
+	}
+
+	debug('Disposing %d objects for %s', disposableList.length, key);
+
+	for (let i = 0; i < disposableList.length; i++) {
+		const disposable = disposableList[i];
+		disposable.close();
+	}
+}
+
 module.exports = {
 	using,
 	promisify,
@@ -118,4 +167,7 @@ module.exports = {
 	toBuffer,
 	fromBuffer,
 	keepAlive,
+	trackDisposable,
+	trackDisposables,
+	disposeAll,
 };

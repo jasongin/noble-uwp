@@ -102,7 +102,7 @@ NobleBindings.prototype.connect = function(deviceUuid) {
 
 	rt.promisify(BluetoothLEDevice.fromBluetoothAddressAsync)(deviceRecord.address).then(device => {
 		debug('got bluetooth device: %s (%s)', device.name, device.deviceInformation.kind);
-		deviceRecord.device = device;
+		deviceRecord.device = rt.trackDisposable(deviceUuid, device);
 
 		this.emit('connect', deviceUuid, null);
 	}).catch(ex => {
@@ -119,9 +119,16 @@ NobleBindings.prototype.disconnect = function(deviceUuid) {
 		throw new Error('Invalid or unknown device UUID: ' + deviceUuid);
 	}
 
-	deviceRecord.device = null;
+	if (deviceRecord.device) {
+		deviceRecord.device = null;
+		deviceRecord.serviceMap = {};
+		deviceRecord.characteristicMap = {};
+		deviceRecord.descriptorMap = {};
 
-	this.emit('disconnect', deviceUuid);
+		rt.disposeAll(deviceUuid);
+
+		this.emit('disconnect', deviceUuid);
+	}
 };
 
 NobleBindings.prototype.updateRssi = function(deviceUuid) {
@@ -155,7 +162,7 @@ NobleBindings.prototype.discoverServices = function(deviceUuid, filterServiceUui
 			BluetoothCacheMode.uncached).then(result => {
 		checkCommunicationResult(deviceUuid, result);
 
-		let services = rt.toArray(result.services);
+		let services = rt.trackDisposables(deviceUuid, rt.toArray(result.services));
 		let serviceUuids = services.map(s => formatUuid(s.uuid))
 			.filter(filterUuids(filterServiceUuids));
 
@@ -181,7 +188,7 @@ function(deviceUuid, serviceUuid, filterServiceUuids) {
 				BluetoothCacheMode.uncached).then(result => {
 			checkCommunicationResult(deviceUuid, result);
 
-			let includedServices = rt.toArray(result.services);
+			let includedServices = rt.trackDisposables(deviceUuid, rt.toArray(result.services));
 			let includedServiceUuids = includedServices.map(s => formatUuid(s.uuid))
 				.filter(filterUuids(filterServiceUuids));
 
@@ -576,7 +583,7 @@ NobleBindings.prototype._getCachedServiceAsync = function(deviceUuid, serviceUui
 	return rt.promisify(device.getGattServicesAsync, device)(
 			BluetoothCacheMode.cached).then(result => {
 		checkCommunicationResult(deviceUuid, result);
-		service = rt.toArray(result.services)
+		service = rt.trackDisposables(deviceUuid, rt.toArray(result.services))
 			.find(s => formatUuid(s.uuid) === serviceUuid);
 		if (!service) {
 			throw new Error('Service ' + serviceUuid + ' not found for device ' + deviceUuid);

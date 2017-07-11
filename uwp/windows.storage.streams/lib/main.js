@@ -16,7 +16,7 @@ try {
   if (fs.existsSync(path.join(__dirname, 'NodeRT_Windows_Storage_Streams.d.js)'))) {
     module.exports = require('./NodeRT_Windows_Storage_Streams.d.js');
   }
-  module.exports = require('../build/Release/binding.node');
+  module.exports = require('./binding/binding.node');
 }
 catch(e) {
   throw e;

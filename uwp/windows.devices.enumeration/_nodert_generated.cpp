@@ -2480,7 +2480,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"devicePickerDismissed", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"deviceSelected", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"disconnectButtonClicked", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"devicePickerDismissed", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"deviceSelected", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"disconnectButtonClicked", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -4824,7 +4824,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"added", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"enumerationCompleted", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"removed", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"stopped", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"updated", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"added", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"enumerationCompleted", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"removed", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"stopped", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"updated", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -7332,7 +7332,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"pairingRequested", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"pairingRequested", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -8505,7 +8505,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"accessChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"accessChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;

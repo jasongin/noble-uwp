@@ -3095,7 +3095,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"maxPduSizeChanged", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"sessionStatusChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"maxPduSizeChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"sessionStatusChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -4770,7 +4770,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"valueChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"valueChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -12881,7 +12881,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"advertisementStatusChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"advertisementStatusChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -14301,7 +14301,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"readRequested", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"subscribedClientsChanged", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"writeRequested", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"readRequested", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"subscribedClientsChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"writeRequested", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -15044,7 +15044,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"readRequested", str)) &&(NodeRT::Utils::CaseInsenstiveEquals(L"writeRequested", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"readRequested", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"writeRequested", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -15442,7 +15442,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"maxNotificationSizeChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"maxNotificationSizeChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -16806,7 +16806,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"stateChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"stateChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
@@ -17531,7 +17531,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       String::Value eventName(info[0]);
       auto str = *eventName;
 
-      if ((NodeRT::Utils::CaseInsenstiveEquals(L"stateChanged", str)))
+      if ((!NodeRT::Utils::CaseInsenstiveEquals(L"stateChanged", str)))
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
