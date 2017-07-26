@@ -520,25 +520,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(static_cast<int>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(static_cast<int>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -606,25 +605,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(static_cast<int>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(static_cast<int>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -704,25 +702,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattCharacteristicsResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattCharacteristicsResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -807,25 +804,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattCharacteristicsResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattCharacteristicsResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -905,25 +901,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattDeviceServicesResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattDeviceServicesResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -1008,25 +1003,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattDeviceServicesResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattDeviceServicesResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -1312,25 +1306,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
             
-            TryCatch tryCatch;
             Local<Value> error; 
-            Local<Value> arg1 = WrapGattDeviceService(result);
-            if (tryCatch.HasCaught())
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattDeviceService(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-	  	    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -2726,25 +2719,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
             
-            TryCatch tryCatch;
             Local<Value> error; 
-            Local<Value> arg1 = WrapGattSession(result);
-            if (tryCatch.HasCaught())
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattSession(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-	  	    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -2955,31 +2947,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession^, ::Platform::Object^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession^ arg0, ::Platform::Object^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattSession(arg0);
-                Local<Value> wrappedArg1 = CreateOpaqueWrapper(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattSession(arg0);
+                  wrappedArg1 = CreateOpaqueWrapper(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -3020,31 +3004,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession^, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSessionStatusChangedEventArgs^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSession^ arg0, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSessionStatusChangedEventArgs^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattSession(arg0);
-                Local<Value> wrappedArg1 = WrapGattSessionStatusChangedEventArgs(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattSession(arg0);
+                  wrappedArg1 = WrapGattSessionStatusChangedEventArgs(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -3629,25 +3605,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattReadResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattReadResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -3732,25 +3707,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(static_cast<int>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(static_cast<int>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -3815,25 +3789,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattReadClientCharacteristicConfigurationDescriptorResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattReadClientCharacteristicConfigurationDescriptorResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -3901,25 +3874,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(static_cast<int>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(static_cast<int>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -3999,25 +3971,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattDescriptorsResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattDescriptorsResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -4102,25 +4073,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattDescriptorsResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattDescriptorsResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -4205,25 +4175,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattWriteResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattWriteResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -4291,25 +4260,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattWriteResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattWriteResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -4695,31 +4663,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCharacteristic^, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattValueChangedEventArgs^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattCharacteristic^ arg0, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattValueChangedEventArgs^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattCharacteristic(arg0);
-                Local<Value> wrappedArg1 = WrapGattValueChangedEventArgs(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattCharacteristic(arg0);
+                  wrappedArg1 = WrapGattValueChangedEventArgs(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -5311,25 +5271,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattReadResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattReadResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -5397,25 +5356,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(static_cast<int>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(static_cast<int>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -5483,25 +5441,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattWriteResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattWriteResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -10545,25 +10502,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(static_cast<int>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(static_cast<int>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -10628,25 +10584,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattWriteResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattWriteResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -12279,25 +12234,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattLocalCharacteristicResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattLocalCharacteristicResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -12679,25 +12633,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
             
-            TryCatch tryCatch;
             Local<Value> error; 
-            Local<Value> arg1 = WrapGattServiceProviderResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattServiceProviderResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-	  	    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -12806,31 +12759,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProvider^, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProviderAdvertisementStatusChangedEventArgs^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProvider^ arg0, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattServiceProviderAdvertisementStatusChangedEventArgs^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattServiceProvider(arg0);
-                Local<Value> wrappedArg1 = WrapGattServiceProviderAdvertisementStatusChangedEventArgs(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattServiceProvider(arg0);
+                  wrappedArg1 = WrapGattServiceProviderAdvertisementStatusChangedEventArgs(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -13606,25 +13551,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattLocalDescriptorResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattLocalDescriptorResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -13660,7 +13604,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       // (jasongin) Hand-patched generated code due to NodeRT bug for method overloads having different return types.
       ::Windows::Foundation::IAsyncOperation<::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^>^>^ op1 = nullptr;
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^>^ op2 = nullptr;
-    
+
 
       if (info.Length() == 2
         && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(info[0]))
@@ -13713,9 +13657,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^>::CreateVectorViewWrapper(result, 
+            Local<Value> error;
+            Local<Value> arg1;
+            {
+              TryCatch tryCatch;
+              arg1 = NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^>::CreateVectorViewWrapper(result, 
             [](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattClientNotificationResult^ val) -> Local<Value> {
               return WrapGattClientNotificationResult(val);
             },
@@ -13726,22 +13672,19 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
               return UnwrapGattClientNotificationResult(value);
             }
           );
-            if (tryCatch.HasCaught())
-            {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -13767,26 +13710,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           auto result = t.get();
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
-
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattClientNotificationResult(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattClientNotificationResult(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -14096,31 +14037,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic^, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic^ arg0, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattLocalCharacteristic(arg0);
-                Local<Value> wrappedArg1 = WrapGattReadRequestedEventArgs(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattLocalCharacteristic(arg0);
+                  wrappedArg1 = WrapGattReadRequestedEventArgs(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -14161,31 +14094,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic^, ::Platform::Object^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic^ arg0, ::Platform::Object^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattLocalCharacteristic(arg0);
-                Local<Value> wrappedArg1 = CreateOpaqueWrapper(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattLocalCharacteristic(arg0);
+                  wrappedArg1 = CreateOpaqueWrapper(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -14226,31 +14151,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic^, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalCharacteristic^ arg0, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattLocalCharacteristic(arg0);
-                Local<Value> wrappedArg1 = WrapGattWriteRequestedEventArgs(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattLocalCharacteristic(arg0);
+                  wrappedArg1 = WrapGattWriteRequestedEventArgs(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -14904,31 +14821,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor^, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor^ arg0, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequestedEventArgs^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattLocalDescriptor(arg0);
-                Local<Value> wrappedArg1 = WrapGattReadRequestedEventArgs(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattLocalDescriptor(arg0);
+                  wrappedArg1 = WrapGattReadRequestedEventArgs(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -14969,31 +14878,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor^, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattLocalDescriptor^ arg0, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequestedEventArgs^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattLocalDescriptor(arg0);
-                Local<Value> wrappedArg1 = WrapGattWriteRequestedEventArgs(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattLocalDescriptor(arg0);
+                  wrappedArg1 = WrapGattWriteRequestedEventArgs(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -15367,31 +15268,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSubscribedClient^, ::Platform::Object^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattSubscribedClient^ arg0, ::Platform::Object^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattSubscribedClient(arg0);
-                Local<Value> wrappedArg1 = CreateOpaqueWrapper(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattSubscribedClient(arg0);
+                  wrappedArg1 = CreateOpaqueWrapper(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -15711,25 +15604,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattReadRequest(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattReadRequest(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -16029,25 +15921,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapGattWriteRequest(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapGattWriteRequest(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -16731,31 +16622,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequest^, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattReadRequest^ arg0, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattReadRequest(arg0);
-                Local<Value> wrappedArg1 = WrapGattRequestStateChangedEventArgs(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattReadRequest(arg0);
+                  wrappedArg1 = WrapGattRequestStateChangedEventArgs(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);
@@ -17456,31 +17339,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequest^, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs^>(
             [callbackObjPtr](::Windows::Devices::Bluetooth::GenericAttributeProfile::GattWriteRequest^ arg0, ::Windows::Devices::Bluetooth::GenericAttributeProfile::GattRequestStateChangedEventArgs^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapGattWriteRequest(arg0);
-                Local<Value> wrappedArg1 = WrapGattRequestStateChangedEventArgs(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapGattWriteRequest(arg0);
+                  wrappedArg1 = WrapGattRequestStateChangedEventArgs(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);

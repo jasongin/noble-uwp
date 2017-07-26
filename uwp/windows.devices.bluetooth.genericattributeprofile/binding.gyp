@@ -11,6 +11,15 @@
         "<!(node -e \"require('nan')\")"
       ],
       'libraries': [ '-lruntimeobject.lib'],
+      'configurations': {
+        'Debug': {
+          'msvs_settings': {
+            'VCCLCompilerTool': {
+              'AdditionalOptions': ['/bigobj'],
+            }
+          },
+        },
+      },
     },
     {
       'target_name': 'action_after_build',

@@ -310,25 +310,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(static_cast<int>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(static_cast<int>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -388,9 +387,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
             
-            TryCatch tryCatch;
             Local<Value> error; 
-            Local<Value> arg1 = NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Radios::Radio^>::CreateVectorViewWrapper(result, 
+            Local<Value> arg1;
+            {
+              TryCatch tryCatch;
+              arg1 = NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Radios::Radio^>::CreateVectorViewWrapper(result, 
             [](::Windows::Devices::Radios::Radio^ val) -> Local<Value> {
               return WrapRadio(val);
             },
@@ -401,22 +402,19 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
               return UnwrapRadio(value);
             }
           );
-            if (tryCatch.HasCaught())
-            {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-	  	    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -477,25 +475,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
             
-            TryCatch tryCatch;
             Local<Value> error; 
-            Local<Value> arg1 = WrapRadio(result);
-            if (tryCatch.HasCaught())
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapRadio(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-	  	    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -553,25 +550,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
             
-            TryCatch tryCatch;
             Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(static_cast<int>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(static_cast<int>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-	  	    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -729,31 +725,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
             ref new ::Windows::Foundation::TypedEventHandler<::Windows::Devices::Radios::Radio^, ::Platform::Object^>(
             [callbackObjPtr](::Windows::Devices::Radios::Radio^ arg0, ::Platform::Object^ arg1) {
               NodeUtils::Async::RunOnMain([callbackObjPtr , arg0, arg1]() {
-           	    HandleScope scope;
-                TryCatch tryCatch;
-              
-                Local<Value> error;
+                HandleScope scope;
 
-                Local<Value> wrappedArg0 = WrapRadio(arg0);
-                Local<Value> wrappedArg1 = CreateOpaqueWrapper(arg1);
 
-                if (tryCatch.HasCaught())
+                Local<Value> wrappedArg0;
+                Local<Value> wrappedArg1;
+
                 {
-                  error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+                  TryCatch tryCatch;
+
+
+                  wrappedArg0 = WrapRadio(arg0);
+                  wrappedArg1 = CreateOpaqueWrapper(arg1);
+
+
+                  if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
+                  if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
                 }
-                else 
-                {
-                  error = Undefined();
-                }
-
-				// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-				// can be fixed by wrapping the conversion code in a function and calling it on the fly
-				// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-				tryCatch.~TryCatch();
-
-
-                if (wrappedArg0.IsEmpty()) wrappedArg0 = Undefined();
-                if (wrappedArg1.IsEmpty()) wrappedArg1 = Undefined();
 
                 Local<Value> args[] = { wrappedArg0, wrappedArg1 };
                 Local<Object> callbackObjLocalRef = Nan::New<Object>(*callbackObjPtr);

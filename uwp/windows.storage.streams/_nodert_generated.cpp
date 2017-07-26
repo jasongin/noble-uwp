@@ -780,25 +780,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -1823,25 +1822,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -3304,25 +3302,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -3387,25 +3384,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Boolean>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Boolean>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -4497,25 +4493,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -4580,25 +4575,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Boolean>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Boolean>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -6443,25 +6437,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapIBuffer(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapIBuffer(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -6704,25 +6697,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -6787,25 +6779,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Boolean>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Boolean>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -7654,25 +7645,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapIRandomAccessStreamWithContentType(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapIRandomAccessStreamWithContentType(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -7931,25 +7921,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
             
-            TryCatch tryCatch;
             Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Number>(static_cast<double>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Number>(static_cast<double>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-	  	    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -8012,25 +8001,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
             
-            TryCatch tryCatch;
             Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Number>(static_cast<double>(result));
-            if (tryCatch.HasCaught())
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Number>(static_cast<double>(result));
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-	  	    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -8267,25 +8255,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapIInputStream(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapIInputStream(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -8527,25 +8514,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapIRandomAccessStreamWithContentType(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapIRandomAccessStreamWithContentType(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -8889,25 +8875,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapIBuffer(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapIBuffer(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -8975,25 +8960,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -9058,25 +9042,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Boolean>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Boolean>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -9618,25 +9601,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapIBuffer(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapIBuffer(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -9914,25 +9896,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -9997,25 +9978,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Boolean>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Boolean>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -10307,25 +10287,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapIBuffer(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapIBuffer(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -10393,25 +10372,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -10476,25 +10454,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Boolean>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Boolean>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -11036,25 +11013,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapIBuffer(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapIBuffer(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -11332,25 +11308,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -11415,25 +11390,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Boolean>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Boolean>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -11737,25 +11711,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = WrapIBuffer(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = WrapIBuffer(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -11823,25 +11796,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Integer>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Integer>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
@@ -11906,25 +11878,24 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
 
-            TryCatch tryCatch;
-            Local<Value> error; 
-            Local<Value> arg1 = Nan::New<Boolean>(result);
-            if (tryCatch.HasCaught())
+            Local<Value> error;
+            Local<Value> arg1;
             {
-              error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              TryCatch tryCatch;
+              arg1 = Nan::New<Boolean>(result);
+              if (tryCatch.HasCaught())
+              {
+                error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
+              }
+              else 
+              {
+                error = Undefined();
+              }
+              if (arg1.IsEmpty()) arg1 = Undefined();
             }
-            else 
-            {
-              error = Undefined();
-            }
-            if (arg1.IsEmpty()) arg1 = Undefined();
             Local<Value> args[] = {error, arg1};
-			// TODO: this is ugly! Needed due to the possibility of expception occuring inside object convertors
-			// can be fixed by wrapping the conversion code in a function and calling it on the fly
-			// we must clear the try catch block here so the invoked inner method exception won't get swollen (issue #52) 
-			tryCatch.~TryCatch();
 
-		    
+
             invokeCallback(_countof(args), args);
           });
         }
