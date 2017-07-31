@@ -1,6 +1,6 @@
 {
   "name": "windows.devices.bluetooth.advertisement",
-  "version": "0.15063.0",
+  "version": "0.15063.1",
   "description": "Use the Windows.Devices.Bluetooth.Advertisement UWP API directly from Node.js",
   "main": "lib/main.js",
   "scripts" : {

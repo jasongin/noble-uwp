@@ -6536,7 +6536,10 @@ NAN_MODULE_INIT(init)
     Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"error in CoInitializeEx()")));
     return;
   }*/
-  
+
+  // (jasongin) Hand-patched generated code due to Bluetooth bug in 15063
+  InitializeSecurity();
+
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothCacheModeEnum(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothMajorClassEnum(target);
   NodeRT::Windows::Devices::Bluetooth::InitBluetoothMinorClassEnum(target);
