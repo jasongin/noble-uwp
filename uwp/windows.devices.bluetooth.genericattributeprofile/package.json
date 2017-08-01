@@ -84,7 +84,7 @@
   ],
   "binary": {
     "module_name": "binding",
-    "module_path": "./lib/binding/",
+    "module_path": "./binding/{node_abi}-{platform}-{arch}/",
     "host": "https://github.com/jasongin/noble-uwp/releases/download/",
     "remote_path": "windows_devices_bluetooth_genericattributeprofile_{version}"
   }
