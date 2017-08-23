@@ -43,6 +43,17 @@ $env:DEBUG="noble-uwp"
 node test.js
 ```
 
+## Building for electron
+
+Currently using electron-rebuild does not work.
+In order to build this module for electron it has to be rebuilt using the following command:
+
+```powershell
+npm rebuild --runtime=electron --target=1.7.1 --arch=x64 --rebuild --disturl=https://atom.io/download/electron --build_from_source=true
+```
+
+adjust the target version to the version of electron you are running (1.7.1 works for electron 1.7.0 and up)
+
 Notes:
  * The NodeRT adapter libraries may take a few minutes to build with `node-gyp`; please be patient.
  * The above string replacement in the `noble-device` source file is necessary to get it to use
