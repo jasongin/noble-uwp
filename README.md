@@ -22,6 +22,17 @@ Then [use it in the same way as the regular `noble`](https://github.com/sandeepm
 On non-Windows platforms, the benavior is unchanged from `noble`, while on Windows the UWP bindings are used instead
 of `noble`'s Bluetooth HCI bindings.
 
+## Building for electron
+
+Currently using electron-rebuild does not work.
+In order to build this module for electron it has to be rebuilt using the following command:
+
+```powershell
+npm rebuild --runtime=electron --target=1.7.1 --arch=x64 --rebuild --disturl=https://atom.io/download/electron --build_from_source=true
+```
+
+adjust the target version to the version of electron you are running (1.7.1 works for electron 1.7.0 and up)
+
 ## Testing
 So far, testing has been done with a TI SensorTag.
 
