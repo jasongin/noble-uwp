@@ -7,9 +7,7 @@ environment:
   matrix:
     # node 4 x64 works, but x86 fails
     - node_version: '4'
-    - node_version: '5'
     - node_version: '6'
-    - node_version: '7'
     - node_version: '8'
 
 install:
