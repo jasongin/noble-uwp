@@ -1,5 +1,8 @@
 var noble = require('./index');
 
+// Flag to continuously scan advertisements
+const continuousScan = false;
+
 console.log('noble');
 
 noble.on('stateChange', function (state) {
@@ -25,7 +28,9 @@ noble.on('scanStop', function () {
 noble.on('discover', function (peripheral) {
 	console.log('on -> discover: ' + peripheral);
 
-	noble.stopScanning();
+	if (!continuousScan) {
+		noble.stopScanning();
+	}
 
 	peripheral.on('connect', function () {
 		console.log('on -> connect');
@@ -113,6 +118,10 @@ noble.on('discover', function (peripheral) {
 		services[serviceIndex].discoverIncludedServices();
 	});
 
-	peripheral.connect();
+	if (peripheral.connectable) {
+		peripheral.connect();
+	} else {
+		console.log(peripheral.id + ' is not connectable.');
+	}
 });
 
