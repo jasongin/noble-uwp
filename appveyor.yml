@@ -5,10 +5,9 @@ environment:
   GYP_MSVS_VERSION: 2015
 
   matrix:
-    - node_version: '4'
     - node_version: '6'
     - node_version: '8'
-    - node_version: '9'
+    - node_version: '10'
 
 install:
   # install the right node version
