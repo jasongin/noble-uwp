@@ -8,8 +8,8 @@ if (os.platform() === 'win32') {
 	const ver = os.release().split('.').map(Number);
 	if (!(ver[0] > 10 ||
 		(ver[0] === 10 && ver[1] > 0) ||
-		(ver[0] === 10 && ver[1] === 0 && ver[2] >= 15014))) {
-		throw new Error("Noble UWP bindings require Windows >= 10.0.15014.");
+		(ver[0] === 10 && ver[1] === 0 && ver[2] >= 15063))) {
+		throw new Error("Noble UWP bindings require Windows >= 10.0.15063.");
 	}
 
 	const Noble = require('noble/lib/noble');
