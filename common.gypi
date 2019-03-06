@@ -30,6 +30,7 @@
 					'%ProgramFiles(x86)%/Microsoft Visual Studio <(VS_VER)/VC/lib/store/references',
 					'%ProgramFiles%/Microsoft Visual Studio <(VS_VER)/VC/lib/store/references',
 					'%ProgramFiles(x86)%/Windows Kits/10/UnionMetadata/<(WIN_SDK_VER)',
+					'%ProgramFiles%/Windows Kits/10/UnionMetadata/<(WIN_SDK_VER)',
 				],
 				'ExceptionHandling': 1, # /EHsc
 			}
