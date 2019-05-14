@@ -19,6 +19,7 @@
 namespace NodeRT { namespace Utils {
 
   using v8::String;
+  using v8::Value;
   using v8::Boolean;
   using v8::Integer;
   using v8::FunctionTemplate;
