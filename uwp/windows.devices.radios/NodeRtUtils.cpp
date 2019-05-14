@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation
-// All rights reserved. 
+// All rights reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 //
-// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT. 
+// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT.
 //
 // See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.
 
@@ -19,8 +19,6 @@
 namespace NodeRT { namespace Utils {
 
   using v8::String;
-  using v8::Handle;
-  using v8::Value;
   using v8::Boolean;
   using v8::Integer;
   using v8::FunctionTemplate;
@@ -77,12 +75,12 @@ namespace NodeRT { namespace Utils {
   Local<v8::Object> CreateCallbackObjectInDomain(Local<v8::Function> callback)
   {
     EscapableHandleScope scope;
-    
+
     // get the current domain:
     MaybeLocal<v8::Object> callbackObject = Nan::New<Object>();
-    
+
     Nan::Set(callbackObject.ToLocalChecked(), Nan::New<String>("callback").ToLocalChecked(), callback);
-    
+
     MaybeLocal<Value> processVal = Nan::Get(Nan::GetCurrentContext()->Global(), Nan::New<String>("process").ToLocalChecked());
     v8::Local<Object> process = Nan::To<Object>(processVal.ToLocalChecked()).ToLocalChecked();
     if (process.IsEmpty() || Nan::Equals(process,Undefined()).FromMaybe(true))
@@ -105,14 +103,14 @@ namespace NodeRT { namespace Utils {
   //    "callback" : [callback function]
   //    "domain" : [the domain in which the async function/event was called/registered] (this is optional)
   // }
-  Local<Value> CallCallbackInDomain(Local<v8::Object> callbackObject, int argc, Local<Value> argv[]) 
+  Local<Value> CallCallbackInDomain(Local<v8::Object> callbackObject, int argc, Local<Value> argv[])
   {
     return Nan::MakeCallback(callbackObject, Nan::New<String>("callback").ToLocalChecked(), argc, argv);
   }
 
   ::Platform::Object^ GetObjectInstance(Local<Value> value)
   {
-    // nulls are allowed when a WinRT wrapped object is expected 
+    // nulls are allowed when a WinRT wrapped object is expected
     if (value->IsNull()) {
       return nullptr;
     }
@@ -184,7 +182,7 @@ namespace NodeRT { namespace Utils {
   {
     HandleScope scope;
     Local<Object> global = Nan::GetCurrentContext()->Global();
-    
+
     if (!Nan::Has(global, Nan::New<String>("__winRtNamespaces__").ToLocalChecked()).FromMaybe(false))
     {
 		  Nan::ForceSet(global, Nan::New<String>("__winRtNamespaces__").ToLocalChecked(), Nan::New<Object>(), (v8::PropertyAttribute) (v8::PropertyAttribute::DontEnum & v8::PropertyAttribute::DontDelete));
@@ -298,7 +296,7 @@ namespace NodeRT { namespace Utils {
       time.UniversalTime = value->IntegerValue()* 10000 + 116444736000000000;
     }
 
-    return time; 
+    return time;
   }
 
   Local<Date> DateTimeToJS(::Windows::Foundation::DateTime value)
@@ -350,7 +348,7 @@ namespace NodeRT { namespace Utils {
   {
     OLECHAR* bstrGuid;
     StringFromCLSID(guid, &bstrGuid);
-    
+
     Local<String> strVal = NewString(bstrGuid);
     CoTaskMemFree(bstrGuid);
     return strVal;
@@ -381,7 +379,7 @@ namespace NodeRT { namespace Utils {
     Local<Object> obj = Nan::To<Object>(value).ToLocalChecked();
     if (!Nan::Has(obj, Nan::New<String>("G").ToLocalChecked()).FromMaybe(false))
     {
-      
+
       retVal.G = static_cast<unsigned char>(Nan::To<uint32_t>(Nan::Get(obj, Nan::New<String>("G").ToLocalChecked()).ToLocalChecked()).FromMaybe(0));
     }
 
@@ -462,10 +460,10 @@ namespace NodeRT { namespace Utils {
     }
 
     Local<Object> obj = Nan::To<Object>(value).ToLocalChecked();
-    
+
     if (Nan::Has(obj, Nan::New<String>("x").ToLocalChecked()).FromMaybe(false))
     {
-		
+
       rect.X = static_cast<float>(Nan::To<double>(Nan::Get(obj, Nan::New<String>("x").ToLocalChecked()).ToLocalChecked()).FromMaybe(0.0));
     }
 
@@ -532,7 +530,7 @@ namespace NodeRT { namespace Utils {
 
   ::Windows::Foundation::Point PointFromJs(Local<Value> value)
   {
-    ::Windows::Foundation::Point point(0,0);  
+    ::Windows::Foundation::Point point(0,0);
 
     if (!value->IsObject())
     {
@@ -590,7 +588,7 @@ namespace NodeRT { namespace Utils {
 
   ::Windows::Foundation::Size SizeFromJs(Local<Value> value)
   {
-    ::Windows::Foundation::Size size(0,0);  
+    ::Windows::Foundation::Size size(0,0);
 
     if (!value->IsObject())
     {
@@ -671,4 +669,4 @@ namespace NodeRT { namespace Utils {
     return res;
   }
 
-} } 
+} }

@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation
-// All rights reserved. 
+// All rights reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 //
-// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT. 
+// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT.
 //
 // See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.
 
@@ -35,7 +35,6 @@ const char* REGISTRATION_TOKEN_MAP_PROPERTY_NAME = "__registrationTokenMap__";
 
 using v8::Array;
 using v8::String;
-using v8::Handle;
 using v8::Value;
 using v8::Boolean;
 using v8::Integer;
@@ -59,47 +58,47 @@ using Nan::HandleScope;
 using Nan::TryCatch;
 using namespace concurrency;
 
-namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth { namespace Advertisement { 
+namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth { namespace Advertisement {
 
   v8::Local<v8::Value> WrapBluetoothLEManufacturerData(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^ UnwrapBluetoothLEManufacturerData(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisementDataSection(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^ UnwrapBluetoothLEAdvertisementDataSection(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisement(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^ UnwrapBluetoothLEAdvertisement(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisementBytePattern(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^ UnwrapBluetoothLEAdvertisementBytePattern(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisementFilter(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^ UnwrapBluetoothLEAdvertisementFilter(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisementWatcherStoppedEventArgs(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs^ UnwrapBluetoothLEAdvertisementWatcherStoppedEventArgs(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisementWatcher(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^ UnwrapBluetoothLEAdvertisementWatcher(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisementReceivedEventArgs(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^ UnwrapBluetoothLEAdvertisementReceivedEventArgs(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisementDataTypes(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes^ UnwrapBluetoothLEAdvertisementDataTypes(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisementPublisherStatusChangedEventArgs(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs^ UnwrapBluetoothLEAdvertisementPublisherStatusChangedEventArgs(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapBluetoothLEAdvertisementPublisher(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher^ wintRtInstance);
   ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher^ UnwrapBluetoothLEAdvertisementPublisher(Local<Value> value);
-  
+
 
 
   static void InitBluetoothLEScanningModeEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("BluetoothLEScanningMode").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("passive").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEScanningMode::Passive)));
@@ -110,7 +109,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
   static void InitBluetoothLEAdvertisementFlagsEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("BluetoothLEAdvertisementFlags").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("none").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFlags::None)));
@@ -125,7 +124,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
   static void InitBluetoothLEAdvertisementTypeEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("BluetoothLEAdvertisementType").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("connectableUndirected").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementType::ConnectableUndirected)));
@@ -139,7 +138,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
   static void InitBluetoothLEAdvertisementWatcherStatusEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("BluetoothLEAdvertisementWatcherStatus").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("created").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStatus::Created)));
@@ -153,7 +152,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
   static void InitBluetoothLEAdvertisementPublisherStatusEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("BluetoothLEAdvertisementPublisherStatus").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("created").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatus::Created)));
@@ -166,23 +165,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
 
 
-  
+
   class BluetoothLEManufacturerData : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEManufacturerData").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("data").ToLocalChecked(), DataGetter, DataSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("companyId").ToLocalChecked(), CompanyIdGetter, CompanyIdSetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -197,13 +196,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEManufacturerData(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -242,14 +241,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -279,7 +278,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         {
           unsigned short arg0 = static_cast<unsigned short>(Nan::To<int32_t>(info[0]).FromMaybe(0));
           ::Windows::Storage::Streams::IBuffer^ arg1 = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(info[1]));
-          
+
           winRtInstance = ref new ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData(arg0,arg1);
         }
         catch (Platform::Exception ^exception)
@@ -303,7 +302,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -328,14 +327,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
 
 
 
     static void DataGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^>(info.This()))
       {
         return;
@@ -343,7 +342,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEManufacturerData *wrapper = BluetoothLEManufacturerData::Unwrap<BluetoothLEManufacturerData>(info.This());
 
-      try 
+      try
       {
         ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->Data;
         info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
@@ -355,11 +354,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void DataSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -373,9 +372,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEManufacturerData *wrapper = BluetoothLEManufacturerData::Unwrap<BluetoothLEManufacturerData>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::Storage::Streams::IBuffer^ winRtValue = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(value));
 
         wrapper->_instance->Data = winRtValue;
@@ -385,11 +384,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void CompanyIdGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^>(info.This()))
       {
         return;
@@ -397,7 +396,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEManufacturerData *wrapper = BluetoothLEManufacturerData::Unwrap<BluetoothLEManufacturerData>(info.This());
 
-      try 
+      try
       {
         unsigned short result = wrapper->_instance->CompanyId;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -409,11 +408,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void CompanyIdSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!value->IsInt32())
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -427,9 +426,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEManufacturerData *wrapper = BluetoothLEManufacturerData::Unwrap<BluetoothLEManufacturerData>(info.This());
 
-      try 
+      try
       {
-        
+
         unsigned short winRtValue = static_cast<unsigned short>(Nan::To<int32_t>(value).FromMaybe(0));
 
         wrapper->_instance->CompanyId = winRtValue;
@@ -439,7 +438,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
 
 
   private:
@@ -478,20 +477,20 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisementDataSection : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisementDataSection").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("dataType").ToLocalChecked(), DataTypeGetter, DataTypeSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("data").ToLocalChecked(), DataGetter, DataSetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -506,13 +505,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisementDataSection(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -551,14 +550,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -588,7 +587,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         {
           unsigned char arg0 = static_cast<unsigned char>(Nan::To<int32_t>(info[0]).FromMaybe(0));
           ::Windows::Storage::Streams::IBuffer^ arg1 = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(info[1]));
-          
+
           winRtInstance = ref new ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection(arg0,arg1);
         }
         catch (Platform::Exception ^exception)
@@ -612,7 +611,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -637,14 +636,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
 
 
 
     static void DataTypeGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^>(info.This()))
       {
         return;
@@ -652,7 +651,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementDataSection *wrapper = BluetoothLEAdvertisementDataSection::Unwrap<BluetoothLEAdvertisementDataSection>(info.This());
 
-      try 
+      try
       {
         unsigned char result = wrapper->_instance->DataType;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -664,11 +663,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void DataTypeSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!value->IsInt32())
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -682,9 +681,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementDataSection *wrapper = BluetoothLEAdvertisementDataSection::Unwrap<BluetoothLEAdvertisementDataSection>(info.This());
 
-      try 
+      try
       {
-        
+
         unsigned char winRtValue = static_cast<unsigned char>(Nan::To<int32_t>(value).FromMaybe(0));
 
         wrapper->_instance->DataType = winRtValue;
@@ -694,11 +693,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void DataGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^>(info.This()))
       {
         return;
@@ -706,7 +705,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementDataSection *wrapper = BluetoothLEAdvertisementDataSection::Unwrap<BluetoothLEAdvertisementDataSection>(info.This());
 
-      try 
+      try
       {
         ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->Data;
         info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
@@ -718,11 +717,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void DataSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -736,9 +735,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementDataSection *wrapper = BluetoothLEAdvertisementDataSection::Unwrap<BluetoothLEAdvertisementDataSection>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::Storage::Streams::IBuffer^ winRtValue = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(value));
 
         wrapper->_instance->Data = winRtValue;
@@ -748,7 +747,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
 
 
   private:
@@ -787,27 +786,27 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisement : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisement").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "getManufacturerDataByCompanyId", GetManufacturerDataByCompanyId);
       Nan::SetPrototypeMethod(localRef, "getSectionsByType", GetSectionsByType);
-      
-                        
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("localName").ToLocalChecked(), LocalNameGetter, LocalNameSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("flags").ToLocalChecked(), FlagsGetter, FlagsSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("dataSections").ToLocalChecked(), DataSectionsGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("manufacturerData").ToLocalChecked(), ManufacturerDataGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("serviceUuids").ToLocalChecked(), ServiceUuidsGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -822,13 +821,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisement(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -867,14 +866,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -911,7 +910,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -936,7 +935,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
     static void GetManufacturerDataByCompanyId(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -954,10 +953,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         try
         {
           unsigned short arg0 = static_cast<unsigned short>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           ::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^>^ result;
           result = wrapper->_instance->GetManufacturerDataByCompanyId(arg0);
-          info.GetReturnValue().Set(NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^>::CreateVectorViewWrapper(result, 
+          info.GetReturnValue().Set(NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^>::CreateVectorViewWrapper(result,
             [](::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^ val) -> Local<Value> {
               return WrapBluetoothLEManufacturerData(val);
             },
@@ -976,7 +975,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -999,10 +998,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         try
         {
           unsigned char arg0 = static_cast<unsigned char>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           ::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^>^ result;
           result = wrapper->_instance->GetSectionsByType(arg0);
-          info.GetReturnValue().Set(NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^>::CreateVectorViewWrapper(result, 
+          info.GetReturnValue().Set(NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^>::CreateVectorViewWrapper(result,
             [](::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^ val) -> Local<Value> {
               return WrapBluetoothLEAdvertisementDataSection(val);
             },
@@ -1021,7 +1020,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1033,7 +1032,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     static void LocalNameGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^>(info.This()))
       {
         return;
@@ -1041,7 +1040,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisement *wrapper = BluetoothLEAdvertisement::Unwrap<BluetoothLEAdvertisement>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->LocalName;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -1053,11 +1052,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void LocalNameSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!value->IsString())
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -1071,9 +1070,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisement *wrapper = BluetoothLEAdvertisement::Unwrap<BluetoothLEAdvertisement>(info.This());
 
-      try 
+      try
       {
-        
+
         Platform::String^ winRtValue = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
 
         wrapper->_instance->LocalName = winRtValue;
@@ -1083,11 +1082,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void FlagsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^>(info.This()))
       {
         return;
@@ -1095,7 +1094,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisement *wrapper = BluetoothLEAdvertisement::Unwrap<BluetoothLEAdvertisement>(info.This());
 
-      try 
+      try
       {
         ::Platform::IBox<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFlags>^ result = wrapper->_instance->Flags;
         info.GetReturnValue().Set(result ? static_cast<Local<Value>>(Nan::New<Integer>(static_cast<int>(result->Value))) : Undefined());
@@ -1107,11 +1106,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void FlagsSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!value->IsInt32())
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -1125,9 +1124,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisement *wrapper = BluetoothLEAdvertisement::Unwrap<BluetoothLEAdvertisement>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Platform::IBox<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFlags>^ winRtValue = ref new ::Platform::Box<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFlags>(static_cast<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFlags>(Nan::To<int32_t>(value).FromMaybe(0)));
 
         wrapper->_instance->Flags = winRtValue;
@@ -1137,11 +1136,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void DataSectionsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^>(info.This()))
       {
         return;
@@ -1149,10 +1148,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisement *wrapper = BluetoothLEAdvertisement::Unwrap<BluetoothLEAdvertisement>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IVector<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^>^ result = wrapper->_instance->DataSections;
-        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^>::CreateVectorWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^>::CreateVectorWrapper(result,
             [](::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataSection^ val) -> Local<Value> {
               return WrapBluetoothLEAdvertisementDataSection(val);
             },
@@ -1171,11 +1170,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ManufacturerDataGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^>(info.This()))
       {
         return;
@@ -1183,10 +1182,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisement *wrapper = BluetoothLEAdvertisement::Unwrap<BluetoothLEAdvertisement>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IVector<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^>^ result = wrapper->_instance->ManufacturerData;
-        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^>::CreateVectorWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^>::CreateVectorWrapper(result,
             [](::Windows::Devices::Bluetooth::Advertisement::BluetoothLEManufacturerData^ val) -> Local<Value> {
               return WrapBluetoothLEManufacturerData(val);
             },
@@ -1205,11 +1204,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ServiceUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^>(info.This()))
       {
         return;
@@ -1217,10 +1216,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisement *wrapper = BluetoothLEAdvertisement::Unwrap<BluetoothLEAdvertisement>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IVector<::Platform::Guid>^ result = wrapper->_instance->ServiceUuids;
-        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Platform::Guid>::CreateVectorWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Platform::Guid>::CreateVectorWrapper(result,
             [](::Platform::Guid val) -> Local<Value> {
               return NodeRT::Utils::GuidToJs(val);
             },
@@ -1239,7 +1238,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
 
 
   private:
@@ -1278,21 +1277,21 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisementBytePattern : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisementBytePattern").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("offset").ToLocalChecked(), OffsetGetter, OffsetSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("dataType").ToLocalChecked(), DataTypeGetter, DataTypeSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("data").ToLocalChecked(), DataGetter, DataSetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -1307,13 +1306,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisementBytePattern(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -1352,14 +1351,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -1391,7 +1390,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           unsigned char arg0 = static_cast<unsigned char>(Nan::To<int32_t>(info[0]).FromMaybe(0));
           short arg1 = static_cast<short>(Nan::To<int32_t>(info[1]).FromMaybe(0));
           ::Windows::Storage::Streams::IBuffer^ arg2 = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(info[2]));
-          
+
           winRtInstance = ref new ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern(arg0,arg1,arg2);
         }
         catch (Platform::Exception ^exception)
@@ -1415,7 +1414,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -1440,14 +1439,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
 
 
 
     static void OffsetGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^>(info.This()))
       {
         return;
@@ -1455,7 +1454,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementBytePattern *wrapper = BluetoothLEAdvertisementBytePattern::Unwrap<BluetoothLEAdvertisementBytePattern>(info.This());
 
-      try 
+      try
       {
         short result = wrapper->_instance->Offset;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -1467,11 +1466,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void OffsetSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!value->IsInt32())
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -1485,9 +1484,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementBytePattern *wrapper = BluetoothLEAdvertisementBytePattern::Unwrap<BluetoothLEAdvertisementBytePattern>(info.This());
 
-      try 
+      try
       {
-        
+
         short winRtValue = static_cast<short>(Nan::To<int32_t>(value).FromMaybe(0));
 
         wrapper->_instance->Offset = winRtValue;
@@ -1497,11 +1496,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void DataTypeGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^>(info.This()))
       {
         return;
@@ -1509,7 +1508,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementBytePattern *wrapper = BluetoothLEAdvertisementBytePattern::Unwrap<BluetoothLEAdvertisementBytePattern>(info.This());
 
-      try 
+      try
       {
         unsigned char result = wrapper->_instance->DataType;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -1521,11 +1520,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void DataTypeSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!value->IsInt32())
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -1539,9 +1538,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementBytePattern *wrapper = BluetoothLEAdvertisementBytePattern::Unwrap<BluetoothLEAdvertisementBytePattern>(info.This());
 
-      try 
+      try
       {
-        
+
         unsigned char winRtValue = static_cast<unsigned char>(Nan::To<int32_t>(value).FromMaybe(0));
 
         wrapper->_instance->DataType = winRtValue;
@@ -1551,11 +1550,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void DataGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^>(info.This()))
       {
         return;
@@ -1563,7 +1562,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementBytePattern *wrapper = BluetoothLEAdvertisementBytePattern::Unwrap<BluetoothLEAdvertisementBytePattern>(info.This());
 
-      try 
+      try
       {
         ::Windows::Storage::Streams::IBuffer^ result = wrapper->_instance->Data;
         info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IBuffer", result));
@@ -1575,11 +1574,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void DataSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -1593,9 +1592,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementBytePattern *wrapper = BluetoothLEAdvertisementBytePattern::Unwrap<BluetoothLEAdvertisementBytePattern>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::Storage::Streams::IBuffer^ winRtValue = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(value));
 
         wrapper->_instance->Data = winRtValue;
@@ -1605,7 +1604,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
 
 
   private:
@@ -1644,20 +1643,20 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisementFilter : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisementFilter").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("advertisement").ToLocalChecked(), AdvertisementGetter, AdvertisementSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("bytePatterns").ToLocalChecked(), BytePatternsGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -1672,13 +1671,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisementFilter(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -1717,14 +1716,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -1761,7 +1760,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -1786,14 +1785,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
 
 
 
     static void AdvertisementGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^>(info.This()))
       {
         return;
@@ -1801,7 +1800,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementFilter *wrapper = BluetoothLEAdvertisementFilter::Unwrap<BluetoothLEAdvertisementFilter>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^ result = wrapper->_instance->Advertisement;
         info.GetReturnValue().Set(WrapBluetoothLEAdvertisement(result));
@@ -1813,11 +1812,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void AdvertisementSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^>(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -1831,9 +1830,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementFilter *wrapper = BluetoothLEAdvertisementFilter::Unwrap<BluetoothLEAdvertisementFilter>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^ winRtValue = dynamic_cast<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^>(NodeRT::Utils::GetObjectInstance(value));
 
         wrapper->_instance->Advertisement = winRtValue;
@@ -1843,11 +1842,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void BytePatternsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^>(info.This()))
       {
         return;
@@ -1855,10 +1854,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementFilter *wrapper = BluetoothLEAdvertisementFilter::Unwrap<BluetoothLEAdvertisementFilter>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IVector<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^>^ result = wrapper->_instance->BytePatterns;
-        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^>::CreateVectorWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^>::CreateVectorWrapper(result,
             [](::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementBytePattern^ val) -> Local<Value> {
               return WrapBluetoothLEAdvertisementBytePattern(val);
             },
@@ -1877,7 +1876,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
 
 
   private:
@@ -1916,19 +1915,19 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisementWatcherStoppedEventArgs : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisementWatcherStoppedEventArgs").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("error").ToLocalChecked(), ErrorGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -1943,13 +1942,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisementWatcherStoppedEventArgs(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -1988,14 +1987,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -2020,7 +2019,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -2045,14 +2044,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
 
 
 
     static void ErrorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStoppedEventArgs^>(info.This()))
       {
         return;
@@ -2060,7 +2059,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcherStoppedEventArgs *wrapper = BluetoothLEAdvertisementWatcherStoppedEventArgs::Unwrap<BluetoothLEAdvertisementWatcherStoppedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::BluetoothError result = wrapper->_instance->Error;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -2072,7 +2071,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
 
 
   private:
@@ -2111,26 +2110,26 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisementWatcher : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisementWatcher").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "start", Start);
       Nan::SetPrototypeMethod(localRef, "stop", Stop);
-      
-                  
+
+
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
       Nan::SetPrototypeMethod(localRef,"on", AddListener);
       Nan::SetPrototypeMethod(localRef,"removeListener", RemoveListener);
       Nan::SetPrototypeMethod(localRef, "off", RemoveListener);
-            
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("signalStrengthFilter").ToLocalChecked(), SignalStrengthFilterGetter, SignalStrengthFilterSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("scanningMode").ToLocalChecked(), ScanningModeGetter, ScanningModeSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("advertisementFilter").ToLocalChecked(), AdvertisementFilterGetter, AdvertisementFilterSetter);
@@ -2139,7 +2138,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("minOutOfRangeTimeout").ToLocalChecked(), MinOutOfRangeTimeoutGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("minSamplingInterval").ToLocalChecked(), MinSamplingIntervalGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("status").ToLocalChecked(), StatusGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -2154,13 +2153,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisementWatcher(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2199,14 +2198,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -2234,7 +2233,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         try
         {
           ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^ arg0 = UnwrapBluetoothLEAdvertisementFilter(info[0]);
-          
+
           winRtInstance = ref new ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -2258,7 +2257,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -2283,7 +2282,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
     static void Start(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2300,7 +2299,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         try
         {
           wrapper->_instance->Start();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2308,7 +2307,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2330,7 +2329,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         try
         {
           wrapper->_instance->Stop();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2338,7 +2337,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2350,7 +2349,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     static void SignalStrengthFilterGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^>(info.This()))
       {
         return;
@@ -2358,7 +2357,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::BluetoothSignalStrengthFilter^ result = wrapper->_instance->SignalStrengthFilter;
         info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Devices.Bluetooth", "BluetoothSignalStrengthFilter", result));
@@ -2370,11 +2369,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void SignalStrengthFilterSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::BluetoothSignalStrengthFilter^>(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -2388,9 +2387,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::Devices::Bluetooth::BluetoothSignalStrengthFilter^ winRtValue = dynamic_cast<::Windows::Devices::Bluetooth::BluetoothSignalStrengthFilter^>(NodeRT::Utils::GetObjectInstance(value));
 
         wrapper->_instance->SignalStrengthFilter = winRtValue;
@@ -2400,11 +2399,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void ScanningModeGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^>(info.This()))
       {
         return;
@@ -2412,7 +2411,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEScanningMode result = wrapper->_instance->ScanningMode;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -2424,11 +2423,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ScanningModeSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!value->IsInt32())
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -2442,9 +2441,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEScanningMode winRtValue = static_cast<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEScanningMode>(Nan::To<int32_t>(value).FromMaybe(0));
 
         wrapper->_instance->ScanningMode = winRtValue;
@@ -2454,11 +2453,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void AdvertisementFilterGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^>(info.This()))
       {
         return;
@@ -2466,7 +2465,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^ result = wrapper->_instance->AdvertisementFilter;
         info.GetReturnValue().Set(WrapBluetoothLEAdvertisementFilter(result));
@@ -2478,11 +2477,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void AdvertisementFilterSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^>(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -2496,9 +2495,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^ winRtValue = dynamic_cast<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementFilter^>(NodeRT::Utils::GetObjectInstance(value));
 
         wrapper->_instance->AdvertisementFilter = winRtValue;
@@ -2508,11 +2507,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void MaxOutOfRangeTimeoutGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^>(info.This()))
       {
         return;
@@ -2520,7 +2519,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::TimeSpan result = wrapper->_instance->MaxOutOfRangeTimeout;
         info.GetReturnValue().Set(Nan::New<Number>(result.Duration/10000.0));
@@ -2532,11 +2531,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void MaxSamplingIntervalGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^>(info.This()))
       {
         return;
@@ -2544,7 +2543,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::TimeSpan result = wrapper->_instance->MaxSamplingInterval;
         info.GetReturnValue().Set(Nan::New<Number>(result.Duration/10000.0));
@@ -2556,11 +2555,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void MinOutOfRangeTimeoutGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^>(info.This()))
       {
         return;
@@ -2568,7 +2567,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::TimeSpan result = wrapper->_instance->MinOutOfRangeTimeout;
         info.GetReturnValue().Set(Nan::New<Number>(result.Duration/10000.0));
@@ -2580,11 +2579,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void MinSamplingIntervalGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^>(info.This()))
       {
         return;
@@ -2592,7 +2591,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::TimeSpan result = wrapper->_instance->MinSamplingInterval;
         info.GetReturnValue().Set(Nan::New<Number>(result.Duration/10000.0));
@@ -2604,11 +2603,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void StatusGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcher^>(info.This()))
       {
         return;
@@ -2616,7 +2615,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementWatcherStatus result = wrapper->_instance->Status;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -2628,7 +2627,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
 
 
     static void AddListener(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -2643,9 +2642,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       String::Value eventName(info[0]);
       auto str = *eventName;
-      
+
       Local<Function> callback = info[1].As<Function>();
-      
+
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       if (NodeRT::Utils::CaseInsenstiveEquals(L"received", str))
       {
@@ -2655,12 +2654,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 		  return;
         }
         BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -2712,12 +2711,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 		  return;
         }
         BluetoothLEAdvertisementWatcher *wrapper = BluetoothLEAdvertisementWatcher::Unwrap<BluetoothLEAdvertisementWatcher>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -2761,7 +2760,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         }
 
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
@@ -2804,7 +2803,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       Local<Function> callback = info[1].As<Function>();
       Local<Value> tokenMap = NodeRT::Utils::GetHiddenValue(callback, Nan::New<String>(REGISTRATION_TOKEN_MAP_PROPERTY_NAME).ToLocalChecked());
-                
+
       if (tokenMap.IsEmpty() || Nan::Equals(tokenMap, Undefined()).FromMaybe(false))
       {
         return;
@@ -2818,12 +2817,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
 
       OpaqueWrapper *opaqueWrapper = OpaqueWrapper::Unwrap<OpaqueWrapper>(opaqueWrapperObj.As<Object>());
-            
+
       long long tokenValue = (long long) opaqueWrapper->GetObjectInstance();
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       registrationToken.Value = tokenValue;
-        
-      try 
+
+      try
       {
         if (NodeRT::Utils::CaseInsenstiveEquals(L"received", str))
         {
@@ -2889,23 +2888,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisementReceivedEventArgs : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisementReceivedEventArgs").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("advertisement").ToLocalChecked(), AdvertisementGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("advertisementType").ToLocalChecked(), AdvertisementTypeGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("bluetoothAddress").ToLocalChecked(), BluetoothAddressGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("rawSignalStrengthInDBm").ToLocalChecked(), RawSignalStrengthInDBmGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("timestamp").ToLocalChecked(), TimestampGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -2920,13 +2919,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisementReceivedEventArgs(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2965,14 +2964,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -2997,7 +2996,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3022,14 +3021,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
 
 
 
     static void AdvertisementGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^>(info.This()))
       {
         return;
@@ -3037,7 +3036,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementReceivedEventArgs *wrapper = BluetoothLEAdvertisementReceivedEventArgs::Unwrap<BluetoothLEAdvertisementReceivedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^ result = wrapper->_instance->Advertisement;
         info.GetReturnValue().Set(WrapBluetoothLEAdvertisement(result));
@@ -3049,11 +3048,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void AdvertisementTypeGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^>(info.This()))
       {
         return;
@@ -3061,7 +3060,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementReceivedEventArgs *wrapper = BluetoothLEAdvertisementReceivedEventArgs::Unwrap<BluetoothLEAdvertisementReceivedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementType result = wrapper->_instance->AdvertisementType;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -3073,11 +3072,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void BluetoothAddressGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^>(info.This()))
       {
         return;
@@ -3085,7 +3084,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementReceivedEventArgs *wrapper = BluetoothLEAdvertisementReceivedEventArgs::Unwrap<BluetoothLEAdvertisementReceivedEventArgs>(info.This());
 
-      try 
+      try
       {
         unsigned __int64 result = wrapper->_instance->BluetoothAddress;
         info.GetReturnValue().Set(Nan::New<Number>(static_cast<double>(result)));
@@ -3097,11 +3096,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void RawSignalStrengthInDBmGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^>(info.This()))
       {
         return;
@@ -3109,7 +3108,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementReceivedEventArgs *wrapper = BluetoothLEAdvertisementReceivedEventArgs::Unwrap<BluetoothLEAdvertisementReceivedEventArgs>(info.This());
 
-      try 
+      try
       {
         short result = wrapper->_instance->RawSignalStrengthInDBm;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3121,11 +3120,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void TimestampGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementReceivedEventArgs^>(info.This()))
       {
         return;
@@ -3133,7 +3132,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementReceivedEventArgs *wrapper = BluetoothLEAdvertisementReceivedEventArgs::Unwrap<BluetoothLEAdvertisementReceivedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::DateTime result = wrapper->_instance->Timestamp;
         info.GetReturnValue().Set(NodeRT::Utils::DateTimeToJS(result));
@@ -3145,7 +3144,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
 
 
   private:
@@ -3184,17 +3183,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisementDataTypes : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisementDataTypes").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -3231,13 +3230,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisementDataTypes(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3276,14 +3275,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -3308,7 +3307,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3333,7 +3332,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
 
 
 
@@ -3342,7 +3341,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::AdvertisingInterval;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3354,12 +3353,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void AppearanceGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::Appearance;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3371,12 +3370,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void CompleteLocalNameGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::CompleteLocalName;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3388,12 +3387,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void CompleteService128BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::CompleteService128BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3405,12 +3404,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void CompleteService16BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::CompleteService16BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3422,12 +3421,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void CompleteService32BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::CompleteService32BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3439,12 +3438,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void FlagsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::Flags;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3456,12 +3455,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void IncompleteService128BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::IncompleteService128BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3473,12 +3472,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void IncompleteService16BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::IncompleteService16BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3490,12 +3489,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void IncompleteService32BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::IncompleteService32BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3507,12 +3506,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ManufacturerSpecificDataGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::ManufacturerSpecificData;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3524,12 +3523,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void PublicTargetAddressGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::PublicTargetAddress;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3541,12 +3540,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void RandomTargetAddressGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::RandomTargetAddress;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3558,12 +3557,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ServiceData128BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::ServiceData128BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3575,12 +3574,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ServiceData16BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::ServiceData16BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3592,12 +3591,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ServiceData32BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::ServiceData32BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3609,12 +3608,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ServiceSolicitation128BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::ServiceSolicitation128BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3626,12 +3625,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ServiceSolicitation16BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::ServiceSolicitation16BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3643,12 +3642,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ServiceSolicitation32BitUuidsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::ServiceSolicitation32BitUuids;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3660,12 +3659,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void ShortenedLocalNameGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::ShortenedLocalName;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3677,12 +3676,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void SlaveConnectionIntervalRangeGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::SlaveConnectionIntervalRange;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3694,12 +3693,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void TxPowerLevelGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
 
-      try 
+      try
       {
         unsigned char result = ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes::TxPowerLevel;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3711,7 +3710,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
 
   private:
     ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementDataTypes^ _instance;
@@ -3749,20 +3748,20 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisementPublisherStatusChangedEventArgs : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisementPublisherStatusChangedEventArgs").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("error").ToLocalChecked(), ErrorGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("status").ToLocalChecked(), StatusGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -3777,13 +3776,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisementPublisherStatusChangedEventArgs(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3822,14 +3821,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -3854,7 +3853,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3879,14 +3878,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
 
 
 
     static void ErrorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs^>(info.This()))
       {
         return;
@@ -3894,7 +3893,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementPublisherStatusChangedEventArgs *wrapper = BluetoothLEAdvertisementPublisherStatusChangedEventArgs::Unwrap<BluetoothLEAdvertisementPublisherStatusChangedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::BluetoothError result = wrapper->_instance->Error;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -3906,11 +3905,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void StatusGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatusChangedEventArgs^>(info.This()))
       {
         return;
@@ -3918,7 +3917,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementPublisherStatusChangedEventArgs *wrapper = BluetoothLEAdvertisementPublisherStatusChangedEventArgs::Unwrap<BluetoothLEAdvertisementPublisherStatusChangedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatus result = wrapper->_instance->Status;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -3930,7 +3929,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
 
 
   private:
@@ -3969,29 +3968,29 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
   class BluetoothLEAdvertisementPublisher : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("BluetoothLEAdvertisementPublisher").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "start", Start);
       Nan::SetPrototypeMethod(localRef, "stop", Stop);
-      
-                  
+
+
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
       Nan::SetPrototypeMethod(localRef,"on", AddListener);
       Nan::SetPrototypeMethod(localRef,"removeListener", RemoveListener);
       Nan::SetPrototypeMethod(localRef, "off", RemoveListener);
-            
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("advertisement").ToLocalChecked(), AdvertisementGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("status").ToLocalChecked(), StatusGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -4006,13 +4005,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
   private:
-    
+
     BluetoothLEAdvertisementPublisher(::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4051,14 +4050,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      
+
       ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -4086,7 +4085,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         try
         {
           ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^ arg0 = UnwrapBluetoothLEAdvertisement(info[0]);
-          
+
           winRtInstance = ref new ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -4110,7 +4109,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -4135,7 +4134,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     }
 
 
-  
+
     static void Start(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4152,7 +4151,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         try
         {
           wrapper->_instance->Start();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -4160,7 +4159,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4182,7 +4181,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         try
         {
           wrapper->_instance->Stop();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -4190,7 +4189,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4202,7 +4201,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     static void AdvertisementGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher^>(info.This()))
       {
         return;
@@ -4210,7 +4209,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementPublisher *wrapper = BluetoothLEAdvertisementPublisher::Unwrap<BluetoothLEAdvertisementPublisher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisement^ result = wrapper->_instance->Advertisement;
         info.GetReturnValue().Set(WrapBluetoothLEAdvertisement(result));
@@ -4222,11 +4221,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
     static void StatusGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisher^>(info.This()))
       {
         return;
@@ -4234,7 +4233,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       BluetoothLEAdvertisementPublisher *wrapper = BluetoothLEAdvertisementPublisher::Unwrap<BluetoothLEAdvertisementPublisher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Bluetooth::Advertisement::BluetoothLEAdvertisementPublisherStatus result = wrapper->_instance->Status;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -4246,7 +4245,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
     }
-    
+
 
 
     static void AddListener(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -4261,9 +4260,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       String::Value eventName(info[0]);
       auto str = *eventName;
-      
+
       Local<Function> callback = info[1].As<Function>();
-      
+
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       if (NodeRT::Utils::CaseInsenstiveEquals(L"statusChanged", str))
       {
@@ -4273,12 +4272,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 		  return;
         }
         BluetoothLEAdvertisementPublisher *wrapper = BluetoothLEAdvertisementPublisher::Unwrap<BluetoothLEAdvertisementPublisher>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -4322,7 +4321,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         }
 
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
@@ -4365,7 +4364,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 
       Local<Function> callback = info[1].As<Function>();
       Local<Value> tokenMap = NodeRT::Utils::GetHiddenValue(callback, Nan::New<String>(REGISTRATION_TOKEN_MAP_PROPERTY_NAME).ToLocalChecked());
-                
+
       if (tokenMap.IsEmpty() || Nan::Equals(tokenMap, Undefined()).FromMaybe(false))
       {
         return;
@@ -4379,12 +4378,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
 
       OpaqueWrapper *opaqueWrapper = OpaqueWrapper::Unwrap<OpaqueWrapper>(opaqueWrapperObj.As<Object>());
-            
+
       long long tokenValue = (long long) opaqueWrapper->GetObjectInstance();
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       registrationToken.Value = tokenValue;
-        
-      try 
+
+      try
       {
         if (NodeRT::Utils::CaseInsenstiveEquals(L"statusChanged", str))
         {
@@ -4438,7 +4437,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
     BluetoothLEAdvertisementPublisher::Init(exports);
   }
 
-} } } } } 
+} } } } }
 
 NAN_MODULE_INIT(init)
 {
@@ -4449,7 +4448,7 @@ NAN_MODULE_INIT(init)
     Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"error in CoInitializeEx()")));
     return;
   }*/
-  
+
   NodeRT::Windows::Devices::Bluetooth::Advertisement::InitBluetoothLEScanningModeEnum(target);
   NodeRT::Windows::Devices::Bluetooth::Advertisement::InitBluetoothLEAdvertisementFlagsEnum(target);
   NodeRT::Windows::Devices::Bluetooth::Advertisement::InitBluetoothLEAdvertisementTypeEnum(target);

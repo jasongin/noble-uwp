@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation
-// All rights reserved. 
+// All rights reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 //
-// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT. 
+// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT.
 //
 // See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.
 
@@ -35,7 +35,6 @@ const char* REGISTRATION_TOKEN_MAP_PROPERTY_NAME = "__registrationTokenMap__";
 
 using v8::Array;
 using v8::String;
-using v8::Handle;
 using v8::Value;
 using v8::Boolean;
 using v8::Integer;
@@ -59,17 +58,17 @@ using Nan::HandleScope;
 using Nan::TryCatch;
 using namespace concurrency;
 
-namespace NodeRT { namespace Windows { namespace Devices { namespace Radios { 
+namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
 
   v8::Local<v8::Value> WrapRadio(::Windows::Devices::Radios::Radio^ wintRtInstance);
   ::Windows::Devices::Radios::Radio^ UnwrapRadio(Local<Value> value);
-  
+
 
 
   static void InitRadioStateEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("RadioState").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("unknown").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Radios::RadioState::Unknown)));
@@ -82,7 +81,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
   static void InitRadioKindEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("RadioKind").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("other").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Radios::RadioKind::Other)));
@@ -96,7 +95,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
   static void InitRadioAccessStatusEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("RadioAccessStatus").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("unspecified").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Radios::RadioAccessStatus::Unspecified)));
@@ -107,34 +106,34 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
 
 
 
-  
+
   class Radio : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("Radio").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
+
       Local<Function> func;
       Local<FunctionTemplate> funcTemplate;
-                  
+
       Nan::SetPrototypeMethod(localRef, "setStateAsync", SetStateAsync);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
       Nan::SetPrototypeMethod(localRef,"on", AddListener);
       Nan::SetPrototypeMethod(localRef,"removeListener", RemoveListener);
       Nan::SetPrototypeMethod(localRef, "off", RemoveListener);
-            
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("kind").ToLocalChecked(), KindGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("name").ToLocalChecked(), NameGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("state").ToLocalChecked(), StateGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -156,13 +155,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
     }
 
   private:
-    
+
     Radio(::Windows::Devices::Radios::Radio^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -201,14 +200,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           return;
         }
       }
-      
+
       ::Windows::Devices::Radios::Radio^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Radios::Radio^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Radios::Radio^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -233,7 +232,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -276,7 +275,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
       Radio *wrapper = Radio::Unwrap<Radio>(info.This());
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Radios::RadioAccessStatus>^ op;
-    
+
 
       if (info.Length() == 2
         && info[0]->IsInt32())
@@ -284,7 +283,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         try
         {
           ::Windows::Devices::Radios::RadioState arg0 = static_cast<::Windows::Devices::Radios::RadioState>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           op = wrapper->_instance->SetStateAsync(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -293,17 +292,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Radios::RadioAccessStatus> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Radios::RadioAccessStatus> t)
+      {
         try
         {
           auto result = t.get();
@@ -319,7 +318,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -334,16 +333,16 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
-  
+
 
     static void GetRadiosAsync(Nan::NAN_METHOD_ARGS_TYPE info)
     {
@@ -356,7 +355,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
       }
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Radios::Radio^>^>^ op;
-      
+
 
       if (info.Length() == 1)
       {
@@ -370,28 +369,28 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Radios::Radio^>^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Radios::Radio^>^> t)
+      {
         try
         {
           auto result = t.get();
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
-            
-            Local<Value> error; 
+
+            Local<Value> error;
             Local<Value> arg1;
             {
               TryCatch tryCatch;
-              arg1 = NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Radios::Radio^>::CreateVectorViewWrapper(result, 
+              arg1 = NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Radios::Radio^>::CreateVectorViewWrapper(result,
             [](::Windows::Devices::Radios::Radio^ val) -> Local<Value> {
               return WrapRadio(val);
             },
@@ -406,7 +405,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -421,13 +420,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-          
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
     static void FromIdAsync(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -441,7 +440,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
       }
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Radios::Radio^>^ op;
-      
+
 
       if (info.Length() == 2
         && info[0]->IsString())
@@ -449,7 +448,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           op = ::Windows::Devices::Radios::Radio::FromIdAsync(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -458,24 +457,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Radios::Radio^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Radios::Radio^> t)
+      {
         try
         {
           auto result = t.get();
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
-            
-            Local<Value> error; 
+
+            Local<Value> error;
             Local<Value> arg1;
             {
               TryCatch tryCatch;
@@ -484,7 +483,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -499,13 +498,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-          
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
     static void RequestAccessAsync(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -519,7 +518,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
       }
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Radios::RadioAccessStatus>^ op;
-      
+
 
       if (info.Length() == 1)
       {
@@ -533,24 +532,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Radios::RadioAccessStatus> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Radios::RadioAccessStatus> t)
+      {
         try
         {
           auto result = t.get();
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
-            
-            Local<Value> error; 
+
+            Local<Value> error;
             Local<Value> arg1;
             {
               TryCatch tryCatch;
@@ -559,7 +558,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -574,13 +573,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-          
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
 
@@ -603,7 +602,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -613,7 +612,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
     static void KindGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Radios::Radio^>(info.This()))
       {
         return;
@@ -621,7 +620,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
 
       Radio *wrapper = Radio::Unwrap<Radio>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Radios::RadioKind result = wrapper->_instance->Kind;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -633,11 +632,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         return;
       }
     }
-    
+
     static void NameGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Radios::Radio^>(info.This()))
       {
         return;
@@ -645,7 +644,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
 
       Radio *wrapper = Radio::Unwrap<Radio>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Name;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -657,11 +656,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         return;
       }
     }
-    
+
     static void StateGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Radios::Radio^>(info.This()))
       {
         return;
@@ -669,7 +668,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
 
       Radio *wrapper = Radio::Unwrap<Radio>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Radios::RadioState result = wrapper->_instance->State;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -681,7 +680,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         return;
       }
     }
-    
+
 
 
     static void AddListener(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -696,9 +695,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
 
       String::Value eventName(info[0]);
       auto str = *eventName;
-      
+
       Local<Function> callback = info[1].As<Function>();
-      
+
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       if (NodeRT::Utils::CaseInsenstiveEquals(L"stateChanged", str))
       {
@@ -708,12 +707,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
 		  return;
         }
         Radio *wrapper = Radio::Unwrap<Radio>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -757,7 +756,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
         }
 
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
@@ -800,7 +799,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
 
       Local<Function> callback = info[1].As<Function>();
       Local<Value> tokenMap = NodeRT::Utils::GetHiddenValue(callback, Nan::New<String>(REGISTRATION_TOKEN_MAP_PROPERTY_NAME).ToLocalChecked());
-                
+
       if (tokenMap.IsEmpty() || Nan::Equals(tokenMap, Undefined()).FromMaybe(false))
       {
         return;
@@ -814,12 +813,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
       }
 
       OpaqueWrapper *opaqueWrapper = OpaqueWrapper::Unwrap<OpaqueWrapper>(opaqueWrapperObj.As<Object>());
-            
+
       long long tokenValue = (long long) opaqueWrapper->GetObjectInstance();
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       registrationToken.Value = tokenValue;
-        
-      try 
+
+      try
       {
         if (NodeRT::Utils::CaseInsenstiveEquals(L"stateChanged", str))
         {
@@ -873,7 +872,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Radios {
     Radio::Init(exports);
   }
 
-} } } } 
+} } } }
 
 NAN_MODULE_INIT(init)
 {
@@ -884,7 +883,7 @@ NAN_MODULE_INIT(init)
     Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"error in CoInitializeEx()")));
     return;
   }*/
-  
+
   NodeRT::Windows::Devices::Radios::InitRadioStateEnum(target);
   NodeRT::Windows::Devices::Radios::InitRadioKindEnum(target);
   NodeRT::Windows::Devices::Radios::InitRadioAccessStatusEnum(target);

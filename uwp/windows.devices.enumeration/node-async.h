@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation
-// All rights reserved. 
+// All rights reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 //
-// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT. 
+// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT.
 //
 // See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.
 
@@ -36,7 +36,6 @@ namespace NodeUtils
   using v8::Exception;
   using v8::Object;
   using v8::Local;
-  using v8::Handle;
   using v8::Value;
   using Nan::New;
   using Nan::HandleScope;
@@ -46,14 +45,14 @@ namespace NodeUtils
   using Nan::Null;
   using Nan::Persistent;
   using Nan::Undefined;
-  
+
   typedef std::function<void (int, Handle<Value>*)> InvokeCallbackDelegate;
-  
+
   class Async
   {
   public:
-    template<typename TInput, typename TResult> 
-    struct Baton 
+    template<typename TInput, typename TResult>
+    struct Baton
     {
       int error_code;
       std::wstring error_message;
@@ -64,7 +63,7 @@ namespace NodeUtils
       std::shared_ptr<Persistent<Value>> callback_args;
       unsigned callback_args_size;
 
-      Baton() 
+      Baton()
       {
         callback_args_size = 0;
       }
@@ -85,7 +84,7 @@ namespace NodeUtils
           callback_info.get()[i].Reset(argv[i]);
         }
       }
-      
+
       virtual ~Baton()
       {
         for (int i = 0; i < callback_args_size; i++)
@@ -117,7 +116,7 @@ namespace NodeUtils
       }
 
       static uv_async_t* NewAsyncToken(
-        Handle<Function> callback, 
+        Handle<Function> callback,
         Handle<Value> receiver)
       {
         uv_async_t* asyncHandle = NewAsyncToken();
@@ -136,7 +135,7 @@ namespace NodeUtils
       }
 
       static uv_idle_t* NewIdleToken(
-        Handle<Function> callback, 
+        Handle<Function> callback,
         Handle<Value> receiver)
       {
         uv_idle_t* idleHandle = NewIdleToken();
@@ -158,7 +157,7 @@ namespace NodeUtils
 
       static void SetHandleCallbackData(
         void* handleData,
-        Handle<Function> callback, 
+        Handle<Function> callback,
         Handle<Value> receiver)
       {
         TokenData* Token = static_cast<TokenData*>(handleData);
@@ -174,17 +173,17 @@ namespace NodeUtils
     };
 
   public:
-    template<typename TInput, typename TResult> 
+    template<typename TInput, typename TResult>
     static void __cdecl Run(
-      std::shared_ptr<TInput> input, 
-      std::function<void (Baton<TInput, TResult>*)> doWork, 
-      std::function<void (Baton<TInput, TResult>*)> afterWork, 
+      std::shared_ptr<TInput> input,
+      std::function<void (Baton<TInput, TResult>*)> doWork,
+      std::function<void (Baton<TInput, TResult>*)> afterWork,
       Handle<Function> callback,
       Handle<Value> receiver = Handle<Value>())
     {
       HandleScope scope;
       Local<Object> callbackData = CreateCallbackData(callback, receiver);
-      
+
       Baton<TInput, TResult>* baton = new Baton<TInput, TResult>();
       baton->request.data = baton;
       baton->callbackData.Reset(callbackData);
@@ -202,7 +201,7 @@ namespace NodeUtils
     }
 
     static uv_async_t* __cdecl GetAsyncToken(
-      Handle<Function> callback, 
+      Handle<Function> callback,
       Handle<Value> receiver = Handle<Value>())
     {
       return TokenData::NewAsyncToken(callback, receiver);
@@ -214,7 +213,7 @@ namespace NodeUtils
     }
 
     static uv_idle_t* __cdecl GetIdleToken(
-      Handle<Function> callback, 
+      Handle<Function> callback,
       Handle<Value> receiver = Handle<Value>())
     {
       return TokenData::NewIdleToken(callback, receiver);
@@ -305,14 +304,14 @@ namespace NodeUtils
       if (!callback.IsEmpty() && !callback->Equals(Undefined()))
       {
         callbackData = New<Object>();
-        
+
         if (!receiver.IsEmpty())
         {
           Nan::SetPrototype(callbackData, receiver);
         }
-        
+
         Nan::Set(callbackData, New<String>("callback").ToLocalChecked(), callback);
-      
+
         // get the current domain:
         Local<Value> currentDomain = Undefined();
 
@@ -328,8 +327,8 @@ namespace NodeUtils
       return scope.Escape(callbackData);
     };
 
-    template<typename TInput, typename TResult> 
-    static void __cdecl AsyncWork(uv_work_t* req) 
+    template<typename TInput, typename TResult>
+    static void __cdecl AsyncWork(uv_work_t* req)
     {
       // No HandleScope!
 
@@ -342,14 +341,14 @@ namespace NodeUtils
     }
 
 
-    template<typename TInput, typename TResult> 
-    static void __cdecl AsyncAfter(uv_work_t* req, int status) 
+    template<typename TInput, typename TResult>
+    static void __cdecl AsyncAfter(uv_work_t* req, int status)
     {
       HandleScope scope;;
       Baton<TInput, TResult>* baton = static_cast<Baton<TInput, TResult>*>(req->data);
 
       // typical AfterWorkFunc implementation
-      //if (baton->error) 
+      //if (baton->error)
       //{
       //  Handle<Value> err = Exception::Error(...);
       //  Handle<Value> argv[] = { err };
@@ -359,10 +358,10 @@ namespace NodeUtils
       //{
       //  Handle<Value> argv[] = { Undefined(), ... };
       //  baton->setCallbackArgs(argv, _countof(argv));
-      //} 
+      //}
 
       baton->afterWork(baton);
-      
+
       if (!baton->callbackData.IsEmpty())
       {
         // call the callback, using domains and all
@@ -375,13 +374,13 @@ namespace NodeUtils
 
         MakeCallback(New(baton->callbackData), New<String>("callback").ToLocalChecked(), argc, handlesArr.get());
       }
-      
+
       baton->callbackData.Reset();
       delete baton;
     }
-    
+
     // called after the async handle is closed in order to free it's memory
-    static void __cdecl AyncCloseCb(uv_handle_t* handle) 
+    static void __cdecl AyncCloseCb(uv_handle_t* handle)
     {
       if (handle != nullptr)
       {

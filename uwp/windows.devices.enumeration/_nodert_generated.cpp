@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation
-// All rights reserved. 
+// All rights reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 //
-// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT. 
+// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT.
 //
 // See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.
 
@@ -35,7 +35,6 @@ const char* REGISTRATION_TOKEN_MAP_PROPERTY_NAME = "__registrationTokenMap__";
 
 using v8::Array;
 using v8::String;
-using v8::Handle;
 using v8::Value;
 using v8::Boolean;
 using v8::Integer;
@@ -59,80 +58,80 @@ using Nan::HandleScope;
 using Nan::TryCatch;
 using namespace concurrency;
 
-namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration { 
+namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration {
 
   v8::Local<v8::Value> WrapDeviceConnectionChangeTriggerDetails(::Windows::Devices::Enumeration::DeviceConnectionChangeTriggerDetails^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceConnectionChangeTriggerDetails^ UnwrapDeviceConnectionChangeTriggerDetails(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDevicePickerAppearance(::Windows::Devices::Enumeration::DevicePickerAppearance^ wintRtInstance);
   ::Windows::Devices::Enumeration::DevicePickerAppearance^ UnwrapDevicePickerAppearance(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceSelectedEventArgs(::Windows::Devices::Enumeration::DeviceSelectedEventArgs^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceSelectedEventArgs^ UnwrapDeviceSelectedEventArgs(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceDisconnectButtonClickedEventArgs(::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs^ UnwrapDeviceDisconnectButtonClickedEventArgs(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDevicePickerFilter(::Windows::Devices::Enumeration::DevicePickerFilter^ wintRtInstance);
   ::Windows::Devices::Enumeration::DevicePickerFilter^ UnwrapDevicePickerFilter(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDevicePicker(::Windows::Devices::Enumeration::DevicePicker^ wintRtInstance);
   ::Windows::Devices::Enumeration::DevicePicker^ UnwrapDevicePicker(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceThumbnail(::Windows::Devices::Enumeration::DeviceThumbnail^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceThumbnail^ UnwrapDeviceThumbnail(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapEnclosureLocation(::Windows::Devices::Enumeration::EnclosureLocation^ wintRtInstance);
   ::Windows::Devices::Enumeration::EnclosureLocation^ UnwrapEnclosureLocation(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceInformationUpdate(::Windows::Devices::Enumeration::DeviceInformationUpdate^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceInformationUpdate^ UnwrapDeviceInformationUpdate(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceInformationCollection(::Windows::Devices::Enumeration::DeviceInformationCollection^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceInformationCollection^ UnwrapDeviceInformationCollection(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceWatcher(::Windows::Devices::Enumeration::DeviceWatcher^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceWatcher^ UnwrapDeviceWatcher(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceInformation(::Windows::Devices::Enumeration::DeviceInformation^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceInformation^ UnwrapDeviceInformation(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDevicePairingResult(::Windows::Devices::Enumeration::DevicePairingResult^ wintRtInstance);
   ::Windows::Devices::Enumeration::DevicePairingResult^ UnwrapDevicePairingResult(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceUnpairingResult(::Windows::Devices::Enumeration::DeviceUnpairingResult^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceUnpairingResult^ UnwrapDeviceUnpairingResult(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapIDevicePairingSettings(::Windows::Devices::Enumeration::IDevicePairingSettings^ wintRtInstance);
   ::Windows::Devices::Enumeration::IDevicePairingSettings^ UnwrapIDevicePairingSettings(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDevicePairingRequestedEventArgs(::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs^ wintRtInstance);
   ::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs^ UnwrapDevicePairingRequestedEventArgs(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceInformationCustomPairing(::Windows::Devices::Enumeration::DeviceInformationCustomPairing^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceInformationCustomPairing^ UnwrapDeviceInformationCustomPairing(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceInformationPairing(::Windows::Devices::Enumeration::DeviceInformationPairing^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceInformationPairing^ UnwrapDeviceInformationPairing(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceAccessChangedEventArgs(::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs^ UnwrapDeviceAccessChangedEventArgs(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceAccessInformation(::Windows::Devices::Enumeration::DeviceAccessInformation^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceAccessInformation^ UnwrapDeviceAccessInformation(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceWatcherEvent(::Windows::Devices::Enumeration::DeviceWatcherEvent^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceWatcherEvent^ UnwrapDeviceWatcherEvent(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeviceWatcherTriggerDetails(::Windows::Devices::Enumeration::DeviceWatcherTriggerDetails^ wintRtInstance);
   ::Windows::Devices::Enumeration::DeviceWatcherTriggerDetails^ UnwrapDeviceWatcherTriggerDetails(Local<Value> value);
-  
+
 
 
   static void InitDevicePickerDisplayStatusOptionsEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DevicePickerDisplayStatusOptions").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("none").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DevicePickerDisplayStatusOptions::None)));
@@ -145,7 +144,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitDeviceClassEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DeviceClass").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("all").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DeviceClass::All)));
@@ -161,7 +160,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitDeviceWatcherStatusEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DeviceWatcherStatus").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("created").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DeviceWatcherStatus::Created)));
@@ -176,7 +175,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitPanelEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("Panel").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("unknown").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::Panel::Unknown)));
@@ -192,7 +191,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitDeviceInformationKindEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DeviceInformationKind").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("unknown").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DeviceInformationKind::Unknown)));
@@ -209,7 +208,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitDeviceWatcherEventKindEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DeviceWatcherEventKind").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("add").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DeviceWatcherEventKind::Add)));
@@ -221,7 +220,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitDevicePairingKindsEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DevicePairingKinds").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("none").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DevicePairingKinds::None)));
@@ -235,7 +234,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitDevicePairingResultStatusEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DevicePairingResultStatus").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("paired").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DevicePairingResultStatus::Paired)));
@@ -264,7 +263,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitDeviceUnpairingResultStatusEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DeviceUnpairingResultStatus").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("unpaired").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DeviceUnpairingResultStatus::Unpaired)));
@@ -278,7 +277,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitDevicePairingProtectionLevelEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DevicePairingProtectionLevel").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("default").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DevicePairingProtectionLevel::Default)));
@@ -291,7 +290,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   static void InitDeviceAccessStatusEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("DeviceAccessStatus").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("unspecified").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Devices::Enumeration::DeviceAccessStatus::Unspecified)));
@@ -302,7 +301,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
 
 
-  
+
   static bool IsColorJsObject(Local<Value> value)
   {
     if (!value->IsObject())
@@ -320,7 +319,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   {
     HandleScope scope;
     ::Windows::UI::Color returnValue;
-    
+
     if (!value->IsObject())
     {
       Nan::ThrowError(Nan::TypeError(NodeRT::Utils::NewString(L"Unexpected type, expected an object")));
@@ -339,11 +338,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
     Local<Object> obj = Nan::New<Object>();
 
-    
+
     return scope.Escape(obj);
   }
 
-  
+
   static bool IsRectJsObject(Local<Value> value)
   {
     if (!value->IsObject())
@@ -361,7 +360,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
   {
     HandleScope scope;
     ::Windows::Foundation::Rect returnValue;
-    
+
     if (!value->IsObject())
     {
       Nan::ThrowError(Nan::TypeError(NodeRT::Utils::NewString(L"Unexpected type, expected an object")));
@@ -380,26 +379,26 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
     Local<Object> obj = Nan::New<Object>();
 
-    
+
     return scope.Escape(obj);
   }
 
-  
+
   class DeviceConnectionChangeTriggerDetails : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceConnectionChangeTriggerDetails").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("deviceId").ToLocalChecked(), DeviceIdGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -414,13 +413,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceConnectionChangeTriggerDetails(::Windows::Devices::Enumeration::DeviceConnectionChangeTriggerDetails^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -459,14 +458,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceConnectionChangeTriggerDetails^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceConnectionChangeTriggerDetails^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceConnectionChangeTriggerDetails^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -491,7 +490,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -516,14 +515,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void DeviceIdGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceConnectionChangeTriggerDetails^>(info.This()))
       {
         return;
@@ -531,7 +530,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceConnectionChangeTriggerDetails *wrapper = DeviceConnectionChangeTriggerDetails::Unwrap<DeviceConnectionChangeTriggerDetails>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->DeviceId;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -543,7 +542,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -582,17 +581,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DevicePickerAppearance : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DevicePickerAppearance").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("title").ToLocalChecked(), TitleGetter, TitleSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("selectedForegroundColor").ToLocalChecked(), SelectedForegroundColorGetter, SelectedForegroundColorSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("selectedBackgroundColor").ToLocalChecked(), SelectedBackgroundColorGetter, SelectedBackgroundColorSetter);
@@ -600,7 +599,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("foregroundColor").ToLocalChecked(), ForegroundColorGetter, ForegroundColorSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("backgroundColor").ToLocalChecked(), BackgroundColorGetter, BackgroundColorSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("accentColor").ToLocalChecked(), AccentColorGetter, AccentColorSetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -615,13 +614,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DevicePickerAppearance(::Windows::Devices::Enumeration::DevicePickerAppearance^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -660,14 +659,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DevicePickerAppearance^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerAppearance^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DevicePickerAppearance^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -692,7 +691,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -717,14 +716,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void TitleGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerAppearance^>(info.This()))
       {
         return;
@@ -732,7 +731,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Title;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -744,11 +743,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void TitleSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!value->IsString())
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -762,9 +761,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
-        
+
         Platform::String^ winRtValue = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
 
         wrapper->_instance->Title = winRtValue;
@@ -774,11 +773,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void SelectedForegroundColorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerAppearance^>(info.This()))
       {
         return;
@@ -786,7 +785,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
         ::Windows::UI::Color result = wrapper->_instance->SelectedForegroundColor;
         info.GetReturnValue().Set(NodeRT::Utils::ColorToJs(result));
@@ -798,11 +797,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void SelectedForegroundColorSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsColor(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -816,9 +815,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::UI::Color winRtValue = NodeRT::Utils::ColorFromJs(value);
 
         wrapper->_instance->SelectedForegroundColor = winRtValue;
@@ -828,11 +827,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void SelectedBackgroundColorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerAppearance^>(info.This()))
       {
         return;
@@ -840,7 +839,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
         ::Windows::UI::Color result = wrapper->_instance->SelectedBackgroundColor;
         info.GetReturnValue().Set(NodeRT::Utils::ColorToJs(result));
@@ -852,11 +851,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void SelectedBackgroundColorSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsColor(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -870,9 +869,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::UI::Color winRtValue = NodeRT::Utils::ColorFromJs(value);
 
         wrapper->_instance->SelectedBackgroundColor = winRtValue;
@@ -882,11 +881,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void SelectedAccentColorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerAppearance^>(info.This()))
       {
         return;
@@ -894,7 +893,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
         ::Windows::UI::Color result = wrapper->_instance->SelectedAccentColor;
         info.GetReturnValue().Set(NodeRT::Utils::ColorToJs(result));
@@ -906,11 +905,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void SelectedAccentColorSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsColor(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -924,9 +923,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::UI::Color winRtValue = NodeRT::Utils::ColorFromJs(value);
 
         wrapper->_instance->SelectedAccentColor = winRtValue;
@@ -936,11 +935,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void ForegroundColorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerAppearance^>(info.This()))
       {
         return;
@@ -948,7 +947,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
         ::Windows::UI::Color result = wrapper->_instance->ForegroundColor;
         info.GetReturnValue().Set(NodeRT::Utils::ColorToJs(result));
@@ -960,11 +959,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void ForegroundColorSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsColor(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -978,9 +977,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::UI::Color winRtValue = NodeRT::Utils::ColorFromJs(value);
 
         wrapper->_instance->ForegroundColor = winRtValue;
@@ -990,11 +989,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void BackgroundColorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerAppearance^>(info.This()))
       {
         return;
@@ -1002,7 +1001,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
         ::Windows::UI::Color result = wrapper->_instance->BackgroundColor;
         info.GetReturnValue().Set(NodeRT::Utils::ColorToJs(result));
@@ -1014,11 +1013,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void BackgroundColorSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsColor(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -1032,9 +1031,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::UI::Color winRtValue = NodeRT::Utils::ColorFromJs(value);
 
         wrapper->_instance->BackgroundColor = winRtValue;
@@ -1044,11 +1043,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void AccentColorGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerAppearance^>(info.This()))
       {
         return;
@@ -1056,7 +1055,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
         ::Windows::UI::Color result = wrapper->_instance->AccentColor;
         info.GetReturnValue().Set(NodeRT::Utils::ColorToJs(result));
@@ -1068,11 +1067,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void AccentColorSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsColor(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -1086,9 +1085,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerAppearance *wrapper = DevicePickerAppearance::Unwrap<DevicePickerAppearance>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::UI::Color winRtValue = NodeRT::Utils::ColorFromJs(value);
 
         wrapper->_instance->AccentColor = winRtValue;
@@ -1098,7 +1097,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
 
 
   private:
@@ -1137,19 +1136,19 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceSelectedEventArgs : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceSelectedEventArgs").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("selectedDevice").ToLocalChecked(), SelectedDeviceGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -1164,13 +1163,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceSelectedEventArgs(::Windows::Devices::Enumeration::DeviceSelectedEventArgs^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -1209,14 +1208,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceSelectedEventArgs^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceSelectedEventArgs^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceSelectedEventArgs^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -1241,7 +1240,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -1266,14 +1265,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void SelectedDeviceGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceSelectedEventArgs^>(info.This()))
       {
         return;
@@ -1281,7 +1280,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceSelectedEventArgs *wrapper = DeviceSelectedEventArgs::Unwrap<DeviceSelectedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceInformation^ result = wrapper->_instance->SelectedDevice;
         info.GetReturnValue().Set(WrapDeviceInformation(result));
@@ -1293,7 +1292,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -1332,19 +1331,19 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceDisconnectButtonClickedEventArgs : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceDisconnectButtonClickedEventArgs").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("device").ToLocalChecked(), DeviceGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -1359,13 +1358,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceDisconnectButtonClickedEventArgs(::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -1404,14 +1403,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -1436,7 +1435,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -1461,14 +1460,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void DeviceGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceDisconnectButtonClickedEventArgs^>(info.This()))
       {
         return;
@@ -1476,7 +1475,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceDisconnectButtonClickedEventArgs *wrapper = DeviceDisconnectButtonClickedEventArgs::Unwrap<DeviceDisconnectButtonClickedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceInformation^ result = wrapper->_instance->Device;
         info.GetReturnValue().Set(WrapDeviceInformation(result));
@@ -1488,7 +1487,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -1527,20 +1526,20 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DevicePickerFilter : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DevicePickerFilter").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("supportedDeviceClasses").ToLocalChecked(), SupportedDeviceClassesGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("supportedDeviceSelectors").ToLocalChecked(), SupportedDeviceSelectorsGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -1555,13 +1554,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DevicePickerFilter(::Windows::Devices::Enumeration::DevicePickerFilter^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -1600,14 +1599,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DevicePickerFilter^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerFilter^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DevicePickerFilter^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -1632,7 +1631,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -1657,14 +1656,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void SupportedDeviceClassesGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerFilter^>(info.This()))
       {
         return;
@@ -1672,10 +1671,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerFilter *wrapper = DevicePickerFilter::Unwrap<DevicePickerFilter>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IVector<::Windows::Devices::Enumeration::DeviceClass>^ result = wrapper->_instance->SupportedDeviceClasses;
-        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Windows::Devices::Enumeration::DeviceClass>::CreateVectorWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Windows::Devices::Enumeration::DeviceClass>::CreateVectorWrapper(result,
             [](::Windows::Devices::Enumeration::DeviceClass val) -> Local<Value> {
               return Nan::New<Integer>(static_cast<int>(val));
             },
@@ -1694,11 +1693,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void SupportedDeviceSelectorsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePickerFilter^>(info.This()))
       {
         return;
@@ -1706,10 +1705,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePickerFilter *wrapper = DevicePickerFilter::Unwrap<DevicePickerFilter>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IVector<::Platform::String^>^ result = wrapper->_instance->SupportedDeviceSelectors;
-        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Platform::String^>::CreateVectorWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Platform::String^>::CreateVectorWrapper(result,
             [](::Platform::String^ val) -> Local<Value> {
               return NodeRT::Utils::NewString(val->Data());
             },
@@ -1728,7 +1727,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -1767,36 +1766,36 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DevicePicker : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DevicePicker").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
+
       Local<Function> func;
       Local<FunctionTemplate> funcTemplate;
-            
+
       Nan::SetPrototypeMethod(localRef, "show", Show);
       Nan::SetPrototypeMethod(localRef, "hide", Hide);
       Nan::SetPrototypeMethod(localRef, "setDisplayStatus", SetDisplayStatus);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "pickSingleDeviceAsync", PickSingleDeviceAsync);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
       Nan::SetPrototypeMethod(localRef,"on", AddListener);
       Nan::SetPrototypeMethod(localRef,"removeListener", RemoveListener);
       Nan::SetPrototypeMethod(localRef, "off", RemoveListener);
-            
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("appearance").ToLocalChecked(), AppearanceGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("filter").ToLocalChecked(), FilterGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("requestedProperties").ToLocalChecked(), RequestedPropertiesGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -1811,13 +1810,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DevicePicker(::Windows::Devices::Enumeration::DevicePicker^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -1856,14 +1855,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DevicePicker^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePicker^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DevicePicker^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -1900,7 +1899,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -1943,7 +1942,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       DevicePicker *wrapper = DevicePicker::Unwrap<DevicePicker>(info.This());
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Enumeration::DeviceInformation^>^ op;
-    
+
 
       if (info.Length() == 2
         && NodeRT::Utils::IsRect(info[0]))
@@ -1951,7 +1950,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Foundation::Rect arg0 = NodeRT::Utils::RectFromJs(info[0]);
-          
+
           op = wrapper->_instance->PickSingleDeviceAsync(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -1968,7 +1967,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         {
           ::Windows::Foundation::Rect arg0 = NodeRT::Utils::RectFromJs(info[0]);
           ::Windows::UI::Popups::Placement arg1 = static_cast<::Windows::UI::Popups::Placement>(Nan::To<int32_t>(info[1]).FromMaybe(0));
-          
+
           op = wrapper->_instance->PickSingleDeviceAsync(arg0,arg1);
         }
         catch (Platform::Exception ^exception)
@@ -1977,17 +1976,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceInformation^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceInformation^> t)
+      {
         try
         {
           auto result = t.get();
@@ -2003,7 +2002,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -2018,16 +2017,16 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
-  
+
     static void Show(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2045,9 +2044,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Foundation::Rect arg0 = NodeRT::Utils::RectFromJs(info[0]);
-          
+
           wrapper->_instance->Show(arg0);
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2063,9 +2062,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         {
           ::Windows::Foundation::Rect arg0 = NodeRT::Utils::RectFromJs(info[0]);
           ::Windows::UI::Popups::Placement arg1 = static_cast<::Windows::UI::Popups::Placement>(Nan::To<int32_t>(info[1]).FromMaybe(0));
-          
+
           wrapper->_instance->Show(arg0, arg1);
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2073,7 +2072,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2095,7 +2094,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           wrapper->_instance->Hide();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2103,7 +2102,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2130,9 +2129,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           ::Windows::Devices::Enumeration::DeviceInformation^ arg0 = UnwrapDeviceInformation(info[0]);
           Platform::String^ arg1 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[1])));
           ::Windows::Devices::Enumeration::DevicePickerDisplayStatusOptions arg2 = static_cast<::Windows::Devices::Enumeration::DevicePickerDisplayStatusOptions>(Nan::To<int32_t>(info[2]).FromMaybe(0));
-          
+
           wrapper->_instance->SetDisplayStatus(arg0, arg1, arg2);
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2140,7 +2139,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2152,7 +2151,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     static void AppearanceGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePicker^>(info.This()))
       {
         return;
@@ -2160,7 +2159,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePicker *wrapper = DevicePicker::Unwrap<DevicePicker>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DevicePickerAppearance^ result = wrapper->_instance->Appearance;
         info.GetReturnValue().Set(WrapDevicePickerAppearance(result));
@@ -2172,11 +2171,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void FilterGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePicker^>(info.This()))
       {
         return;
@@ -2184,7 +2183,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePicker *wrapper = DevicePicker::Unwrap<DevicePicker>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DevicePickerFilter^ result = wrapper->_instance->Filter;
         info.GetReturnValue().Set(WrapDevicePickerFilter(result));
@@ -2196,11 +2195,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void RequestedPropertiesGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePicker^>(info.This()))
       {
         return;
@@ -2208,10 +2207,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePicker *wrapper = DevicePicker::Unwrap<DevicePicker>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IVector<::Platform::String^>^ result = wrapper->_instance->RequestedProperties;
-        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Platform::String^>::CreateVectorWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::VectorWrapper<::Platform::String^>::CreateVectorWrapper(result,
             [](::Platform::String^ val) -> Local<Value> {
               return NodeRT::Utils::NewString(val->Data());
             },
@@ -2230,7 +2229,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
     static void AddListener(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -2245,9 +2244,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       String::Value eventName(info[0]);
       auto str = *eventName;
-      
+
       Local<Function> callback = info[1].As<Function>();
-      
+
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       if (NodeRT::Utils::CaseInsenstiveEquals(L"devicePickerDismissed", str))
       {
@@ -2257,12 +2256,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DevicePicker *wrapper = DevicePicker::Unwrap<DevicePicker>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -2314,12 +2313,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DevicePicker *wrapper = DevicePicker::Unwrap<DevicePicker>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -2371,12 +2370,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DevicePicker *wrapper = DevicePicker::Unwrap<DevicePicker>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -2420,7 +2419,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         }
 
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
@@ -2463,7 +2462,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       Local<Function> callback = info[1].As<Function>();
       Local<Value> tokenMap = NodeRT::Utils::GetHiddenValue(callback, Nan::New<String>(REGISTRATION_TOKEN_MAP_PROPERTY_NAME).ToLocalChecked());
-                
+
       if (tokenMap.IsEmpty() || Nan::Equals(tokenMap, Undefined()).FromMaybe(false))
       {
         return;
@@ -2477,12 +2476,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
 
       OpaqueWrapper *opaqueWrapper = OpaqueWrapper::Unwrap<OpaqueWrapper>(opaqueWrapperObj.As<Object>());
-            
+
       long long tokenValue = (long long) opaqueWrapper->GetObjectInstance();
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       registrationToken.Value = tokenValue;
-        
-      try 
+
+      try
       {
         if (NodeRT::Utils::CaseInsenstiveEquals(L"devicePickerDismissed", str))
         {
@@ -2558,37 +2557,37 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceThumbnail : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceThumbnail").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
+
       Local<Function> func;
       Local<FunctionTemplate> funcTemplate;
-            
+
       Nan::SetPrototypeMethod(localRef, "getInputStreamAt", GetInputStreamAt);
       Nan::SetPrototypeMethod(localRef, "getOutputStreamAt", GetOutputStreamAt);
       Nan::SetPrototypeMethod(localRef, "seek", Seek);
       Nan::SetPrototypeMethod(localRef, "cloneStream", CloneStream);
       Nan::SetPrototypeMethod(localRef, "close", Close);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "readAsync", ReadAsync);
       Nan::SetPrototypeMethod(localRef, "writeAsync", WriteAsync);
       Nan::SetPrototypeMethod(localRef, "flushAsync", FlushAsync);
-      
-                  
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("contentType").ToLocalChecked(), ContentTypeGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("size").ToLocalChecked(), SizeGetter, SizeSetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("canRead").ToLocalChecked(), CanReadGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("canWrite").ToLocalChecked(), CanWriteGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("position").ToLocalChecked(), PositionGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -2603,13 +2602,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceThumbnail(::Windows::Devices::Enumeration::DeviceThumbnail^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2648,14 +2647,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceThumbnail^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceThumbnail^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceThumbnail^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -2680,7 +2679,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -2723,7 +2722,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       DeviceThumbnail *wrapper = DeviceThumbnail::Unwrap<DeviceThumbnail>(info.This());
 
       ::Windows::Foundation::IAsyncOperationWithProgress<::Windows::Storage::Streams::IBuffer^, unsigned int>^ op;
-    
+
 
       if (info.Length() == 4
         && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(info[0])
@@ -2735,7 +2734,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           ::Windows::Storage::Streams::IBuffer^ arg0 = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(info[0]));
           unsigned int arg1 = static_cast<unsigned int>(Nan::To<uint32_t>(info[1]).FromMaybe(0));
           ::Windows::Storage::Streams::InputStreamOptions arg2 = static_cast<::Windows::Storage::Streams::InputStreamOptions>(Nan::To<int32_t>(info[2]).FromMaybe(0));
-          
+
           op = wrapper->_instance->ReadAsync(arg0,arg1,arg2);
         }
         catch (Platform::Exception ^exception)
@@ -2744,17 +2743,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Storage::Streams::IBuffer^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Storage::Streams::IBuffer^> t)
+      {
         try
         {
           auto result = t.get();
@@ -2770,7 +2769,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -2785,13 +2784,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
     static void WriteAsync(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -2812,7 +2811,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       DeviceThumbnail *wrapper = DeviceThumbnail::Unwrap<DeviceThumbnail>(info.This());
 
       ::Windows::Foundation::IAsyncOperationWithProgress<unsigned int, unsigned int>^ op;
-    
+
 
       if (info.Length() == 2
         && NodeRT::Utils::IsWinRtWrapperOf<::Windows::Storage::Streams::IBuffer^>(info[0]))
@@ -2820,7 +2819,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Storage::Streams::IBuffer^ arg0 = dynamic_cast<::Windows::Storage::Streams::IBuffer^>(NodeRT::Utils::GetObjectInstance(info[0]));
-          
+
           op = wrapper->_instance->WriteAsync(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -2829,17 +2828,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<unsigned int> t) 
-      {	
+      opTask.then( [asyncToken] (task<unsigned int> t)
+      {
         try
         {
           auto result = t.get();
@@ -2855,7 +2854,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -2870,13 +2869,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
     static void FlushAsync(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -2897,7 +2896,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       DeviceThumbnail *wrapper = DeviceThumbnail::Unwrap<DeviceThumbnail>(info.This());
 
       ::Windows::Foundation::IAsyncOperation<bool>^ op;
-    
+
 
       if (info.Length() == 1)
       {
@@ -2911,17 +2910,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<bool> t) 
-      {	
+      opTask.then( [asyncToken] (task<bool> t)
+      {
         try
         {
           auto result = t.get();
@@ -2937,7 +2936,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -2952,16 +2951,16 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
-  
+
     static void GetInputStreamAt(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2979,7 +2978,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           unsigned __int64 arg0 = static_cast<unsigned __int64>(Nan::To<int64_t>(info[0]).FromMaybe(0));
-          
+
           ::Windows::Storage::Streams::IInputStream^ result;
           result = wrapper->_instance->GetInputStreamAt(arg0);
           info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IInputStream", result));
@@ -2991,7 +2990,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -3014,7 +3013,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           unsigned __int64 arg0 = static_cast<unsigned __int64>(Nan::To<int64_t>(info[0]).FromMaybe(0));
-          
+
           ::Windows::Storage::Streams::IOutputStream^ result;
           result = wrapper->_instance->GetOutputStreamAt(arg0);
           info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Storage.Streams", "IOutputStream", result));
@@ -3026,7 +3025,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -3049,9 +3048,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           unsigned __int64 arg0 = static_cast<unsigned __int64>(Nan::To<int64_t>(info[0]).FromMaybe(0));
-          
+
           wrapper->_instance->Seek(arg0);
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -3059,7 +3058,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -3091,7 +3090,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -3122,7 +3121,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
 		return;
@@ -3135,7 +3134,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     static void ContentTypeGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceThumbnail^>(info.This()))
       {
         return;
@@ -3143,7 +3142,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceThumbnail *wrapper = DeviceThumbnail::Unwrap<DeviceThumbnail>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->ContentType;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -3155,11 +3154,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void SizeGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceThumbnail^>(info.This()))
       {
         return;
@@ -3167,7 +3166,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceThumbnail *wrapper = DeviceThumbnail::Unwrap<DeviceThumbnail>(info.This());
 
-      try 
+      try
       {
         unsigned __int64 result = wrapper->_instance->Size;
         info.GetReturnValue().Set(Nan::New<Number>(static_cast<double>(result)));
@@ -3179,11 +3178,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void SizeSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!value->IsNumber())
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -3197,9 +3196,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceThumbnail *wrapper = DeviceThumbnail::Unwrap<DeviceThumbnail>(info.This());
 
-      try 
+      try
       {
-        
+
         unsigned __int64 winRtValue = static_cast<unsigned __int64>(Nan::To<int64_t>(value).FromMaybe(0));
 
         wrapper->_instance->Size = winRtValue;
@@ -3209,11 +3208,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
     static void CanReadGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceThumbnail^>(info.This()))
       {
         return;
@@ -3221,7 +3220,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceThumbnail *wrapper = DeviceThumbnail::Unwrap<DeviceThumbnail>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->CanRead;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -3233,11 +3232,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void CanWriteGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceThumbnail^>(info.This()))
       {
         return;
@@ -3245,7 +3244,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceThumbnail *wrapper = DeviceThumbnail::Unwrap<DeviceThumbnail>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->CanWrite;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -3257,11 +3256,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void PositionGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceThumbnail^>(info.This()))
       {
         return;
@@ -3269,7 +3268,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceThumbnail *wrapper = DeviceThumbnail::Unwrap<DeviceThumbnail>(info.This());
 
-      try 
+      try
       {
         unsigned __int64 result = wrapper->_instance->Position;
         info.GetReturnValue().Set(Nan::New<Number>(static_cast<double>(result)));
@@ -3281,7 +3280,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -3320,22 +3319,22 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class EnclosureLocation : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("EnclosureLocation").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("inDock").ToLocalChecked(), InDockGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("inLid").ToLocalChecked(), InLidGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("panel").ToLocalChecked(), PanelGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("rotationAngleInDegreesClockwise").ToLocalChecked(), RotationAngleInDegreesClockwiseGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -3350,13 +3349,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     EnclosureLocation(::Windows::Devices::Enumeration::EnclosureLocation^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3395,14 +3394,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::EnclosureLocation^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::EnclosureLocation^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::EnclosureLocation^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -3427,7 +3426,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3452,14 +3451,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void InDockGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::EnclosureLocation^>(info.This()))
       {
         return;
@@ -3467,7 +3466,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       EnclosureLocation *wrapper = EnclosureLocation::Unwrap<EnclosureLocation>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->InDock;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -3479,11 +3478,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void InLidGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::EnclosureLocation^>(info.This()))
       {
         return;
@@ -3491,7 +3490,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       EnclosureLocation *wrapper = EnclosureLocation::Unwrap<EnclosureLocation>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->InLid;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -3503,11 +3502,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void PanelGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::EnclosureLocation^>(info.This()))
       {
         return;
@@ -3515,7 +3514,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       EnclosureLocation *wrapper = EnclosureLocation::Unwrap<EnclosureLocation>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::Panel result = wrapper->_instance->Panel;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -3527,11 +3526,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void RotationAngleInDegreesClockwiseGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::EnclosureLocation^>(info.This()))
       {
         return;
@@ -3539,7 +3538,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       EnclosureLocation *wrapper = EnclosureLocation::Unwrap<EnclosureLocation>(info.This());
 
-      try 
+      try
       {
         unsigned int result = wrapper->_instance->RotationAngleInDegreesClockwise;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3551,7 +3550,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -3590,21 +3589,21 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceInformationUpdate : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceInformationUpdate").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("id").ToLocalChecked(), IdGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("properties").ToLocalChecked(), PropertiesGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("kind").ToLocalChecked(), KindGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -3619,13 +3618,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceInformationUpdate(::Windows::Devices::Enumeration::DeviceInformationUpdate^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3664,14 +3663,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceInformationUpdate^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationUpdate^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceInformationUpdate^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -3696,7 +3695,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3721,14 +3720,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void IdGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationUpdate^>(info.This()))
       {
         return;
@@ -3736,7 +3735,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformationUpdate *wrapper = DeviceInformationUpdate::Unwrap<DeviceInformationUpdate>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Id;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -3748,11 +3747,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void PropertiesGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationUpdate^>(info.This()))
       {
         return;
@@ -3760,10 +3759,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformationUpdate *wrapper = DeviceInformationUpdate::Unwrap<DeviceInformationUpdate>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IMapView<::Platform::String^, ::Platform::Object^>^ result = wrapper->_instance->Properties;
-        info.GetReturnValue().Set(NodeRT::Collections::MapViewWrapper<::Platform::String^,::Platform::Object^>::CreateMapViewWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::MapViewWrapper<::Platform::String^,::Platform::Object^>::CreateMapViewWrapper(result,
             [](::Platform::String^ val) -> Local<Value> {
               return NodeRT::Utils::NewString(val->Data());
             },
@@ -3785,11 +3784,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void KindGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationUpdate^>(info.This()))
       {
         return;
@@ -3797,7 +3796,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformationUpdate *wrapper = DeviceInformationUpdate::Unwrap<DeviceInformationUpdate>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceInformationKind result = wrapper->_instance->Kind;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -3809,7 +3808,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -3848,23 +3847,23 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceInformationCollection : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceInformationCollection").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "getAt", GetAt);
       Nan::SetPrototypeMethod(localRef, "indexOf", IndexOf);
       Nan::SetPrototypeMethod(localRef, "getMany", GetMany);
       Nan::SetPrototypeMethod(localRef, "first", First);
-      
-                        
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -3879,13 +3878,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceInformationCollection(::Windows::Devices::Enumeration::DeviceInformationCollection^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3924,14 +3923,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceInformationCollection^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationCollection^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceInformationCollection^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -3956,7 +3955,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3981,7 +3980,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
     static void GetAt(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3999,7 +3998,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           unsigned int arg0 = static_cast<unsigned int>(Nan::To<uint32_t>(info[0]).FromMaybe(0));
-          
+
           ::Windows::Devices::Enumeration::DeviceInformation^ result;
           result = wrapper->_instance->GetAt(arg0);
           info.GetReturnValue().Set(WrapDeviceInformation(result));
@@ -4011,7 +4010,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4035,7 +4034,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         {
           ::Windows::Devices::Enumeration::DeviceInformation^ arg0 = UnwrapDeviceInformation(info[0]);
           unsigned int arg1;
-          
+
           bool result;
           result = wrapper->_instance->IndexOf(arg0, &arg1);
           Local<Object> resObj = Nan::New<Object>();
@@ -4050,7 +4049,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4078,7 +4077,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         {
           ::Windows::Foundation::Collections::IIterator<::Windows::Devices::Enumeration::DeviceInformation^>^ result;
           result = wrapper->_instance->First();
-          info.GetReturnValue().Set(NodeRT::Collections::IteratorWrapper<::Windows::Devices::Enumeration::DeviceInformation^>::CreateIteratorWrapper(result, 
+          info.GetReturnValue().Set(NodeRT::Collections::IteratorWrapper<::Windows::Devices::Enumeration::DeviceInformation^>::CreateIteratorWrapper(result,
             [](::Windows::Devices::Enumeration::DeviceInformation^ val) -> Local<Value> {
               return WrapDeviceInformation(val);
             }
@@ -4091,7 +4090,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4138,29 +4137,29 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceWatcher : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceWatcher").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "start", Start);
       Nan::SetPrototypeMethod(localRef, "stop", Stop);
       Nan::SetPrototypeMethod(localRef, "getBackgroundTrigger", GetBackgroundTrigger);
-      
-                  
+
+
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
       Nan::SetPrototypeMethod(localRef,"on", AddListener);
       Nan::SetPrototypeMethod(localRef,"removeListener", RemoveListener);
       Nan::SetPrototypeMethod(localRef, "off", RemoveListener);
-            
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("status").ToLocalChecked(), StatusGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -4175,13 +4174,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceWatcher(::Windows::Devices::Enumeration::DeviceWatcher^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4220,14 +4219,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceWatcher^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceWatcher^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceWatcher^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -4252,7 +4251,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -4277,7 +4276,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
     static void Start(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4294,7 +4293,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           wrapper->_instance->Start();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -4302,7 +4301,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4324,7 +4323,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           wrapper->_instance->Stop();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -4332,7 +4331,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4354,12 +4353,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          ::Windows::Foundation::Collections::IIterable<::Windows::Devices::Enumeration::DeviceWatcherEventKind>^ arg0 = 
+          ::Windows::Foundation::Collections::IIterable<::Windows::Devices::Enumeration::DeviceWatcherEventKind>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Windows::Devices::Enumeration::DeviceWatcherEventKind>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtVector<::Windows::Devices::Enumeration::DeviceWatcherEventKind>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtVector<::Windows::Devices::Enumeration::DeviceWatcherEventKind>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsInt32();
                  },
@@ -4373,7 +4372,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                 return dynamic_cast<::Windows::Foundation::Collections::IIterable<::Windows::Devices::Enumeration::DeviceWatcherEventKind>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Windows::ApplicationModel::Background::DeviceWatcherTrigger^ result;
           result = wrapper->_instance->GetBackgroundTrigger(arg0);
           info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.ApplicationModel.Background", "DeviceWatcherTrigger", result));
@@ -4385,7 +4384,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4397,7 +4396,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     static void StatusGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceWatcher^>(info.This()))
       {
         return;
@@ -4405,7 +4404,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceWatcher *wrapper = DeviceWatcher::Unwrap<DeviceWatcher>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceWatcherStatus result = wrapper->_instance->Status;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -4417,7 +4416,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
     static void AddListener(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -4432,9 +4431,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       String::Value eventName(info[0]);
       auto str = *eventName;
-      
+
       Local<Function> callback = info[1].As<Function>();
-      
+
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       if (NodeRT::Utils::CaseInsenstiveEquals(L"added", str))
       {
@@ -4444,12 +4443,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DeviceWatcher *wrapper = DeviceWatcher::Unwrap<DeviceWatcher>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -4501,12 +4500,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DeviceWatcher *wrapper = DeviceWatcher::Unwrap<DeviceWatcher>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -4558,12 +4557,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DeviceWatcher *wrapper = DeviceWatcher::Unwrap<DeviceWatcher>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -4615,12 +4614,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DeviceWatcher *wrapper = DeviceWatcher::Unwrap<DeviceWatcher>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -4672,12 +4671,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DeviceWatcher *wrapper = DeviceWatcher::Unwrap<DeviceWatcher>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -4721,7 +4720,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         }
 
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
@@ -4764,7 +4763,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       Local<Function> callback = info[1].As<Function>();
       Local<Value> tokenMap = NodeRT::Utils::GetHiddenValue(callback, Nan::New<String>(REGISTRATION_TOKEN_MAP_PROPERTY_NAME).ToLocalChecked());
-                
+
       if (tokenMap.IsEmpty() || Nan::Equals(tokenMap, Undefined()).FromMaybe(false))
       {
         return;
@@ -4778,12 +4777,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
 
       OpaqueWrapper *opaqueWrapper = OpaqueWrapper::Unwrap<OpaqueWrapper>(opaqueWrapperObj.As<Object>());
-            
+
       long long tokenValue = (long long) opaqueWrapper->GetObjectInstance();
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       registrationToken.Value = tokenValue;
-        
-      try 
+
+      try
       {
         if (NodeRT::Utils::CaseInsenstiveEquals(L"added", str))
         {
@@ -4879,26 +4878,26 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceInformation : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceInformation").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
+
       Local<Function> func;
       Local<FunctionTemplate> funcTemplate;
-            
+
       Nan::SetPrototypeMethod(localRef, "update", Update);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "getThumbnailAsync", GetThumbnailAsync);
       Nan::SetPrototypeMethod(localRef, "getGlyphThumbnailAsync", GetGlyphThumbnailAsync);
-      
-                  
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("enclosureLocation").ToLocalChecked(), EnclosureLocationGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("id").ToLocalChecked(), IdGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("isDefault").ToLocalChecked(), IsDefaultGetter);
@@ -4907,7 +4906,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("properties").ToLocalChecked(), PropertiesGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("kind").ToLocalChecked(), KindGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("pairing").ToLocalChecked(), PairingGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -4928,13 +4927,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceInformation(::Windows::Devices::Enumeration::DeviceInformation^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4973,14 +4972,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceInformation^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformation^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceInformation^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -5005,7 +5004,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -5048,7 +5047,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Enumeration::DeviceThumbnail^>^ op;
-    
+
 
       if (info.Length() == 1)
       {
@@ -5062,17 +5061,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceThumbnail^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceThumbnail^> t)
+      {
         try
         {
           auto result = t.get();
@@ -5088,7 +5087,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -5103,13 +5102,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
     static void GetGlyphThumbnailAsync(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -5130,7 +5129,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Enumeration::DeviceThumbnail^>^ op;
-    
+
 
       if (info.Length() == 1)
       {
@@ -5144,17 +5143,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceThumbnail^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceThumbnail^> t)
+      {
         try
         {
           auto result = t.get();
@@ -5170,7 +5169,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -5185,16 +5184,16 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
-  
+
     static void Update(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -5212,9 +5211,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Devices::Enumeration::DeviceInformationUpdate^ arg0 = UnwrapDeviceInformationUpdate(info[0]);
-          
+
           wrapper->_instance->Update(arg0);
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -5222,7 +5221,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5240,7 +5239,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Enumeration::DeviceInformation^>^ op;
-      
+
 
       if (info.Length() == 4
         && info[0]->IsString()
@@ -5250,12 +5249,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
+          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 =
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
@@ -5270,7 +5269,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               }
             } (info[1]);
           ::Windows::Devices::Enumeration::DeviceInformationKind arg2 = static_cast<::Windows::Devices::Enumeration::DeviceInformationKind>(Nan::To<int32_t>(info[2]).FromMaybe(0));
-          
+
           op = ::Windows::Devices::Enumeration::DeviceInformation::CreateFromIdAsync(arg0,arg1,arg2);
         }
         catch (Platform::Exception ^exception)
@@ -5285,7 +5284,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           op = ::Windows::Devices::Enumeration::DeviceInformation::CreateFromIdAsync(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -5301,12 +5300,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
+          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 =
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
@@ -5320,7 +5319,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                 return dynamic_cast<::Windows::Foundation::Collections::IIterable<::Platform::String^>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[1]);
-          
+
           op = ::Windows::Devices::Enumeration::DeviceInformation::CreateFromIdAsync(arg0,arg1);
         }
         catch (Platform::Exception ^exception)
@@ -5329,24 +5328,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceInformation^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceInformation^> t)
+      {
         try
         {
           auto result = t.get();
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
-            
-            Local<Value> error; 
+
+            Local<Value> error;
             Local<Value> arg1;
             {
               TryCatch tryCatch;
@@ -5355,7 +5354,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -5370,13 +5369,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-          
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
     static void FindAllAsync(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -5390,7 +5389,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Enumeration::DeviceInformationCollection^>^ op;
-      
+
 
       if (info.Length() == 4
         && info[0]->IsString()
@@ -5400,12 +5399,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
+          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 =
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
@@ -5420,7 +5419,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               }
             } (info[1]);
           ::Windows::Devices::Enumeration::DeviceInformationKind arg2 = static_cast<::Windows::Devices::Enumeration::DeviceInformationKind>(Nan::To<int32_t>(info[2]).FromMaybe(0));
-          
+
           op = ::Windows::Devices::Enumeration::DeviceInformation::FindAllAsync(arg0,arg1,arg2);
         }
         catch (Platform::Exception ^exception)
@@ -5447,7 +5446,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Devices::Enumeration::DeviceClass arg0 = static_cast<::Windows::Devices::Enumeration::DeviceClass>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           op = ::Windows::Devices::Enumeration::DeviceInformation::FindAllAsync(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -5462,7 +5461,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           op = ::Windows::Devices::Enumeration::DeviceInformation::FindAllAsync(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -5478,12 +5477,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
+          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 =
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
@@ -5497,7 +5496,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                 return dynamic_cast<::Windows::Foundation::Collections::IIterable<::Platform::String^>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[1]);
-          
+
           op = ::Windows::Devices::Enumeration::DeviceInformation::FindAllAsync(arg0,arg1);
         }
         catch (Platform::Exception ^exception)
@@ -5506,24 +5505,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceInformationCollection^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceInformationCollection^> t)
+      {
         try
         {
           auto result = t.get();
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [result](NodeUtils::InvokeCallbackDelegate invokeCallback) {
 
-            
-            Local<Value> error; 
+
+            Local<Value> error;
             Local<Value> arg1;
             {
               TryCatch tryCatch;
@@ -5532,7 +5531,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -5547,13 +5546,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-          
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
 
@@ -5567,7 +5566,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Devices::Enumeration::DeviceClass arg0 = static_cast<::Windows::Devices::Enumeration::DeviceClass>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           Platform::String^ result;
           result = ::Windows::Devices::Enumeration::DeviceInformation::GetAqsFilterFromDeviceClass(arg0);
           info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -5579,7 +5578,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5597,12 +5596,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
+          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 =
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
@@ -5617,7 +5616,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               }
             } (info[1]);
           ::Windows::Devices::Enumeration::DeviceInformationKind arg2 = static_cast<::Windows::Devices::Enumeration::DeviceInformationKind>(Nan::To<int32_t>(info[2]).FromMaybe(0));
-          
+
           ::Windows::Devices::Enumeration::DeviceWatcher^ result;
           result = ::Windows::Devices::Enumeration::DeviceInformation::CreateWatcher(arg0, arg1, arg2);
           info.GetReturnValue().Set(WrapDeviceWatcher(result));
@@ -5650,7 +5649,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Devices::Enumeration::DeviceClass arg0 = static_cast<::Windows::Devices::Enumeration::DeviceClass>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           ::Windows::Devices::Enumeration::DeviceWatcher^ result;
           result = ::Windows::Devices::Enumeration::DeviceInformation::CreateWatcher(arg0);
           info.GetReturnValue().Set(WrapDeviceWatcher(result));
@@ -5668,7 +5667,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           ::Windows::Devices::Enumeration::DeviceWatcher^ result;
           result = ::Windows::Devices::Enumeration::DeviceInformation::CreateWatcher(arg0);
           info.GetReturnValue().Set(WrapDeviceWatcher(result));
@@ -5687,12 +5686,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
+          ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 =
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtVector<::Platform::String^>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
@@ -5706,7 +5705,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                 return dynamic_cast<::Windows::Foundation::Collections::IIterable<::Platform::String^>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[1]);
-          
+
           ::Windows::Devices::Enumeration::DeviceWatcher^ result;
           result = ::Windows::Devices::Enumeration::DeviceInformation::CreateWatcher(arg0, arg1);
           info.GetReturnValue().Set(WrapDeviceWatcher(result));
@@ -5718,7 +5717,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5728,7 +5727,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     static void EnclosureLocationGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformation^>(info.This()))
       {
         return;
@@ -5736,7 +5735,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::EnclosureLocation^ result = wrapper->_instance->EnclosureLocation;
         info.GetReturnValue().Set(WrapEnclosureLocation(result));
@@ -5748,11 +5747,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void IdGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformation^>(info.This()))
       {
         return;
@@ -5760,7 +5759,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Id;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -5772,11 +5771,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void IsDefaultGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformation^>(info.This()))
       {
         return;
@@ -5784,7 +5783,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->IsDefault;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -5796,11 +5795,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void IsEnabledGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformation^>(info.This()))
       {
         return;
@@ -5808,7 +5807,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->IsEnabled;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -5820,11 +5819,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void NameGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformation^>(info.This()))
       {
         return;
@@ -5832,7 +5831,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Name;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -5844,11 +5843,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void PropertiesGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformation^>(info.This()))
       {
         return;
@@ -5856,10 +5855,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IMapView<::Platform::String^, ::Platform::Object^>^ result = wrapper->_instance->Properties;
-        info.GetReturnValue().Set(NodeRT::Collections::MapViewWrapper<::Platform::String^,::Platform::Object^>::CreateMapViewWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::MapViewWrapper<::Platform::String^,::Platform::Object^>::CreateMapViewWrapper(result,
             [](::Platform::String^ val) -> Local<Value> {
               return NodeRT::Utils::NewString(val->Data());
             },
@@ -5881,11 +5880,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void KindGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformation^>(info.This()))
       {
         return;
@@ -5893,7 +5892,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceInformationKind result = wrapper->_instance->Kind;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -5905,11 +5904,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void PairingGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformation^>(info.This()))
       {
         return;
@@ -5917,7 +5916,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformation *wrapper = DeviceInformation::Unwrap<DeviceInformation>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceInformationPairing^ result = wrapper->_instance->Pairing;
         info.GetReturnValue().Set(WrapDeviceInformationPairing(result));
@@ -5929,7 +5928,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -5968,20 +5967,20 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DevicePairingResult : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DevicePairingResult").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("protectionLevelUsed").ToLocalChecked(), ProtectionLevelUsedGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("status").ToLocalChecked(), StatusGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -5996,13 +5995,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DevicePairingResult(::Windows::Devices::Enumeration::DevicePairingResult^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -6041,14 +6040,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DevicePairingResult^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePairingResult^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DevicePairingResult^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -6073,7 +6072,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -6098,14 +6097,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void ProtectionLevelUsedGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePairingResult^>(info.This()))
       {
         return;
@@ -6113,7 +6112,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePairingResult *wrapper = DevicePairingResult::Unwrap<DevicePairingResult>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DevicePairingProtectionLevel result = wrapper->_instance->ProtectionLevelUsed;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -6125,11 +6124,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void StatusGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePairingResult^>(info.This()))
       {
         return;
@@ -6137,7 +6136,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePairingResult *wrapper = DevicePairingResult::Unwrap<DevicePairingResult>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DevicePairingResultStatus result = wrapper->_instance->Status;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -6149,7 +6148,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -6188,19 +6187,19 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceUnpairingResult : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceUnpairingResult").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("status").ToLocalChecked(), StatusGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -6215,13 +6214,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceUnpairingResult(::Windows::Devices::Enumeration::DeviceUnpairingResult^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -6260,14 +6259,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceUnpairingResult^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceUnpairingResult^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceUnpairingResult^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -6292,7 +6291,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -6317,14 +6316,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void StatusGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceUnpairingResult^>(info.This()))
       {
         return;
@@ -6332,7 +6331,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceUnpairingResult *wrapper = DeviceUnpairingResult::Unwrap<DeviceUnpairingResult>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceUnpairingResultStatus result = wrapper->_instance->Status;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -6344,7 +6343,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -6383,17 +6382,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class IDevicePairingSettings : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("IDevicePairingSettings").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -6408,13 +6407,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     IDevicePairingSettings(::Windows::Devices::Enumeration::IDevicePairingSettings^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -6453,14 +6452,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::IDevicePairingSettings^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::IDevicePairingSettings^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::IDevicePairingSettings^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -6485,7 +6484,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -6510,7 +6509,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
@@ -6552,25 +6551,25 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DevicePairingRequestedEventArgs : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DevicePairingRequestedEventArgs").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "accept", Accept);
       Nan::SetPrototypeMethod(localRef, "getDeferral", GetDeferral);
-      
-                        
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("deviceInformation").ToLocalChecked(), DeviceInformationGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("pairingKind").ToLocalChecked(), PairingKindGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("pin").ToLocalChecked(), PinGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -6585,13 +6584,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DevicePairingRequestedEventArgs(::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -6630,14 +6629,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -6662,7 +6661,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -6687,7 +6686,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
     static void Accept(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -6704,7 +6703,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           wrapper->_instance->Accept();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -6718,9 +6717,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           wrapper->_instance->Accept(arg0);
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -6728,7 +6727,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6760,7 +6759,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6772,7 +6771,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     static void DeviceInformationGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs^>(info.This()))
       {
         return;
@@ -6780,7 +6779,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePairingRequestedEventArgs *wrapper = DevicePairingRequestedEventArgs::Unwrap<DevicePairingRequestedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceInformation^ result = wrapper->_instance->DeviceInformation;
         info.GetReturnValue().Set(WrapDeviceInformation(result));
@@ -6792,11 +6791,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void PairingKindGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs^>(info.This()))
       {
         return;
@@ -6804,7 +6803,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePairingRequestedEventArgs *wrapper = DevicePairingRequestedEventArgs::Unwrap<DevicePairingRequestedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DevicePairingKinds result = wrapper->_instance->PairingKind;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -6816,11 +6815,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void PinGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DevicePairingRequestedEventArgs^>(info.This()))
       {
         return;
@@ -6828,7 +6827,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DevicePairingRequestedEventArgs *wrapper = DevicePairingRequestedEventArgs::Unwrap<DevicePairingRequestedEventArgs>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Pin;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6840,7 +6839,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -6879,27 +6878,27 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceInformationCustomPairing : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceInformationCustomPairing").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
+
       Local<Function> func;
       Local<FunctionTemplate> funcTemplate;
-                  
+
       Nan::SetPrototypeMethod(localRef, "pairAsync", PairAsync);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
       Nan::SetPrototypeMethod(localRef,"on", AddListener);
       Nan::SetPrototypeMethod(localRef,"removeListener", RemoveListener);
       Nan::SetPrototypeMethod(localRef, "off", RemoveListener);
-            
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -6914,13 +6913,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceInformationCustomPairing(::Windows::Devices::Enumeration::DeviceInformationCustomPairing^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -6959,14 +6958,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceInformationCustomPairing^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationCustomPairing^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceInformationCustomPairing^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -6991,7 +6990,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -7034,7 +7033,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       DeviceInformationCustomPairing *wrapper = DeviceInformationCustomPairing::Unwrap<DeviceInformationCustomPairing>(info.This());
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Enumeration::DevicePairingResult^>^ op;
-    
+
 
       if (info.Length() == 2
         && info[0]->IsInt32())
@@ -7042,7 +7041,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Devices::Enumeration::DevicePairingKinds arg0 = static_cast<::Windows::Devices::Enumeration::DevicePairingKinds>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           op = wrapper->_instance->PairAsync(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -7059,7 +7058,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         {
           ::Windows::Devices::Enumeration::DevicePairingKinds arg0 = static_cast<::Windows::Devices::Enumeration::DevicePairingKinds>(Nan::To<int32_t>(info[0]).FromMaybe(0));
           ::Windows::Devices::Enumeration::DevicePairingProtectionLevel arg1 = static_cast<::Windows::Devices::Enumeration::DevicePairingProtectionLevel>(Nan::To<int32_t>(info[1]).FromMaybe(0));
-          
+
           op = wrapper->_instance->PairAsync(arg0,arg1);
         }
         catch (Platform::Exception ^exception)
@@ -7078,7 +7077,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           ::Windows::Devices::Enumeration::DevicePairingKinds arg0 = static_cast<::Windows::Devices::Enumeration::DevicePairingKinds>(Nan::To<int32_t>(info[0]).FromMaybe(0));
           ::Windows::Devices::Enumeration::DevicePairingProtectionLevel arg1 = static_cast<::Windows::Devices::Enumeration::DevicePairingProtectionLevel>(Nan::To<int32_t>(info[1]).FromMaybe(0));
           ::Windows::Devices::Enumeration::IDevicePairingSettings^ arg2 = UnwrapIDevicePairingSettings(info[2]);
-          
+
           op = wrapper->_instance->PairAsync(arg0,arg1,arg2);
         }
         catch (Platform::Exception ^exception)
@@ -7087,17 +7086,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DevicePairingResult^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DevicePairingResult^> t)
+      {
         try
         {
           auto result = t.get();
@@ -7113,7 +7112,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -7128,16 +7127,16 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
-  
+
 
 
 
@@ -7155,9 +7154,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       String::Value eventName(info[0]);
       auto str = *eventName;
-      
+
       Local<Function> callback = info[1].As<Function>();
-      
+
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       if (NodeRT::Utils::CaseInsenstiveEquals(L"pairingRequested", str))
       {
@@ -7167,12 +7166,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DeviceInformationCustomPairing *wrapper = DeviceInformationCustomPairing::Unwrap<DeviceInformationCustomPairing>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -7216,7 +7215,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         }
 
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
@@ -7259,7 +7258,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       Local<Function> callback = info[1].As<Function>();
       Local<Value> tokenMap = NodeRT::Utils::GetHiddenValue(callback, Nan::New<String>(REGISTRATION_TOKEN_MAP_PROPERTY_NAME).ToLocalChecked());
-                
+
       if (tokenMap.IsEmpty() || Nan::Equals(tokenMap, Undefined()).FromMaybe(false))
       {
         return;
@@ -7273,12 +7272,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
 
       OpaqueWrapper *opaqueWrapper = OpaqueWrapper::Unwrap<OpaqueWrapper>(opaqueWrapperObj.As<Object>());
-            
+
       long long tokenValue = (long long) opaqueWrapper->GetObjectInstance();
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       registrationToken.Value = tokenValue;
-        
-      try 
+
+      try
       {
         if (NodeRT::Utils::CaseInsenstiveEquals(L"pairingRequested", str))
         {
@@ -7334,28 +7333,28 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceInformationPairing : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceInformationPairing").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
+
       Local<Function> func;
       Local<FunctionTemplate> funcTemplate;
-                  
+
       Nan::SetPrototypeMethod(localRef, "pairAsync", PairAsync);
       Nan::SetPrototypeMethod(localRef, "unpairAsync", UnpairAsync);
-      
-                  
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("canPair").ToLocalChecked(), CanPairGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("isPaired").ToLocalChecked(), IsPairedGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("custom").ToLocalChecked(), CustomGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("protectionLevel").ToLocalChecked(), ProtectionLevelGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -7371,13 +7370,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceInformationPairing(::Windows::Devices::Enumeration::DeviceInformationPairing^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -7416,14 +7415,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceInformationPairing^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationPairing^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceInformationPairing^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -7448,7 +7447,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -7491,7 +7490,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       DeviceInformationPairing *wrapper = DeviceInformationPairing::Unwrap<DeviceInformationPairing>(info.This());
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Enumeration::DevicePairingResult^>^ op;
-    
+
 
       if (info.Length() == 1)
       {
@@ -7511,7 +7510,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Devices::Enumeration::DevicePairingProtectionLevel arg0 = static_cast<::Windows::Devices::Enumeration::DevicePairingProtectionLevel>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           op = wrapper->_instance->PairAsync(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -7528,7 +7527,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         {
           ::Windows::Devices::Enumeration::DevicePairingProtectionLevel arg0 = static_cast<::Windows::Devices::Enumeration::DevicePairingProtectionLevel>(Nan::To<int32_t>(info[0]).FromMaybe(0));
           ::Windows::Devices::Enumeration::IDevicePairingSettings^ arg1 = UnwrapIDevicePairingSettings(info[1]);
-          
+
           op = wrapper->_instance->PairAsync(arg0,arg1);
         }
         catch (Platform::Exception ^exception)
@@ -7537,17 +7536,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DevicePairingResult^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DevicePairingResult^> t)
+      {
         try
         {
           auto result = t.get();
@@ -7563,7 +7562,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -7578,13 +7577,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
     static void UnpairAsync(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -7605,7 +7604,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       DeviceInformationPairing *wrapper = DeviceInformationPairing::Unwrap<DeviceInformationPairing>(info.This());
 
       ::Windows::Foundation::IAsyncOperation<::Windows::Devices::Enumeration::DeviceUnpairingResult^>^ op;
-    
+
 
       if (info.Length() == 1)
       {
@@ -7619,17 +7618,17 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
       }
-    
+
       auto opTask = create_task(op);
       uv_async_t* asyncToken = NodeUtils::Async::GetAsyncToken(info[info.Length() -1].As<Function>());
 
-      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceUnpairingResult^> t) 
-      {	
+      opTask.then( [asyncToken] (task<::Windows::Devices::Enumeration::DeviceUnpairingResult^> t)
+      {
         try
         {
           auto result = t.get();
@@ -7645,7 +7644,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               {
                 error = Nan::To<Object>(tryCatch.Exception()).ToLocalChecked();
               }
-              else 
+              else
               {
                 error = Undefined();
               }
@@ -7660,16 +7659,16 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         catch (Platform::Exception^ exception)
         {
           NodeUtils::Async::RunCallbackOnMain(asyncToken, [exception](NodeUtils::InvokeCallbackDelegate invokeCallback) {
-             
+
             Local<Value> error = NodeRT::Utils::WinRtExceptionToJsError(exception);
-        
+
             Local<Value> args[] = {error};
             invokeCallback(_countof(args), args);
           });
-        }  		
+        }
       });
     }
-  
+
 
 
     static void TryRegisterForAllInboundPairingRequests(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -7682,7 +7681,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Devices::Enumeration::DevicePairingKinds arg0 = static_cast<::Windows::Devices::Enumeration::DevicePairingKinds>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           bool result;
           result = ::Windows::Devices::Enumeration::DeviceInformationPairing::TryRegisterForAllInboundPairingRequests(arg0);
           info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -7694,7 +7693,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -7704,7 +7703,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     static void CanPairGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationPairing^>(info.This()))
       {
         return;
@@ -7712,7 +7711,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformationPairing *wrapper = DeviceInformationPairing::Unwrap<DeviceInformationPairing>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->CanPair;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -7724,11 +7723,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void IsPairedGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationPairing^>(info.This()))
       {
         return;
@@ -7736,7 +7735,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformationPairing *wrapper = DeviceInformationPairing::Unwrap<DeviceInformationPairing>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->IsPaired;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -7748,11 +7747,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void CustomGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationPairing^>(info.This()))
       {
         return;
@@ -7760,7 +7759,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformationPairing *wrapper = DeviceInformationPairing::Unwrap<DeviceInformationPairing>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceInformationCustomPairing^ result = wrapper->_instance->Custom;
         info.GetReturnValue().Set(WrapDeviceInformationCustomPairing(result));
@@ -7772,11 +7771,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void ProtectionLevelGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceInformationPairing^>(info.This()))
       {
         return;
@@ -7784,7 +7783,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceInformationPairing *wrapper = DeviceInformationPairing::Unwrap<DeviceInformationPairing>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DevicePairingProtectionLevel result = wrapper->_instance->ProtectionLevel;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -7796,7 +7795,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -7835,20 +7834,20 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceAccessChangedEventArgs : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceAccessChangedEventArgs").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("status").ToLocalChecked(), StatusGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("id").ToLocalChecked(), IdGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -7863,13 +7862,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceAccessChangedEventArgs(::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -7908,14 +7907,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -7940,7 +7939,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -7965,14 +7964,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void StatusGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs^>(info.This()))
       {
         return;
@@ -7980,7 +7979,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceAccessChangedEventArgs *wrapper = DeviceAccessChangedEventArgs::Unwrap<DeviceAccessChangedEventArgs>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceAccessStatus result = wrapper->_instance->Status;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -7992,11 +7991,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void IdGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceAccessChangedEventArgs^>(info.This()))
       {
         return;
@@ -8004,7 +8003,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceAccessChangedEventArgs *wrapper = DeviceAccessChangedEventArgs::Unwrap<DeviceAccessChangedEventArgs>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Id;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -8016,7 +8015,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -8055,24 +8054,24 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceAccessInformation : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceAccessInformation").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                        
+
+
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
       Nan::SetPrototypeMethod(localRef,"on", AddListener);
       Nan::SetPrototypeMethod(localRef,"removeListener", RemoveListener);
       Nan::SetPrototypeMethod(localRef, "off", RemoveListener);
-            
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("currentStatus").ToLocalChecked(), CurrentStatusGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -8090,13 +8089,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceAccessInformation(::Windows::Devices::Enumeration::DeviceAccessInformation^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -8135,14 +8134,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceAccessInformation^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceAccessInformation^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceAccessInformation^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -8167,7 +8166,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -8192,7 +8191,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
     static void CreateFromId(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -8205,7 +8204,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           ::Windows::Devices::Enumeration::DeviceAccessInformation^ result;
           result = ::Windows::Devices::Enumeration::DeviceAccessInformation::CreateFromId(arg0);
           info.GetReturnValue().Set(WrapDeviceAccessInformation(result));
@@ -8217,7 +8216,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -8233,7 +8232,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
-          
+
           ::Windows::Devices::Enumeration::DeviceAccessInformation^ result;
           result = ::Windows::Devices::Enumeration::DeviceAccessInformation::CreateFromDeviceClassId(arg0);
           info.GetReturnValue().Set(WrapDeviceAccessInformation(result));
@@ -8245,7 +8244,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -8261,7 +8260,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Devices::Enumeration::DeviceClass arg0 = static_cast<::Windows::Devices::Enumeration::DeviceClass>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           ::Windows::Devices::Enumeration::DeviceAccessInformation^ result;
           result = ::Windows::Devices::Enumeration::DeviceAccessInformation::CreateFromDeviceClass(arg0);
           info.GetReturnValue().Set(WrapDeviceAccessInformation(result));
@@ -8273,7 +8272,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -8283,7 +8282,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     static void CurrentStatusGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceAccessInformation^>(info.This()))
       {
         return;
@@ -8291,7 +8290,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceAccessInformation *wrapper = DeviceAccessInformation::Unwrap<DeviceAccessInformation>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceAccessStatus result = wrapper->_instance->CurrentStatus;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -8303,7 +8302,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
     static void AddListener(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -8318,9 +8317,9 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       String::Value eventName(info[0]);
       auto str = *eventName;
-      
+
       Local<Function> callback = info[1].As<Function>();
-      
+
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       if (NodeRT::Utils::CaseInsenstiveEquals(L"accessChanged", str))
       {
@@ -8330,12 +8329,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		  return;
         }
         DeviceAccessInformation *wrapper = DeviceAccessInformation::Unwrap<DeviceAccessInformation>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -8379,7 +8378,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         }
 
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
@@ -8422,7 +8421,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       Local<Function> callback = info[1].As<Function>();
       Local<Value> tokenMap = NodeRT::Utils::GetHiddenValue(callback, Nan::New<String>(REGISTRATION_TOKEN_MAP_PROPERTY_NAME).ToLocalChecked());
-                
+
       if (tokenMap.IsEmpty() || Nan::Equals(tokenMap, Undefined()).FromMaybe(false))
       {
         return;
@@ -8436,12 +8435,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
 
       OpaqueWrapper *opaqueWrapper = OpaqueWrapper::Unwrap<OpaqueWrapper>(opaqueWrapperObj.As<Object>());
-            
+
       long long tokenValue = (long long) opaqueWrapper->GetObjectInstance();
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       registrationToken.Value = tokenValue;
-        
-      try 
+
+      try
       {
         if (NodeRT::Utils::CaseInsenstiveEquals(L"accessChanged", str))
         {
@@ -8497,21 +8496,21 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceWatcherEvent : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceWatcherEvent").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("deviceInformation").ToLocalChecked(), DeviceInformationGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("deviceInformationUpdate").ToLocalChecked(), DeviceInformationUpdateGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("kind").ToLocalChecked(), KindGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -8526,13 +8525,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceWatcherEvent(::Windows::Devices::Enumeration::DeviceWatcherEvent^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -8571,14 +8570,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceWatcherEvent^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceWatcherEvent^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceWatcherEvent^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -8603,7 +8602,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -8628,14 +8627,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void DeviceInformationGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceWatcherEvent^>(info.This()))
       {
         return;
@@ -8643,7 +8642,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceWatcherEvent *wrapper = DeviceWatcherEvent::Unwrap<DeviceWatcherEvent>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceInformation^ result = wrapper->_instance->DeviceInformation;
         info.GetReturnValue().Set(WrapDeviceInformation(result));
@@ -8655,11 +8654,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void DeviceInformationUpdateGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceWatcherEvent^>(info.This()))
       {
         return;
@@ -8667,7 +8666,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceWatcherEvent *wrapper = DeviceWatcherEvent::Unwrap<DeviceWatcherEvent>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceInformationUpdate^ result = wrapper->_instance->DeviceInformationUpdate;
         info.GetReturnValue().Set(WrapDeviceInformationUpdate(result));
@@ -8679,11 +8678,11 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
     static void KindGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceWatcherEvent^>(info.This()))
       {
         return;
@@ -8691,7 +8690,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceWatcherEvent *wrapper = DeviceWatcherEvent::Unwrap<DeviceWatcherEvent>(info.This());
 
-      try 
+      try
       {
         ::Windows::Devices::Enumeration::DeviceWatcherEventKind result = wrapper->_instance->Kind;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -8703,7 +8702,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -8742,19 +8741,19 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
   class DeviceWatcherTriggerDetails : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("DeviceWatcherTriggerDetails").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("deviceWatcherEvents").ToLocalChecked(), DeviceWatcherEventsGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -8769,13 +8768,13 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
   private:
-    
+
     DeviceWatcherTriggerDetails(::Windows::Devices::Enumeration::DeviceWatcherTriggerDetails^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -8814,14 +8813,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
           return;
         }
       }
-      
+
       ::Windows::Devices::Enumeration::DeviceWatcherTriggerDetails^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceWatcherTriggerDetails^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Devices::Enumeration::DeviceWatcherTriggerDetails^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -8846,7 +8845,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -8871,14 +8870,14 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     }
 
 
-  
+
 
 
 
     static void DeviceWatcherEventsGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Devices::Enumeration::DeviceWatcherTriggerDetails^>(info.This()))
       {
         return;
@@ -8886,10 +8885,10 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 
       DeviceWatcherTriggerDetails *wrapper = DeviceWatcherTriggerDetails::Unwrap<DeviceWatcherTriggerDetails>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::Collections::IVectorView<::Windows::Devices::Enumeration::DeviceWatcherEvent^>^ result = wrapper->_instance->DeviceWatcherEvents;
-        info.GetReturnValue().Set(NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Enumeration::DeviceWatcherEvent^>::CreateVectorViewWrapper(result, 
+        info.GetReturnValue().Set(NodeRT::Collections::VectorViewWrapper<::Windows::Devices::Enumeration::DeviceWatcherEvent^>::CreateVectorViewWrapper(result,
             [](::Windows::Devices::Enumeration::DeviceWatcherEvent^ val) -> Local<Value> {
               return WrapDeviceWatcherEvent(val);
             },
@@ -8908,7 +8907,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
     }
-    
+
 
 
   private:
@@ -8945,7 +8944,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
     DeviceWatcherTriggerDetails::Init(exports);
   }
 
-} } } } 
+} } } }
 
 NAN_MODULE_INIT(init)
 {
@@ -8956,7 +8955,7 @@ NAN_MODULE_INIT(init)
     Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"error in CoInitializeEx()")));
     return;
   }*/
-  
+
   NodeRT::Windows::Devices::Enumeration::InitDevicePickerDisplayStatusOptionsEnum(target);
   NodeRT::Windows::Devices::Enumeration::InitDeviceClassEnum(target);
   NodeRT::Windows::Devices::Enumeration::InitDeviceWatcherStatusEnum(target);

@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation
-// All rights reserved. 
+// All rights reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+// Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 //
-// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT. 
+// THIS CODE IS PROVIDED ON AN  *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INFRINGEMENT.
 //
 // See the Apache Version 2.0 License for specific language governing permissions and limitations under the License.
 
@@ -35,7 +35,6 @@ const char* REGISTRATION_TOKEN_MAP_PROPERTY_NAME = "__registrationTokenMap__";
 
 using v8::Array;
 using v8::String;
-using v8::Handle;
 using v8::Value;
 using v8::Boolean;
 using v8::Integer;
@@ -59,56 +58,56 @@ using Nan::HandleScope;
 using Nan::TryCatch;
 using namespace concurrency;
 
-namespace NodeRT { namespace Windows { namespace Foundation { 
+namespace NodeRT { namespace Windows { namespace Foundation {
 
   v8::Local<v8::Value> WrapPropertyValue(::Windows::Foundation::PropertyValue^ wintRtInstance);
   ::Windows::Foundation::PropertyValue^ UnwrapPropertyValue(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapIStringable(::Windows::Foundation::IStringable^ wintRtInstance);
   ::Windows::Foundation::IStringable^ UnwrapIStringable(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapDeferral(::Windows::Foundation::Deferral^ wintRtInstance);
   ::Windows::Foundation::Deferral^ UnwrapDeferral(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapIAsyncInfo(::Windows::Foundation::IAsyncInfo^ wintRtInstance);
   ::Windows::Foundation::IAsyncInfo^ UnwrapIAsyncInfo(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapIAsyncAction(::Windows::Foundation::IAsyncAction^ wintRtInstance);
   ::Windows::Foundation::IAsyncAction^ UnwrapIAsyncAction(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapIMemoryBufferReference(::Windows::Foundation::IMemoryBufferReference^ wintRtInstance);
   ::Windows::Foundation::IMemoryBufferReference^ UnwrapIMemoryBufferReference(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapIMemoryBuffer(::Windows::Foundation::IMemoryBuffer^ wintRtInstance);
   ::Windows::Foundation::IMemoryBuffer^ UnwrapIMemoryBuffer(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapMemoryBuffer(::Windows::Foundation::MemoryBuffer^ wintRtInstance);
   ::Windows::Foundation::MemoryBuffer^ UnwrapMemoryBuffer(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapWwwFormUrlDecoder(::Windows::Foundation::WwwFormUrlDecoder^ wintRtInstance);
   ::Windows::Foundation::WwwFormUrlDecoder^ UnwrapWwwFormUrlDecoder(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapIWwwFormUrlDecoderEntry(::Windows::Foundation::IWwwFormUrlDecoderEntry^ wintRtInstance);
   ::Windows::Foundation::IWwwFormUrlDecoderEntry^ UnwrapIWwwFormUrlDecoderEntry(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapWwwFormUrlDecoderEntry(::Windows::Foundation::WwwFormUrlDecoderEntry^ wintRtInstance);
   ::Windows::Foundation::WwwFormUrlDecoderEntry^ UnwrapWwwFormUrlDecoderEntry(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapIGetActivationFactory(::Windows::Foundation::IGetActivationFactory^ wintRtInstance);
   ::Windows::Foundation::IGetActivationFactory^ UnwrapIGetActivationFactory(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapIPropertyValue(::Windows::Foundation::IPropertyValue^ wintRtInstance);
   ::Windows::Foundation::IPropertyValue^ UnwrapIPropertyValue(Local<Value> value);
-  
+
   v8::Local<v8::Value> WrapUri(::Windows::Foundation::Uri^ wintRtInstance);
   ::Windows::Foundation::Uri^ UnwrapUri(Local<Value> value);
-  
+
 
 
   static void InitPropertyTypeEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("PropertyType").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("empty").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Foundation::PropertyType::Empty)));
@@ -158,7 +157,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
   static void InitAsyncStatusEnum(const Local<Object> exports)
   {
     HandleScope scope;
-    
+
 	Local<Object> enumObject = Nan::New<Object>();
     Nan::Set(exports, Nan::New<String>("AsyncStatus").ToLocalChecked(), enumObject);
 	Nan::Set(enumObject, Nan::New<String>("started").ToLocalChecked(), Nan::New<Integer>(static_cast<int>(::Windows::Foundation::AsyncStatus::Started)));
@@ -169,7 +168,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
 
 
-  
+
   static bool IsFoundationContractJsObject(Local<Value> value)
   {
     if (!value->IsObject())
@@ -187,7 +186,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
   {
     HandleScope scope;
     ::Windows::Foundation::FoundationContract returnValue;
-    
+
     if (!value->IsObject())
     {
       Nan::ThrowError(Nan::TypeError(NodeRT::Utils::NewString(L"Unexpected type, expected an object")));
@@ -206,11 +205,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
     Local<Object> obj = Nan::New<Object>();
 
-    
+
     return scope.Escape(obj);
   }
 
-  
+
   static bool IsUniversalApiContractJsObject(Local<Value> value)
   {
     if (!value->IsObject())
@@ -228,7 +227,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
   {
     HandleScope scope;
     ::Windows::Foundation::UniversalApiContract returnValue;
-    
+
     if (!value->IsObject())
     {
       Nan::ThrowError(Nan::TypeError(NodeRT::Utils::NewString(L"Unexpected type, expected an object")));
@@ -247,24 +246,24 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
     Local<Object> obj = Nan::New<Object>();
 
-    
+
     return scope.Escape(obj);
   }
 
-  
+
   class PropertyValue : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("PropertyValue").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -318,13 +317,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     PropertyValue(::Windows::Foundation::PropertyValue^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -363,14 +362,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::PropertyValue^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::PropertyValue^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::PropertyValue^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -395,7 +394,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -420,7 +419,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
 
 
     static void CreateEmpty(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -442,7 +441,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -458,7 +457,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           unsigned char arg0 = static_cast<unsigned char>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateUInt8(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -470,7 +469,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -486,7 +485,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           short arg0 = static_cast<short>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateInt16(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -498,7 +497,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -514,7 +513,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           unsigned short arg0 = static_cast<unsigned short>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateUInt16(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -526,7 +525,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -542,7 +541,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           int arg0 = static_cast<int>(Nan::To<int32_t>(info[0]).FromMaybe(0));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateInt32(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -554,7 +553,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -570,7 +569,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           unsigned int arg0 = static_cast<unsigned int>(Nan::To<uint32_t>(info[0]).FromMaybe(0));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateUInt32(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -582,7 +581,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -598,7 +597,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           __int64 arg0 = Nan::To<int64_t>(info[0]).FromMaybe(0);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateInt64(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -610,7 +609,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -626,7 +625,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           unsigned __int64 arg0 = static_cast<unsigned __int64>(Nan::To<int64_t>(info[0]).FromMaybe(0));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateUInt64(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -638,7 +637,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -654,7 +653,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           float arg0 = static_cast<float>(Nan::To<double>(info[0]).FromMaybe(0.0));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateSingle(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -666,7 +665,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -682,7 +681,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           double arg0 = Nan::To<double>(info[0]).FromMaybe(0.0);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateDouble(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -694,7 +693,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -710,7 +709,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           wchar_t arg0 = NodeRT::Utils::GetFirstChar(info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateChar16(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -722,7 +721,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -738,7 +737,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           bool arg0 = Nan::To<bool>(info[0]).FromMaybe(false);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateBoolean(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -750,7 +749,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -766,7 +765,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateString(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -778,7 +777,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -794,7 +793,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Object^ arg0 = dynamic_cast<::Platform::Object^>(NodeRT::Utils::GetObjectInstance(info[0]));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateInspectable(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -806,7 +805,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -822,7 +821,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Guid arg0 = NodeRT::Utils::GuidFromJs(info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateGuid(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -834,7 +833,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -850,7 +849,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Windows::Foundation::DateTime arg0 = NodeRT::Utils::DateTimeFromJSDate(info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateDateTime(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -862,7 +861,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -878,7 +877,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Windows::Foundation::TimeSpan arg0 = NodeRT::Utils::TimeSpanFromMilli(Nan::To<int64_t>(info[0]).FromMaybe(0));
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateTimeSpan(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -890,7 +889,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -906,7 +905,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Windows::Foundation::Point arg0 = NodeRT::Utils::PointFromJs(info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreatePoint(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -918,7 +917,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -934,7 +933,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Windows::Foundation::Size arg0 = NodeRT::Utils::SizeFromJs(info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateSize(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -946,7 +945,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -962,7 +961,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Windows::Foundation::Rect arg0 = NodeRT::Utils::RectFromJs(info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateRect(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -974,7 +973,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -989,12 +988,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<unsigned char>^ arg0 = 
+          ::Platform::Array<unsigned char>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<unsigned char>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<unsigned char>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<unsigned char>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsInt32();
                  },
@@ -1008,7 +1007,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<unsigned char>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateUInt8Array(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1020,7 +1019,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1035,12 +1034,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<short>^ arg0 = 
+          ::Platform::Array<short>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<short>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<short>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<short>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsInt32();
                  },
@@ -1054,7 +1053,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<short>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateInt16Array(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1066,7 +1065,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1081,12 +1080,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<unsigned short>^ arg0 = 
+          ::Platform::Array<unsigned short>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<unsigned short>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<unsigned short>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<unsigned short>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsInt32();
                  },
@@ -1100,7 +1099,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<unsigned short>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateUInt16Array(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1112,7 +1111,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1127,12 +1126,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<int>^ arg0 = 
+          ::Platform::Array<int>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<int>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<int>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<int>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsInt32();
                  },
@@ -1146,7 +1145,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<int>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateInt32Array(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1158,7 +1157,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1173,12 +1172,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<unsigned int>^ arg0 = 
+          ::Platform::Array<unsigned int>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<unsigned int>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<unsigned int>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<unsigned int>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsUint32();
                  },
@@ -1192,7 +1191,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<unsigned int>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateUInt32Array(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1204,7 +1203,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1219,12 +1218,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<__int64>^ arg0 = 
+          ::Platform::Array<__int64>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<__int64>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<__int64>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<__int64>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsNumber();
                  },
@@ -1238,7 +1237,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<__int64>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateInt64Array(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1250,7 +1249,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1265,12 +1264,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<unsigned __int64>^ arg0 = 
+          ::Platform::Array<unsigned __int64>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<unsigned __int64>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<unsigned __int64>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<unsigned __int64>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsNumber();
                  },
@@ -1284,7 +1283,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<unsigned __int64>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateUInt64Array(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1296,7 +1295,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1311,12 +1310,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<float>^ arg0 = 
+          ::Platform::Array<float>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<float>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<float>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<float>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsNumber();
                  },
@@ -1330,7 +1329,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<float>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateSingleArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1342,7 +1341,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1357,12 +1356,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<double>^ arg0 = 
+          ::Platform::Array<double>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<double>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<double>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<double>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsNumber();
                  },
@@ -1376,7 +1375,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<double>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateDoubleArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1388,7 +1387,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1403,12 +1402,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<wchar_t>^ arg0 = 
+          ::Platform::Array<wchar_t>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<wchar_t>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<wchar_t>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<wchar_t>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsString();
                  },
@@ -1422,7 +1421,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<wchar_t>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateChar16Array(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1434,7 +1433,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1449,12 +1448,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<bool>^ arg0 = 
+          ::Platform::Array<bool>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<bool>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<bool>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<bool>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsBoolean();
                  },
@@ -1468,7 +1467,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<bool>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateBooleanArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1480,7 +1479,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1495,12 +1494,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<::Platform::String^>^ arg0 = 
+          ::Platform::Array<::Platform::String^>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<::Platform::String^>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<::Platform::String^>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<::Platform::String^>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
@@ -1514,7 +1513,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<::Platform::String^>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateStringArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1526,7 +1525,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1541,12 +1540,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<::Platform::Object^>^ arg0 = 
+          ::Platform::Array<::Platform::Object^>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<::Platform::Object^>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<::Platform::Object^>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<::Platform::Object^>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return NodeRT::Utils::IsWinRtWrapperOf<::Platform::Object^>(value);
                  },
@@ -1560,7 +1559,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<::Platform::Object^>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateInspectableArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1572,7 +1571,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1587,12 +1586,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<::Platform::Guid>^ arg0 = 
+          ::Platform::Array<::Platform::Guid>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<::Platform::Guid>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<::Platform::Guid>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<::Platform::Guid>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return NodeRT::Utils::IsGuid(value);
                  },
@@ -1606,7 +1605,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<::Platform::Guid>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateGuidArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1618,7 +1617,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1633,12 +1632,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<::Windows::Foundation::DateTime>^ arg0 = 
+          ::Platform::Array<::Windows::Foundation::DateTime>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<::Windows::Foundation::DateTime>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::DateTime>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::DateTime>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsDate();
                  },
@@ -1652,7 +1651,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<::Windows::Foundation::DateTime>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateDateTimeArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1664,7 +1663,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1679,12 +1678,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<::Windows::Foundation::TimeSpan>^ arg0 = 
+          ::Platform::Array<::Windows::Foundation::TimeSpan>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<::Windows::Foundation::TimeSpan>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::TimeSpan>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::TimeSpan>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return value->IsNumber();
                  },
@@ -1698,7 +1697,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<::Windows::Foundation::TimeSpan>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateTimeSpanArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1710,7 +1709,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1725,12 +1724,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<::Windows::Foundation::Point>^ arg0 = 
+          ::Platform::Array<::Windows::Foundation::Point>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<::Windows::Foundation::Point>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::Point>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::Point>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return NodeRT::Utils::IsPoint(value);
                  },
@@ -1744,7 +1743,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<::Windows::Foundation::Point>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreatePointArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1756,7 +1755,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1771,12 +1770,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<::Windows::Foundation::Size>^ arg0 = 
+          ::Platform::Array<::Windows::Foundation::Size>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<::Windows::Foundation::Size>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::Size>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::Size>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return NodeRT::Utils::IsSize(value);
                  },
@@ -1790,7 +1789,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<::Windows::Foundation::Size>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateSizeArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1802,7 +1801,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1817,12 +1816,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          ::Platform::Array<::Windows::Foundation::Rect>^ arg0 = 
+          ::Platform::Array<::Windows::Foundation::Rect>^ arg0 =
             [] (v8::Local<v8::Value> value) -> ::Platform::Array<::Windows::Foundation::Rect>^
             {
               if (value->IsArray())
               {
-                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::Rect>(value.As<Array>(), 
+                return NodeRT::Collections::JsArrayToWinrtArray<::Windows::Foundation::Rect>(value.As<Array>(),
                  [](Local<Value> value) -> bool {
                    return NodeRT::Utils::IsRect(value);
                  },
@@ -1836,7 +1835,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                 return dynamic_cast<::Platform::Array<::Windows::Foundation::Rect>^>(NodeRT::Utils::GetObjectInstance(value));
               }
             } (info[0]);
-          
+
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateRectArray(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -1848,7 +1847,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -1893,20 +1892,20 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class IStringable : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("IStringable").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "toString", ToString);
-      
-                        
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -1921,13 +1920,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     IStringable(::Windows::Foundation::IStringable^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -1966,14 +1965,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::IStringable^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IStringable^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::IStringable^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -1998,7 +1997,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -2023,7 +2022,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void ToString(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2050,7 +2049,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2097,21 +2096,21 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class Deferral : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("Deferral").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "complete", Complete);
       Nan::SetPrototypeMethod(localRef, "close", Close);
-      
-                        
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -2126,13 +2125,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     Deferral(::Windows::Foundation::Deferral^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2171,14 +2170,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::Deferral^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Deferral^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::Deferral^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -2194,7 +2193,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Windows::Foundation::DeferralCompletedHandler^ arg0 = dynamic_cast<::Windows::Foundation::DeferralCompletedHandler^>(NodeRT::Utils::GetObjectInstance(info[0]));
-          
+
           winRtInstance = ref new ::Windows::Foundation::Deferral(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -2218,7 +2217,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -2243,7 +2242,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void Complete(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2260,7 +2259,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           wrapper->_instance->Complete();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2268,7 +2267,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2299,7 +2298,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 		  return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
 		return;
@@ -2347,25 +2346,25 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class IAsyncInfo : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("IAsyncInfo").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "cancel", Cancel);
       Nan::SetPrototypeMethod(localRef, "close", Close);
-      
-                        
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("errorCode").ToLocalChecked(), ErrorCodeGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("id").ToLocalChecked(), IdGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("status").ToLocalChecked(), StatusGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -2380,13 +2379,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     IAsyncInfo(::Windows::Foundation::IAsyncInfo^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2425,14 +2424,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::IAsyncInfo^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IAsyncInfo^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::IAsyncInfo^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -2457,7 +2456,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -2482,7 +2481,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void Cancel(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2499,7 +2498,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           wrapper->_instance->Cancel();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2507,7 +2506,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2529,7 +2528,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           wrapper->_instance->Close();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2537,7 +2536,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2549,7 +2548,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     static void ErrorCodeGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IAsyncInfo^>(info.This()))
       {
         return;
@@ -2557,7 +2556,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IAsyncInfo *wrapper = IAsyncInfo::Unwrap<IAsyncInfo>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::HResult result = wrapper->_instance->ErrorCode;
         info.GetReturnValue().Set(Nan::New<Integer>(result.Value));
@@ -2569,11 +2568,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void IdGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IAsyncInfo^>(info.This()))
       {
         return;
@@ -2581,7 +2580,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IAsyncInfo *wrapper = IAsyncInfo::Unwrap<IAsyncInfo>(info.This());
 
-      try 
+      try
       {
         unsigned int result = wrapper->_instance->Id;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -2593,11 +2592,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void StatusGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IAsyncInfo^>(info.This()))
       {
         return;
@@ -2605,7 +2604,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IAsyncInfo *wrapper = IAsyncInfo::Unwrap<IAsyncInfo>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::AsyncStatus result = wrapper->_instance->Status;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -2617,7 +2616,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
 
 
   private:
@@ -2656,22 +2655,22 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class IAsyncAction : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("IAsyncAction").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "getResults", GetResults);
-      
-                        
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("completed").ToLocalChecked(), CompletedGetter, CompletedSetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -2686,13 +2685,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     IAsyncAction(::Windows::Foundation::IAsyncAction^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2731,14 +2730,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::IAsyncAction^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IAsyncAction^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::IAsyncAction^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -2763,7 +2762,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -2788,7 +2787,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void GetResults(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2805,7 +2804,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           wrapper->_instance->GetResults();
-          return;   
+          return;
         }
         catch (Platform::Exception ^exception)
         {
@@ -2813,7 +2812,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -2825,7 +2824,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     static void CompletedGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IAsyncAction^>(info.This()))
       {
         return;
@@ -2833,7 +2832,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IAsyncAction *wrapper = IAsyncAction::Unwrap<IAsyncAction>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::AsyncActionCompletedHandler^ result = wrapper->_instance->Completed;
         info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Foundation", "AsyncActionCompletedHandler", result));
@@ -2845,11 +2844,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void CompletedSetter(Local<String> property, Local<Value> value, const Nan::PropertyCallbackInfo<void> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::AsyncActionCompletedHandler^>(value))
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Value to set is of unexpected type")));
@@ -2863,9 +2862,9 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IAsyncAction *wrapper = IAsyncAction::Unwrap<IAsyncAction>(info.This());
 
-      try 
+      try
       {
-        
+
         ::Windows::Foundation::AsyncActionCompletedHandler^ winRtValue = dynamic_cast<::Windows::Foundation::AsyncActionCompletedHandler^>(NodeRT::Utils::GetObjectInstance(value));
 
         wrapper->_instance->Completed = winRtValue;
@@ -2875,7 +2874,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         NodeRT::Utils::ThrowWinRtExceptionInJs(exception);
       }
     }
-    
+
 
 
   private:
@@ -2914,24 +2913,24 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class IMemoryBufferReference : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("IMemoryBufferReference").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                        
+
+
       Nan::SetPrototypeMethod(localRef,"addListener", AddListener);
       Nan::SetPrototypeMethod(localRef,"on", AddListener);
       Nan::SetPrototypeMethod(localRef,"removeListener", RemoveListener);
       Nan::SetPrototypeMethod(localRef, "off", RemoveListener);
-            
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("capacity").ToLocalChecked(), CapacityGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -2946,13 +2945,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     IMemoryBufferReference(::Windows::Foundation::IMemoryBufferReference^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -2991,14 +2990,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::IMemoryBufferReference^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IMemoryBufferReference^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::IMemoryBufferReference^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -3023,7 +3022,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3048,14 +3047,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
 
 
 
     static void CapacityGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IMemoryBufferReference^>(info.This()))
       {
         return;
@@ -3063,7 +3062,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IMemoryBufferReference *wrapper = IMemoryBufferReference::Unwrap<IMemoryBufferReference>(info.This());
 
-      try 
+      try
       {
         unsigned int result = wrapper->_instance->Capacity;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -3075,7 +3074,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
 
 
     static void AddListener(Nan::NAN_METHOD_ARGS_TYPE info)
@@ -3090,9 +3089,9 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       String::Value eventName(info[0]);
       auto str = *eventName;
-      
+
       Local<Function> callback = info[1].As<Function>();
-      
+
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       if (NodeRT::Utils::CaseInsenstiveEquals(L"closed", str))
       {
@@ -3102,12 +3101,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 		  return;
         }
         IMemoryBufferReference *wrapper = IMemoryBufferReference::Unwrap<IMemoryBufferReference>(info.This());
-      
+
         try
         {
           Persistent<Object>* perstPtr = new Persistent<Object>();
           perstPtr->Reset(NodeRT::Utils::CreateCallbackObjectInDomain(callback));
-          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr, 
+          std::shared_ptr<Persistent<Object>> callbackObjPtr(perstPtr,
             [] (Persistent<Object> *ptr ) {
               NodeUtils::Async::RunOnMain([ptr]() {
                 ptr->Reset();
@@ -3151,7 +3150,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         }
 
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
@@ -3194,7 +3193,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Local<Function> callback = info[1].As<Function>();
       Local<Value> tokenMap = NodeRT::Utils::GetHiddenValue(callback, Nan::New<String>(REGISTRATION_TOKEN_MAP_PROPERTY_NAME).ToLocalChecked());
-                
+
       if (tokenMap.IsEmpty() || Nan::Equals(tokenMap, Undefined()).FromMaybe(false))
       {
         return;
@@ -3208,12 +3207,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       }
 
       OpaqueWrapper *opaqueWrapper = OpaqueWrapper::Unwrap<OpaqueWrapper>(opaqueWrapperObj.As<Object>());
-            
+
       long long tokenValue = (long long) opaqueWrapper->GetObjectInstance();
       ::Windows::Foundation::EventRegistrationToken registrationToken;
       registrationToken.Value = tokenValue;
-        
-      try 
+
+      try
       {
         if (NodeRT::Utils::CaseInsenstiveEquals(L"closed", str))
         {
@@ -3269,20 +3268,20 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class IMemoryBuffer : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("IMemoryBuffer").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "createReference", CreateReference);
-      
-                        
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -3297,13 +3296,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     IMemoryBuffer(::Windows::Foundation::IMemoryBuffer^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3342,14 +3341,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::IMemoryBuffer^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IMemoryBuffer^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::IMemoryBuffer^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -3374,7 +3373,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3399,7 +3398,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void CreateReference(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3426,7 +3425,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -3473,21 +3472,21 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class MemoryBuffer : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("MemoryBuffer").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "createReference", CreateReference);
       Nan::SetPrototypeMethod(localRef, "close", Close);
-      
-                        
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -3502,13 +3501,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     MemoryBuffer(::Windows::Foundation::MemoryBuffer^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3547,14 +3546,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::MemoryBuffer^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::MemoryBuffer^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::MemoryBuffer^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -3570,7 +3569,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           unsigned int arg0 = static_cast<unsigned int>(Nan::To<uint32_t>(info[0]).FromMaybe(0));
-          
+
           winRtInstance = ref new ::Windows::Foundation::MemoryBuffer(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -3594,7 +3593,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3619,7 +3618,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void CreateReference(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3646,7 +3645,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -3677,7 +3676,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 		  return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
 		return;
@@ -3725,24 +3724,24 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class WwwFormUrlDecoder : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("WwwFormUrlDecoder").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "getFirstValueByName", GetFirstValueByName);
       Nan::SetPrototypeMethod(localRef, "first", First);
       Nan::SetPrototypeMethod(localRef, "getAt", GetAt);
       Nan::SetPrototypeMethod(localRef, "indexOf", IndexOf);
       Nan::SetPrototypeMethod(localRef, "getMany", GetMany);
-      
-                        
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -3757,13 +3756,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     WwwFormUrlDecoder(::Windows::Foundation::WwwFormUrlDecoder^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3802,14 +3801,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::WwwFormUrlDecoder^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::WwwFormUrlDecoder^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::WwwFormUrlDecoder^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -3825,7 +3824,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           winRtInstance = ref new ::Windows::Foundation::WwwFormUrlDecoder(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -3849,7 +3848,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -3874,7 +3873,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void GetFirstValueByName(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -3892,7 +3891,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           Platform::String^ result;
           result = wrapper->_instance->GetFirstValueByName(arg0);
           info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -3904,7 +3903,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -3927,7 +3926,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         {
           ::Windows::Foundation::Collections::IIterator<::Windows::Foundation::IWwwFormUrlDecoderEntry^>^ result;
           result = wrapper->_instance->First();
-          info.GetReturnValue().Set(NodeRT::Collections::IteratorWrapper<::Windows::Foundation::IWwwFormUrlDecoderEntry^>::CreateIteratorWrapper(result, 
+          info.GetReturnValue().Set(NodeRT::Collections::IteratorWrapper<::Windows::Foundation::IWwwFormUrlDecoderEntry^>::CreateIteratorWrapper(result,
             [](::Windows::Foundation::IWwwFormUrlDecoderEntry^ val) -> Local<Value> {
               return WrapIWwwFormUrlDecoderEntry(val);
             }
@@ -3940,7 +3939,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -3963,7 +3962,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           unsigned int arg0 = static_cast<unsigned int>(Nan::To<uint32_t>(info[0]).FromMaybe(0));
-          
+
           ::Windows::Foundation::IWwwFormUrlDecoderEntry^ result;
           result = wrapper->_instance->GetAt(arg0);
           info.GetReturnValue().Set(WrapIWwwFormUrlDecoderEntry(result));
@@ -3975,7 +3974,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -3999,7 +3998,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         {
           ::Windows::Foundation::IWwwFormUrlDecoderEntry^ arg0 = UnwrapIWwwFormUrlDecoderEntry(info[0]);
           unsigned int arg1;
-          
+
           bool result;
           result = wrapper->_instance->IndexOf(arg0, &arg1);
           Local<Object> resObj = Nan::New<Object>();
@@ -4014,7 +4013,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4066,20 +4065,20 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class IWwwFormUrlDecoderEntry : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("IWwwFormUrlDecoderEntry").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("name").ToLocalChecked(), NameGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("value").ToLocalChecked(), ValueGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -4094,13 +4093,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     IWwwFormUrlDecoderEntry(::Windows::Foundation::IWwwFormUrlDecoderEntry^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4139,14 +4138,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::IWwwFormUrlDecoderEntry^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IWwwFormUrlDecoderEntry^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::IWwwFormUrlDecoderEntry^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -4171,7 +4170,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -4196,14 +4195,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
 
 
 
     static void NameGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IWwwFormUrlDecoderEntry^>(info.This()))
       {
         return;
@@ -4211,7 +4210,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IWwwFormUrlDecoderEntry *wrapper = IWwwFormUrlDecoderEntry::Unwrap<IWwwFormUrlDecoderEntry>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Name;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -4223,11 +4222,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void ValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IWwwFormUrlDecoderEntry^>(info.This()))
       {
         return;
@@ -4235,7 +4234,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IWwwFormUrlDecoderEntry *wrapper = IWwwFormUrlDecoderEntry::Unwrap<IWwwFormUrlDecoderEntry>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Value;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -4247,7 +4246,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
 
 
   private:
@@ -4286,20 +4285,20 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class WwwFormUrlDecoderEntry : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("WwwFormUrlDecoderEntry").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-                              
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("name").ToLocalChecked(), NameGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("value").ToLocalChecked(), ValueGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -4314,13 +4313,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     WwwFormUrlDecoderEntry(::Windows::Foundation::WwwFormUrlDecoderEntry^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4359,14 +4358,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::WwwFormUrlDecoderEntry^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::WwwFormUrlDecoderEntry^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::WwwFormUrlDecoderEntry^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -4391,7 +4390,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -4416,14 +4415,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
 
 
 
     static void NameGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::WwwFormUrlDecoderEntry^>(info.This()))
       {
         return;
@@ -4431,7 +4430,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       WwwFormUrlDecoderEntry *wrapper = WwwFormUrlDecoderEntry::Unwrap<WwwFormUrlDecoderEntry>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Name;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -4443,11 +4442,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void ValueGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::WwwFormUrlDecoderEntry^>(info.This()))
       {
         return;
@@ -4455,7 +4454,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       WwwFormUrlDecoderEntry *wrapper = WwwFormUrlDecoderEntry::Unwrap<WwwFormUrlDecoderEntry>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Value;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -4467,7 +4466,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
 
 
   private:
@@ -4506,20 +4505,20 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class IGetActivationFactory : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("IGetActivationFactory").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "getActivationFactory", GetActivationFactory);
-      
-                        
+
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -4534,13 +4533,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     IGetActivationFactory(::Windows::Foundation::IGetActivationFactory^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4579,14 +4578,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::IGetActivationFactory^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IGetActivationFactory^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::IGetActivationFactory^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -4611,7 +4610,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -4636,7 +4635,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void GetActivationFactory(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4654,7 +4653,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           ::Platform::Object^ result;
           result = wrapper->_instance->GetActivationFactory(arg0);
           info.GetReturnValue().Set(CreateOpaqueWrapper(result));
@@ -4666,7 +4665,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4713,17 +4712,17 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class IPropertyValue : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("IPropertyValue").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "getUInt8", GetUInt8);
       Nan::SetPrototypeMethod(localRef, "getInt16", GetInt16);
       Nan::SetPrototypeMethod(localRef, "getUInt16", GetUInt16);
@@ -4761,11 +4760,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       Nan::SetPrototypeMethod(localRef, "getPointArray", GetPointArray);
       Nan::SetPrototypeMethod(localRef, "getSizeArray", GetSizeArray);
       Nan::SetPrototypeMethod(localRef, "getRectArray", GetRectArray);
-      
-                        
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("isNumericScalar").ToLocalChecked(), IsNumericScalarGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("type").ToLocalChecked(), TypeGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -4780,13 +4779,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     IPropertyValue(::Windows::Foundation::IPropertyValue^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4825,14 +4824,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::IPropertyValue^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IPropertyValue^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::IPropertyValue^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -4857,7 +4856,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -4882,7 +4881,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void GetUInt8(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -4909,7 +4908,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4941,7 +4940,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -4973,7 +4972,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5005,7 +5004,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5037,7 +5036,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5069,7 +5068,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5101,7 +5100,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5133,7 +5132,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5165,7 +5164,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5197,7 +5196,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5229,7 +5228,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5261,7 +5260,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5293,7 +5292,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5325,7 +5324,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5357,7 +5356,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5389,7 +5388,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5421,7 +5420,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5453,7 +5452,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5475,10 +5474,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<unsigned char>^ arg0;
-          
+
           wrapper->_instance->GetUInt8Array(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<unsigned char>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<unsigned char>::CreateArrayWrapper(arg0,
             [](unsigned char val) -> Local<Value> {
               return Nan::New<Integer>(val);
             },
@@ -5498,7 +5497,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5520,10 +5519,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<short>^ arg0;
-          
+
           wrapper->_instance->GetInt16Array(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<short>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<short>::CreateArrayWrapper(arg0,
             [](short val) -> Local<Value> {
               return Nan::New<Integer>(val);
             },
@@ -5543,7 +5542,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5565,10 +5564,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<unsigned short>^ arg0;
-          
+
           wrapper->_instance->GetUInt16Array(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<unsigned short>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<unsigned short>::CreateArrayWrapper(arg0,
             [](unsigned short val) -> Local<Value> {
               return Nan::New<Integer>(val);
             },
@@ -5588,7 +5587,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5610,10 +5609,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<int>^ arg0;
-          
+
           wrapper->_instance->GetInt32Array(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<int>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<int>::CreateArrayWrapper(arg0,
             [](int val) -> Local<Value> {
               return Nan::New<Integer>(val);
             },
@@ -5633,7 +5632,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5655,10 +5654,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<unsigned int>^ arg0;
-          
+
           wrapper->_instance->GetUInt32Array(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<unsigned int>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<unsigned int>::CreateArrayWrapper(arg0,
             [](unsigned int val) -> Local<Value> {
               return Nan::New<Integer>(val);
             },
@@ -5678,7 +5677,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5700,10 +5699,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<__int64>^ arg0;
-          
+
           wrapper->_instance->GetInt64Array(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<__int64>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<__int64>::CreateArrayWrapper(arg0,
             [](__int64 val) -> Local<Value> {
               return Nan::New<Number>(static_cast<double>(val));
             },
@@ -5723,7 +5722,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5745,10 +5744,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<unsigned __int64>^ arg0;
-          
+
           wrapper->_instance->GetUInt64Array(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<unsigned __int64>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<unsigned __int64>::CreateArrayWrapper(arg0,
             [](unsigned __int64 val) -> Local<Value> {
               return Nan::New<Number>(static_cast<double>(val));
             },
@@ -5768,7 +5767,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5790,10 +5789,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<float>^ arg0;
-          
+
           wrapper->_instance->GetSingleArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<float>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<float>::CreateArrayWrapper(arg0,
             [](float val) -> Local<Value> {
               return Nan::New<Number>(static_cast<double>(val));
             },
@@ -5813,7 +5812,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5835,10 +5834,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<double>^ arg0;
-          
+
           wrapper->_instance->GetDoubleArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<double>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<double>::CreateArrayWrapper(arg0,
             [](double val) -> Local<Value> {
               return Nan::New<Number>(static_cast<double>(val));
             },
@@ -5858,7 +5857,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5880,10 +5879,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<wchar_t>^ arg0;
-          
+
           wrapper->_instance->GetChar16Array(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<wchar_t>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<wchar_t>::CreateArrayWrapper(arg0,
             [](wchar_t val) -> Local<Value> {
               return NodeRT::Utils::JsStringFromChar(val);
             },
@@ -5903,7 +5902,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5925,10 +5924,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<bool>^ arg0;
-          
+
           wrapper->_instance->GetBooleanArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<bool>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<bool>::CreateArrayWrapper(arg0,
             [](bool val) -> Local<Value> {
               return Nan::New<Boolean>(val);
             },
@@ -5948,7 +5947,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -5970,10 +5969,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<::Platform::String^>^ arg0;
-          
+
           wrapper->_instance->GetStringArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Platform::String^>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Platform::String^>::CreateArrayWrapper(arg0,
             [](::Platform::String^ val) -> Local<Value> {
               return NodeRT::Utils::NewString(val->Data());
             },
@@ -5993,7 +5992,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6015,10 +6014,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<::Platform::Object^>^ arg0;
-          
+
           wrapper->_instance->GetInspectableArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Platform::Object^>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Platform::Object^>::CreateArrayWrapper(arg0,
             [](::Platform::Object^ val) -> Local<Value> {
               return CreateOpaqueWrapper(val);
             },
@@ -6038,7 +6037,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6060,10 +6059,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<::Platform::Guid>^ arg0;
-          
+
           wrapper->_instance->GetGuidArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Platform::Guid>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Platform::Guid>::CreateArrayWrapper(arg0,
             [](::Platform::Guid val) -> Local<Value> {
               return NodeRT::Utils::GuidToJs(val);
             },
@@ -6083,7 +6082,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6105,10 +6104,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<::Windows::Foundation::DateTime>^ arg0;
-          
+
           wrapper->_instance->GetDateTimeArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::DateTime>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::DateTime>::CreateArrayWrapper(arg0,
             [](::Windows::Foundation::DateTime val) -> Local<Value> {
               return NodeRT::Utils::DateTimeToJS(val);
             },
@@ -6128,7 +6127,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6150,10 +6149,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<::Windows::Foundation::TimeSpan>^ arg0;
-          
+
           wrapper->_instance->GetTimeSpanArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::TimeSpan>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::TimeSpan>::CreateArrayWrapper(arg0,
             [](::Windows::Foundation::TimeSpan val) -> Local<Value> {
               return Nan::New<Number>(val.Duration/10000.0);
             },
@@ -6173,7 +6172,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6195,10 +6194,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<::Windows::Foundation::Point>^ arg0;
-          
+
           wrapper->_instance->GetPointArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::Point>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::Point>::CreateArrayWrapper(arg0,
             [](::Windows::Foundation::Point val) -> Local<Value> {
               return NodeRT::Utils::PointToJs(val);
             },
@@ -6218,7 +6217,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6240,10 +6239,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<::Windows::Foundation::Size>^ arg0;
-          
+
           wrapper->_instance->GetSizeArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::Size>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::Size>::CreateArrayWrapper(arg0,
             [](::Windows::Foundation::Size val) -> Local<Value> {
               return NodeRT::Utils::SizeToJs(val);
             },
@@ -6263,7 +6262,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6285,10 +6284,10 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Platform::Array<::Windows::Foundation::Rect>^ arg0;
-          
+
           wrapper->_instance->GetRectArray(&arg0);
           Local<Object> resObj = Nan::New<Object>();
-          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::Rect>::CreateArrayWrapper(arg0, 
+          Nan::Set(resObj, Nan::New<String>("value").ToLocalChecked(), NodeRT::Collections::ArrayWrapper<::Windows::Foundation::Rect>::CreateArrayWrapper(arg0,
             [](::Windows::Foundation::Rect val) -> Local<Value> {
               return NodeRT::Utils::RectToJs(val);
             },
@@ -6308,7 +6307,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6320,7 +6319,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     static void IsNumericScalarGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IPropertyValue^>(info.This()))
       {
         return;
@@ -6328,7 +6327,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IPropertyValue *wrapper = IPropertyValue::Unwrap<IPropertyValue>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->IsNumericScalar;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -6340,11 +6339,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void TypeGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::IPropertyValue^>(info.This()))
       {
         return;
@@ -6352,7 +6351,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       IPropertyValue *wrapper = IPropertyValue::Unwrap<IPropertyValue>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::PropertyType result = wrapper->_instance->Type;
         info.GetReturnValue().Set(Nan::New<Integer>(static_cast<int>(result)));
@@ -6364,7 +6363,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
 
 
   private:
@@ -6403,22 +6402,22 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
   class Uri : public WrapperBase
   {
-  public:    
+  public:
     static void Init(const Local<Object> exports)
     {
       HandleScope scope;
-      
+
       Local<FunctionTemplate> localRef = Nan::New<FunctionTemplate>(New);
       s_constructorTemplate.Reset(localRef);
       localRef->SetClassName(Nan::New<String>("Uri").ToLocalChecked());
       localRef->InstanceTemplate()->SetInternalFieldCount(1);
-      
-            
+
+
       Nan::SetPrototypeMethod(localRef, "equals", Equals);
       Nan::SetPrototypeMethod(localRef, "combineUri", CombineUri);
       Nan::SetPrototypeMethod(localRef, "toString", ToString);
-      
-                        
+
+
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("absoluteUri").ToLocalChecked(), AbsoluteUriGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("displayUri").ToLocalChecked(), DisplayUriGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("domain").ToLocalChecked(), DomainGetter);
@@ -6436,7 +6435,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("userName").ToLocalChecked(), UserNameGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("absoluteCanonicalUri").ToLocalChecked(), AbsoluteCanonicalUriGetter);
       Nan::SetAccessor(localRef->PrototypeTemplate(), Nan::New<String>("displayIri").ToLocalChecked(), DisplayIriGetter);
-      
+
       Local<Object> constructor = Nan::To<Object>(Nan::GetFunction(localRef).ToLocalChecked()).ToLocalChecked();
 	  Nan::SetMethod(constructor, "castFrom", CastFrom);
 
@@ -6453,13 +6452,13 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
   private:
-    
+
     Uri(::Windows::Foundation::Uri^ instance)
     {
       _instance = instance;
     }
-    
-    
+
+
     static void New(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -6498,14 +6497,14 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      
+
       ::Windows::Foundation::Uri^ winRtInstance;
 
 
       if (info.Length() == 1 && OpaqueWrapper::IsOpaqueWrapper(info[0]) &&
         NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info[0]))
       {
-        try 
+        try
         {
           winRtInstance = (::Windows::Foundation::Uri^) NodeRT::Utils::GetObjectInstance(info[0]);
         }
@@ -6521,7 +6520,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           winRtInstance = ref new ::Windows::Foundation::Uri(arg0);
         }
         catch (Platform::Exception ^exception)
@@ -6538,7 +6537,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
           Platform::String^ arg1 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[1])));
-          
+
           winRtInstance = ref new ::Windows::Foundation::Uri(arg0,arg1);
         }
         catch (Platform::Exception ^exception)
@@ -6562,7 +6561,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-	
+
     static void CastFrom(Nan::NAN_METHOD_ARGS_TYPE info)
     {
 		HandleScope scope;
@@ -6587,7 +6586,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     }
 
 
-  
+
     static void Equals(Nan::NAN_METHOD_ARGS_TYPE info)
     {
       HandleScope scope;
@@ -6605,7 +6604,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           ::Windows::Foundation::Uri^ arg0 = dynamic_cast<::Windows::Foundation::Uri^>(NodeRT::Utils::GetObjectInstance(info[0]));
-          
+
           bool result;
           result = wrapper->_instance->Equals(arg0);
           info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -6617,7 +6616,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6640,7 +6639,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           ::Windows::Foundation::Uri^ result;
           result = wrapper->_instance->CombineUri(arg0);
           info.GetReturnValue().Set(NodeRT::Utils::CreateExternalWinRTObject("Windows.Foundation", "Uri", result));
@@ -6652,7 +6651,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6684,7 +6683,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6702,7 +6701,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           Platform::String^ result;
           result = ::Windows::Foundation::Uri::UnescapeComponent(arg0);
           info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6714,7 +6713,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6730,7 +6729,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         try
         {
           Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          
+
           Platform::String^ result;
           result = ::Windows::Foundation::Uri::EscapeComponent(arg0);
           info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6742,7 +6741,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
           return;
         }
       }
-      else 
+      else
       {
         Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"Bad arguments: no suitable overload found")));
         return;
@@ -6752,7 +6751,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     static void AbsoluteUriGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6760,7 +6759,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->AbsoluteUri;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6772,11 +6771,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void DisplayUriGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6784,7 +6783,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->DisplayUri;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6796,11 +6795,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void DomainGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6808,7 +6807,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Domain;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6820,11 +6819,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void ExtensionGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6832,7 +6831,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Extension;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6844,11 +6843,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void FragmentGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6856,7 +6855,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Fragment;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6868,11 +6867,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void HostGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6880,7 +6879,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Host;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6892,11 +6891,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void PasswordGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6904,7 +6903,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Password;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6916,11 +6915,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void PathGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6928,7 +6927,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Path;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6940,11 +6939,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void PortGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6952,7 +6951,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         int result = wrapper->_instance->Port;
         info.GetReturnValue().Set(Nan::New<Integer>(result));
@@ -6964,11 +6963,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void QueryGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -6976,7 +6975,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->Query;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -6988,11 +6987,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void QueryParsedGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -7000,7 +6999,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         ::Windows::Foundation::WwwFormUrlDecoder^ result = wrapper->_instance->QueryParsed;
         info.GetReturnValue().Set(WrapWwwFormUrlDecoder(result));
@@ -7012,11 +7011,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void RawUriGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -7024,7 +7023,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->RawUri;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -7036,11 +7035,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void SchemeNameGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -7048,7 +7047,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->SchemeName;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -7060,11 +7059,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void SuspiciousGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -7072,7 +7071,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         bool result = wrapper->_instance->Suspicious;
         info.GetReturnValue().Set(Nan::New<Boolean>(result));
@@ -7084,11 +7083,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void UserNameGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -7096,7 +7095,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->UserName;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -7108,11 +7107,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void AbsoluteCanonicalUriGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -7120,7 +7119,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->AbsoluteCanonicalUri;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -7132,11 +7131,11 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
     static void DisplayIriGetter(Local<String> property, const Nan::PropertyCallbackInfo<v8::Value> &info)
     {
       HandleScope scope;
-      
+
       if (!NodeRT::Utils::IsWinRtWrapperOf<::Windows::Foundation::Uri^>(info.This()))
       {
         return;
@@ -7144,7 +7143,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 
       Uri *wrapper = Uri::Unwrap<Uri>(info.This());
 
-      try 
+      try
       {
         Platform::String^ result = wrapper->_instance->DisplayIri;
         info.GetReturnValue().Set(NodeRT::Utils::NewString(result->Data()));
@@ -7156,7 +7155,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
     }
-    
+
 
 
   private:
@@ -7193,7 +7192,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
     Uri::Init(exports);
   }
 
-} } } 
+} } }
 
 NAN_MODULE_INIT(init)
 {
@@ -7204,7 +7203,7 @@ NAN_MODULE_INIT(init)
     Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"error in CoInitializeEx()")));
     return;
   }*/
-  
+
   NodeRT::Windows::Foundation::InitPropertyTypeEnum(target);
   NodeRT::Windows::Foundation::InitAsyncStatusEnum(target);
   NodeRT::Windows::Foundation::InitPropertyValue(target);
