@@ -196,7 +196,7 @@ namespace NodeRT { namespace Utils {
   Local<Value> CreateExternalWinRTObject(const char* ns, const char* objectName, ::Platform::Object ^instance)
   {
     EscapableHandleScope scope;
-    Handle<Value> opaqueWrapper = CreateOpaqueWrapper(instance);
+    Local<Value> opaqueWrapper = CreateOpaqueWrapper(instance);
 
     Local<Object> global = Nan::GetCurrentContext()->Global();
     if (!Nan::Has(global, Nan::New<String>("__winRtNamespaces__").ToLocalChecked()).FromMaybe(false))
