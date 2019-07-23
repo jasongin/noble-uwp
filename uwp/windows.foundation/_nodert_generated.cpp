@@ -35,7 +35,6 @@ const char* REGISTRATION_TOKEN_MAP_PROPERTY_NAME = "__registrationTokenMap__";
 
 using v8::Array;
 using v8::String;
-using v8::Handle;
 using v8::Value;
 using v8::Boolean;
 using v8::Integer;
@@ -765,7 +764,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           ::Platform::Object^ result;
           result = ::Windows::Foundation::PropertyValue::CreateString(arg0);
@@ -1505,7 +1504,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
                  [](Local<Value> value) -> ::Platform::String^ {
-                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
                  }
                 );
               }
@@ -3088,7 +3087,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
 		return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
       
       Local<Function> callback = info[1].As<Function>();
@@ -3153,7 +3152,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       }
       else 
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
       }
 
@@ -3183,12 +3182,12 @@ namespace NodeRT { namespace Windows { namespace Foundation {
         return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
 
       if ((!NodeRT::Utils::CaseInsenstiveEquals(L"closed", str)))
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
       }
 
@@ -3824,7 +3823,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           winRtInstance = ref new ::Windows::Foundation::WwwFormUrlDecoder(arg0);
         }
@@ -3891,7 +3890,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           Platform::String^ result;
           result = wrapper->_instance->GetFirstValueByName(arg0);
@@ -4653,7 +4652,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           ::Platform::Object^ result;
           result = wrapper->_instance->GetActivationFactory(arg0);
@@ -5981,7 +5980,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
               return value->IsString();
             },
             [](Local<Value> value) -> ::Platform::String^ {
-              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
             }
           ));
           info.GetReturnValue().Set(resObj);
@@ -6520,7 +6519,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           winRtInstance = ref new ::Windows::Foundation::Uri(arg0);
         }
@@ -6536,8 +6535,8 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
-          Platform::String^ arg1 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[1])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
+          Platform::String^ arg1 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[1])));
           
           winRtInstance = ref new ::Windows::Foundation::Uri(arg0,arg1);
         }
@@ -6639,7 +6638,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           ::Windows::Foundation::Uri^ result;
           result = wrapper->_instance->CombineUri(arg0);
@@ -6701,7 +6700,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           Platform::String^ result;
           result = ::Windows::Foundation::Uri::UnescapeComponent(arg0);
@@ -6729,7 +6728,7 @@ namespace NodeRT { namespace Windows { namespace Foundation {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           Platform::String^ result;
           result = ::Windows::Foundation::Uri::EscapeComponent(arg0);

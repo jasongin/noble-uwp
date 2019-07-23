@@ -35,7 +35,6 @@ const char* REGISTRATION_TOKEN_MAP_PROPERTY_NAME = "__registrationTokenMap__";
 
 using v8::Array;
 using v8::String;
-using v8::Handle;
 using v8::Value;
 using v8::Boolean;
 using v8::Integer;
@@ -3967,7 +3966,7 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           unsigned int result;
           result = wrapper->_instance->WriteString(arg0);
@@ -4002,7 +4001,7 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           unsigned int result;
           result = wrapper->_instance->MeasureString(arg0);
@@ -5158,7 +5157,7 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           unsigned int result;
           result = wrapper->_instance->WriteString(arg0);
@@ -5193,7 +5192,7 @@ namespace NodeRT { namespace Windows { namespace Storage { namespace Streams {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           unsigned int result;
           result = wrapper->_instance->MeasureString(arg0);

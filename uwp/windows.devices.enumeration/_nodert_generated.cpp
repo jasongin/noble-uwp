@@ -35,7 +35,6 @@ const char* REGISTRATION_TOKEN_MAP_PROPERTY_NAME = "__registrationTokenMap__";
 
 using v8::Array;
 using v8::String;
-using v8::Handle;
 using v8::Value;
 using v8::Boolean;
 using v8::Integer;
@@ -765,7 +764,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       try 
       {
         
-        Platform::String^ winRtValue = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+        Platform::String^ winRtValue = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
 
         wrapper->_instance->Title = winRtValue;
       }
@@ -1717,7 +1716,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               return value->IsString();
             },
             [](Local<Value> value) -> ::Platform::String^ {
-              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
             }
           ));
         return;
@@ -2128,7 +2127,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         try
         {
           ::Windows::Devices::Enumeration::DeviceInformation^ arg0 = UnwrapDeviceInformation(info[0]);
-          Platform::String^ arg1 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[1])));
+          Platform::String^ arg1 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[1])));
           ::Windows::Devices::Enumeration::DevicePickerDisplayStatusOptions arg2 = static_cast<::Windows::Devices::Enumeration::DevicePickerDisplayStatusOptions>(Nan::To<int32_t>(info[2]).FromMaybe(0));
           
           wrapper->_instance->SetDisplayStatus(arg0, arg1, arg2);
@@ -2219,7 +2218,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               return value->IsString();
             },
             [](Local<Value> value) -> ::Platform::String^ {
-              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
             }
           ));
         return;
@@ -2243,7 +2242,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
       
       Local<Function> callback = info[1].As<Function>();
@@ -2422,7 +2421,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
       else 
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
       }
 
@@ -2452,12 +2451,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
 
       if ((!NodeRT::Utils::CaseInsenstiveEquals(L"devicePickerDismissed", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"deviceSelected", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"disconnectButtonClicked", str)))
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
       }
 
@@ -3771,7 +3770,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               return value->IsString();
             },
             [](Local<Value> value) -> ::Platform::String^ {
-              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
             },
             [](::Platform::Object^ val) -> Local<Value> {
               return CreateOpaqueWrapper(val);
@@ -4430,7 +4429,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
       
       Local<Function> callback = info[1].As<Function>();
@@ -4723,7 +4722,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
       else 
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
       }
 
@@ -4753,12 +4752,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
 
       if ((!NodeRT::Utils::CaseInsenstiveEquals(L"added", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"enumerationCompleted", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"removed", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"stopped", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"updated", str)))
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
       }
 
@@ -5249,7 +5248,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
@@ -5260,7 +5259,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
                  [](Local<Value> value) -> ::Platform::String^ {
-                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
                  }
                 );
               }
@@ -5284,7 +5283,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           op = ::Windows::Devices::Enumeration::DeviceInformation::CreateFromIdAsync(arg0);
         }
@@ -5300,7 +5299,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
@@ -5311,7 +5310,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
                  [](Local<Value> value) -> ::Platform::String^ {
-                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
                  }
                 );
               }
@@ -5399,7 +5398,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
@@ -5410,7 +5409,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
                  [](Local<Value> value) -> ::Platform::String^ {
-                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
                  }
                 );
               }
@@ -5461,7 +5460,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           op = ::Windows::Devices::Enumeration::DeviceInformation::FindAllAsync(arg0);
         }
@@ -5477,7 +5476,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
@@ -5488,7 +5487,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
                  [](Local<Value> value) -> ::Platform::String^ {
-                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
                  }
                 );
               }
@@ -5596,7 +5595,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
@@ -5607,7 +5606,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
                  [](Local<Value> value) -> ::Platform::String^ {
-                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
                  }
                 );
               }
@@ -5667,7 +5666,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           ::Windows::Devices::Enumeration::DeviceWatcher^ result;
           result = ::Windows::Devices::Enumeration::DeviceInformation::CreateWatcher(arg0);
@@ -5686,7 +5685,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           ::Windows::Foundation::Collections::IIterable<::Platform::String^>^ arg1 = 
             [] (v8::Local<v8::Value> value) -> ::Windows::Foundation::Collections::IIterable<::Platform::String^>^
             {
@@ -5697,7 +5696,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
                    return (!NodeRT::Utils::IsWinRtWrapper(value));
                  },
                  [](Local<Value> value) -> ::Platform::String^ {
-                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+                   return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
                  }
                 );
               }
@@ -5867,7 +5866,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
               return value->IsString();
             },
             [](Local<Value> value) -> ::Platform::String^ {
-              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(value)));
+              return ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), value)));
             },
             [](::Platform::Object^ val) -> Local<Value> {
               return CreateOpaqueWrapper(val);
@@ -6717,7 +6716,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           wrapper->_instance->Accept(arg0);
           return;   
@@ -7153,7 +7152,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
       
       Local<Function> callback = info[1].As<Function>();
@@ -7218,7 +7217,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
       else 
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
       }
 
@@ -7248,12 +7247,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
 
       if ((!NodeRT::Utils::CaseInsenstiveEquals(L"pairingRequested", str)))
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
       }
 
@@ -8204,7 +8203,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           ::Windows::Devices::Enumeration::DeviceAccessInformation^ result;
           result = ::Windows::Devices::Enumeration::DeviceAccessInformation::CreateFromId(arg0);
@@ -8316,7 +8315,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
 		return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
       
       Local<Function> callback = info[1].As<Function>();
@@ -8381,7 +8380,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
       }
       else 
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
       }
 
@@ -8411,12 +8410,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Enumeration
         return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
 
       if ((!NodeRT::Utils::CaseInsenstiveEquals(L"accessChanged", str)))
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
       }
 
