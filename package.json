@@ -1,6 +1,6 @@
 {
-	"name": "noble-uwp",
-	"version": "0.6.2",
+	"name": "@kano/noble-uwp",
+	"version": "0.6.4",
 	"description": "Noble (Node.js Bluetooth LE) with Windows 10 UWP bindings",
 	"main": "index.js",
 	"scripts": {
@@ -11,23 +11,21 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/jasongin/noble-uwp.git"
+		"url": "git+https://github.com/KanoComputing/noble-uwp.git"
 	},
 	"keywords": [
 		"bluetooth",
 		"BLE"
 	],
-	"author": "jasongin <jasongin@microsoft.com>",
+	"author": "KanoComputing <KanoComputing@microsoft.com>",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/jasongin/noble-uwp/issues"
+		"url": "https://github.com/KanoComputing/noble-uwp/issues"
 	},
-	"homepage": "https://github.com/jasongin/noble-uwp#readme",
+	"homepage": "https://github.com/KanoComputing/noble-uwp#readme",
 	"dependencies": {
 		"debug": "^2.6.0",
-		"noble": "^1.7.0"
-	},
-	"bundledDependencies": [
-		"node-pre-gyp"
-	]
+		"noble": "^1.7.0",
+		"node-pre-gyp": "^0.14.0"
+	}
 }

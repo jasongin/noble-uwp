@@ -1,0 +1,30 @@
+trigger: none
+
+pool:
+  vmImage: 'vs2017-win2016'
+
+variables:
+- group: kit-app-ui
+
+steps:
+- task: UseNode@1
+- powershell: npm install -g node-pre-gyp node-gyp node-pre-gyp-github
+- powershell: |
+      $uwp_modules = @("windows.foundation", "windows.devices.bluetooth", "windows.devices.bluetooth.advertisement", "windows.devices.bluetooth.genericattributeprofile", "windows.devices.enumeration", "windows.devices.radios", "windows.storage.streams")
+      foreach ($module in $uwp_modules) {
+        $path = "./uwp/" + $module
+        cd $path
+        echo "============================== start building $module =============================="
+        Convert-Path .
+        node-gyp -v
+        npm install --ignore-scripts
+        ./node_modules/.bin/node-pre-gyp rebuild --runtime=electron --target=3.1.0 --arch=x64 --dist-url=https://electronjs.org/headers
+        ./node_modules/.bin/node-pre-gyp package --runtime=electron --target=3.1.0 --arch=x64 --dist-url=https://electronjs.org/headers
+        node-pre-gyp-github publish --release
+        cd ../..
+      }
+      echo "done."
+  env:
+    NODE_PRE_GYP_GITHUB_TOKEN: $(GITHUB_RELEASES_TOKEN)
+    GYP_MSVS_VERSION: '2015'
+    

@@ -1,5 +1,7 @@
 # Noble (Node.js Bluetooth LE) for Windows 10
 
+This is a fork of https://github.com/jasongin/noble-uwp with the only difference being Azure Devops Setup to build binaries for electron 3.1.0
+
 So far, [`noble`](https://github.com/sandeepmistry/noble) has required an
 [alternate Bluetooth driver](https://github.com/sandeepmistry/node-bluetooth-hci-socket#windows)
 on Windows, due to lack of good BLE support in the Windows Bluetooth stack. But the Windows 10
