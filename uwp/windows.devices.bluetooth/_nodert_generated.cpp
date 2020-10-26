@@ -36,7 +36,6 @@ const char* REGISTRATION_TOKEN_MAP_PROPERTY_NAME = "__registrationTokenMap__";
 
 using v8::Array;
 using v8::String;
-using v8::Handle;
 using v8::Value;
 using v8::Boolean;
 using v8::Integer;
@@ -516,7 +515,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           op = ::Windows::Devices::Bluetooth::BluetoothAdapter::FromIdAsync(arg0);
         }
@@ -1854,7 +1853,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           op = ::Windows::Devices::Bluetooth::BluetoothDevice::FromIdAsync(arg0);
         }
@@ -2136,7 +2135,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           Platform::String^ result;
           result = ::Windows::Devices::Bluetooth::BluetoothDevice::GetDeviceSelectorFromDeviceName(arg0);
@@ -2509,7 +2508,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 		return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
       
       Local<Function> callback = info[1].As<Function>();
@@ -2688,7 +2687,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
       else 
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
       }
 
@@ -2718,12 +2717,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
 
       if ((!NodeRT::Utils::CaseInsenstiveEquals(L"connectionStatusChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"nameChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"sdpRecordsChanged", str)))
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
       }
 
@@ -5325,7 +5324,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           op = ::Windows::Devices::Bluetooth::BluetoothLEDevice::FromIdAsync(arg0);
         }
@@ -5451,7 +5450,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       {
         try
         {
-          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(info[0])));
+          Platform::String^ arg0 = ref new Platform::String(NodeRT::Utils::StringToWchar(v8::String::Value(v8::Isolate::GetCurrent(), info[0])));
           
           Platform::String^ result;
           result = ::Windows::Devices::Bluetooth::BluetoothLEDevice::GetDeviceSelectorFromDeviceName(arg0);
@@ -5810,7 +5809,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
 		return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
       
       Local<Function> callback = info[1].As<Function>();
@@ -5989,7 +5988,7 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
       }
       else 
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
 		return;
       }
 
@@ -6019,12 +6018,12 @@ namespace NodeRT { namespace Windows { namespace Devices { namespace Bluetooth {
         return;
       }
 
-      String::Value eventName(info[0]);
+      String::Value eventName(v8::Isolate::GetCurrent(), info[0]);
       auto str = *eventName;
 
       if ((!NodeRT::Utils::CaseInsenstiveEquals(L"connectionStatusChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"gattServicesChanged", str)) &&(!NodeRT::Utils::CaseInsenstiveEquals(L"nameChanged", str)))
       {
-        Nan::ThrowError(Nan::Error(String::Concat(NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
+        Nan::ThrowError(Nan::Error(String::Concat(v8::Isolate::GetCurrent(), NodeRT::Utils::NewString(L"given event name isn't supported: "), info[0].As<String>())));
         return;
       }
 

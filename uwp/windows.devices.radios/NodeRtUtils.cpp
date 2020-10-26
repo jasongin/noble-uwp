@@ -19,7 +19,6 @@
 namespace NodeRT { namespace Utils {
 
   using v8::String;
-  using v8::Handle;
   using v8::Value;
   using v8::Boolean;
   using v8::Integer;
@@ -143,7 +142,7 @@ namespace NodeRT { namespace Utils {
   // Changes to this code might break the Collection Convertor logic
   ::Platform::String^ V8StringToPlatformString(Local<Value> value)
   {
-    v8::String::Value stringVal(value);
+    v8::String::Value stringVal(v8::Isolate::GetCurrent(), value);
 #ifdef WCHART_NOT_BUILTIN_IN_NODE
     return ref new Platform::String(reinterpret_cast<const wchar_t*>(*stringVal));
 #else
@@ -197,7 +196,7 @@ namespace NodeRT { namespace Utils {
   Local<Value> CreateExternalWinRTObject(const char* ns, const char* objectName, ::Platform::Object ^instance)
   {
     EscapableHandleScope scope;
-    Handle<Value> opaqueWrapper = CreateOpaqueWrapper(instance);
+    Local<Value> opaqueWrapper = CreateOpaqueWrapper(instance);
 
     Local<Object> global = Nan::GetCurrentContext()->Global();
     if (!Nan::Has(global, Nan::New<String>("__winRtNamespaces__").ToLocalChecked()).FromMaybe(false))
@@ -295,7 +294,7 @@ namespace NodeRT { namespace Utils {
     {
       // 116444736000000000 = The time in 100 nanoseconds between 1/1/1970(UTC) to 1/1/1601(UTC)
       // ux_time = (Current time since 1601 in 100 nano sec units)/10000 - 116444736000000000;
-      time.UniversalTime = value->IntegerValue()* 10000 + 116444736000000000;
+      time.UniversalTime = value->IntegerValue(Nan::GetCurrentContext()).FromJust()* 10000 + 116444736000000000;
     }
 
     return time; 
@@ -315,7 +314,7 @@ namespace NodeRT { namespace Utils {
       return false;
     }
 
-    v8::String::Value stringVal(value);
+    v8::String::Value stringVal(v8::Isolate::GetCurrent(), value);
     std::wstring guidStr( L"{" );
     guidStr += StringToWchar(stringVal);
     guidStr += L"}" ;
@@ -650,7 +649,7 @@ namespace NodeRT { namespace Utils {
       return retVal;
     }
 
-    String::Value val(str);
+    String::Value val(v8::Isolate::GetCurrent(), str);
     retVal = (*val)[0];
     return retVal;
   }

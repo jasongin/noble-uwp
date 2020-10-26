@@ -20,7 +20,6 @@ namespace NodeRT {
 	namespace Collections {
 
 		using v8::String;
-		using v8::Handle;
 		using v8::Value;
 		using v8::Boolean;
 		using v8::Integer;
@@ -613,7 +612,7 @@ namespace NodeRT {
 				{
 					try
 					{
-						unsigned int index = info[0]->Uint32Value();
+						unsigned int index = info[0]->Uint32Value(Nan::GetCurrentContext()).FromJust();
 
 						if (index >= wrapper->_instance->Size)
 						{
@@ -1033,7 +1032,7 @@ namespace NodeRT {
 				{
 					try
 					{
-						unsigned int index = info[0]->Uint32Value();
+						unsigned int index = info[0]->Uint32Value(Nan::GetCurrentContext()).FromJust();
 
 						T value = wrapper->_convertToTypeFunc(info[1]);
 						wrapper->_instance->InsertAt(index, value);
@@ -1067,7 +1066,7 @@ namespace NodeRT {
 				{
 					try
 					{
-						unsigned int index = info[0]->Uint32Value();
+						unsigned int index = info[0]->Uint32Value(Nan::GetCurrentContext()).FromJust();
 
 						wrapper->_instance->RemoveAt(index);
 						return;
@@ -1164,7 +1163,7 @@ namespace NodeRT {
 				{
 					try
 					{
-						unsigned int index = info[0]->Uint32Value();
+						unsigned int index = info[0]->Uint32Value(Nan::GetCurrentContext()).FromJust();
 
 						if (index >= wrapper->_instance->Size)
 						{
@@ -1208,7 +1207,7 @@ namespace NodeRT {
 				{
 					try
 					{
-						unsigned int index = info[0]->Uint32Value();
+						unsigned int index = info[0]->Uint32Value(Nan::GetCurrentContext()).FromJust();
 
 						if (index >= wrapper->_instance->Size)
 						{
